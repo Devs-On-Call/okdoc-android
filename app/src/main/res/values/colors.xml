@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="rich_black">#042A2B</color>
+    <color name="rich_black_90">#E6042A2B</color>
+    <color name="rich_black_80">#CC042A2B</color>
+    <color name="rich_black_65">#A6042A2B</color>
+    <color name="maximum_blue">#5EB1BF</color>
+    <color name="maximum_blue_45">#735EB1BF</color>
+    <color name="light_cyan">#CDEDF6</color>
+    <color name="mandarin">#EF7B45</color>
+    <color name="mandarin_22">#38EF7B45</color>
+    <color name="vermilion">#D84727</color>
+    <color name="light_gray">#E5E5E5</color>
+    <color name="white">#FFFFFF</color>
+</resources>

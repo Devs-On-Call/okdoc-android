@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Ok Doc</string>
+    <string name="welcome_message_first_line" lang="en">Welcome to</string>
+    <string name="welcome_message_second_line" lang="en">OkDoc!</string>
+    <string name="amka_field_message" lang="en">Enter your AMKA to proceed</string>
+    <string name="get_started_button" lang="en">Get started</string>
+</resources>

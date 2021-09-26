@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="welcome_message_first_line">
+
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">#CC042A2B</item>
+    </style>
+
+    <style name="welcome_message_second_line">
+        <item name="android:textSize">39sp</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#CC042A2B</item>
+    </style>
+
+    <style name="amka_field">
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColorHint">@color/rich_black_65</item>
+        <item name="android:textColor">@color/rich_black_80</item>
+        <item name="android:paddingStart">20sp</item>
+        <item name="android:background">@color/light_gray</item>
+    </style>
+
+    <style name="get_started">
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@color/mandarin</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+</resources>
