@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_gradient"
@@ -52,7 +53,7 @@
         app:layout_constraintVertical_bias="0.803" />
 
     <View
-        android:id="@+id/view7"
+        android:id="@+id/doctors_image"
         android:layout_width="301dp"
         android:layout_height="217dp"
         android:background="@drawable/ic_undraw_medicine_b1ol"
@@ -96,12 +97,12 @@
         app:layout_constraintVertical_bias="0.218" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/getStartedButton"
         style="@style/get_started"
         android:layout_width="206dp"
         android:layout_height="62dp"
-        android:background="@color/mandarin"
-        android:text="@string/get_started_button"
+        android:background="@drawable/ic_get_started"
+        android:elevation="50px"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
         app:cornerRadius="80dp"
@@ -110,8 +111,8 @@
         app:layout_constraintHorizontal_bias="0.451"
         app:layout_constraintStart_toStartOf="@+id/editTextAmka"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.82"
-        tools:ignore="TextContrastCheck" />
+        app:layout_constraintVertical_bias="0.856"
+        tools:ignore="TextContrastCheck,SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/editTextAmka"
@@ -120,15 +121,30 @@
         android:layout_height="52dp"
         android:background="@drawable/edit_text_border"
         android:ems="10"
+        android:focusable="auto"
         android:hint="@string/amka_field_message"
-        android:inputType="textPersonName"
+        android:importantForAutofill="no"
+        android:inputType="number"
+        android:phoneNumber="false"
         android:textAppearance="@style/amka_field"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.544"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.698"
-        android:importantForAutofill="no" />
+        app:layout_constraintVertical_bias="0.698" />
+
+    <TextView
+        android:id="@+id/textViewLoginMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="viewStart"
+        android:textColor="@color/vermilion"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.738" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

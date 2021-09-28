@@ -52,7 +52,7 @@
         app:layout_constraintVertical_bias="0.803" />
 
     <View
-        android:id="@+id/view7"
+        android:id="@+id/doctors_image"
         android:layout_width="301dp"
         android:layout_height="217dp"
         android:background="@drawable/ic_undraw_medicine_b1ol"
@@ -95,23 +95,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.218" />
 
-    <Button
-        android:id="@+id/button"
-        style="@style/get_started"
-        android:layout_width="206dp"
-        android:layout_height="62dp"
-        android:background="@color/mandarin"
-        android:text="@string/get_started_button"
-        android:textAllCaps="false"
-        android:textColor="#0D47A1"
-        app:cornerRadius="60px"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/editTextAmka"
-        app:layout_constraintHorizontal_bias="0.451"
-        app:layout_constraintStart_toStartOf="@+id/editTextAmka"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.831" />
-
     <EditText
         android:id="@+id/editTextAmka"
         style="@style/amka_field"
@@ -129,5 +112,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.698"
         android:importantForAutofill="no" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="155dp"
+        android:layout_height="48dp"
+        android:text="@string/get_started_button"
+        android:textAllCaps="false"
+        android:textColor="#B2DFDB"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.811" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
