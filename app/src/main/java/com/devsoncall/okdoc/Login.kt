@@ -20,7 +20,7 @@ import android.view.View.OnFocusChangeListener
 
 class Login : AppCompatActivity() {
 
-    lateinit private var backendApi: BackendApi
+    private lateinit var backendApi: BackendApi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,20 +40,44 @@ class Login : AppCompatActivity() {
         val loginImage = findViewById<View>(R.id.doctors_image)
         val activityRoot = findViewById<ConstraintLayout>(R.id.activity_root)
 
-//        amkaField.setOnFocusChangeListener { v, hasFocus ->
-//            Log.i("hasFocus", hasFocus.toString());
-//            if (hasFocus) {
-//                loginImage.setVisibility(View.GONE)
-//            } else {
-//                loginImage.setVisibility(View.VISIBLE)
-//            }
-//        }
+        amkaField.setOnFocusChangeListener { v, hasFocus ->
+            Log.i("hasFocus", hasFocus.toString());
+            if (hasFocus) {
+                loginImage.setVisibility(View.GONE)
+            } else {
+                loginImage.setVisibility(View.VISIBLE)
+            }
+        }
 
 
         getStartedButton.setOnClickListener {
             Log.i("Listener", "Listener is running");
             createToken(amkaField.text.toString())
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+    }
+
+    override fun onResume() {
+        super.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+    }
+
+    override fun onStop() {
+        super.onStop()
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 
     private fun createToken(amka: String) {

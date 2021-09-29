@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <style name="welcome_message_first_line">
+<!--<resources xmlns:tools="http://schemas.android.com/tools">-->
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.OkDoc" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+        <item name="colorPrimary">@color/mandarin</item>
+        <item name="colorPrimaryVariant">@color/vermilion</item>
+        <item name="colorPrimaryDark">@color/mandarin</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorAccent">@color/maximum_blue</item>
 
+
+<!--        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>-->
+    </style>
+
+    <style name="welcome_message_first_line">
         <item name="android:textSize">24sp</item>
         <item name="android:textColor">#CC042A2B</item>
     </style>
