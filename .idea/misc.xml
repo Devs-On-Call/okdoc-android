@@ -19,12 +19,36 @@
         <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3828125" />
         <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable/background_gradient.xml" value="0.3828125" />
         <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable/edit_text_border.xml" value="0.3828125" />
+        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable/ic_background.xml" value="0.3828125" />
+        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable/ic_female_avatar.xml" value="0.3828125" />
+        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable/ic_get_started.xml" value="0.5" />
+        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable/ic_home_background.xml" value="0.2890625" />
+        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable/ic_home_foreground.xml" value="0.2890625" />
         <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3828125" />
+        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable/ic_person_foreground.xml" value="0.2890625" />
+        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable/ic_settings.xml" value="0.2734375" />
+        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable/ic_settings_background.xml" value="0.2890625" />
+        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable/ic_settings_foreground.xml" value="0.2890625" />
         <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable/ic_undraw_medicine_b1ol.xml" value="0.3828125" />
+        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable/light_gray_border.xml" value="0.3828125" />
+        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable/mandarin_border.xml" value="0.3828125" />
         <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable/mandarin_circle.xml" value="0.3828125" />
         <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable/maximum_blue_circle.xml" value="0.3828125" />
-        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/layout-v31/activity_login.xml" value="0.33" />
-        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/layout/activity_login.xml" value="0.22" />
+        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable/white_border.xml" value="0.3828125" />
+        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/layout-v31/activity_login.xml" value="0.27291666666666664" />
+        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/layout/activity_fragment.xml" value="0.26856884057971014" />
+        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/layout/activity_login.xml" value="0.26856884057971014" />
+        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/layout/activity_main_menu.xml" value="0.26856884057971014" />
+        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/layout/activity_test.xml" value="0.26856884057971014" />
+        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/layout/fragment_first.xml" value="0.26856884057971014" />
+        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/layout/fragment_second.xml" value="0.26856884057971014" />
+        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/layout/fragment_settings.xml" value="0.36666666666666664" />
+        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/layout/home_fragment.xml" value="0.25289089994972347" />
+        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/layout/profile_fragment.xml" value="0.2767210144927536" />
+        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/layout/recycler_item.xml" value="0.27291666666666664" />
+        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/layout/settings_fragment.xml" value="0.2767210144927536" />
+        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/menu/bottom_nav_menu.xml" value="0.27291666666666664" />
+        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/mipmap-anydpi-v26/ic_settings.xml" value="0.2890625" />
       </map>
     </option>
   </component>

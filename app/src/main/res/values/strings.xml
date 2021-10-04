@@ -1,7 +1,34 @@
 <resources>
-    <string name="app_name">Ok Doc</string>
+    <string name="app_name">OkDoc</string>
     <string name="welcome_message_first_line" lang="en">Welcome to</string>
     <string name="welcome_message_second_line" lang="en">OkDoc!</string>
     <string name="amka_field_message" lang="en">Enter your AMKA to proceed</string>
     <string name="get_started_button" lang="en">Get started</string>
+    <string name="past_diagnoses_button" lang="en">Past Diagnoses</string>
+    <string name="prescriptions_button" lang="en">Prescriptions</string>
+    <string name="schedule_appointment_button" lang="en">Schedule\nApoointment</string>
+    <string name="default_home_greeting" lang="en">👋🏻 Hi FirstName!</string>
+    <string name="settings_languages" lang="en">Languages</string>
+    <string name="settings_credits" lang="en">Credits</string>
+    <string name="settings_logout" lang="en">Logout</string>
+    <string name="profile_full_name" lang="en">Full Name</string>
+    <string name="profile_AMKA" lang="en">AMKA</string>
+    <string name="profile_blood_type" lang="en">Blood Type</string>
+    <string name="profile_family_doctor" lang="en">Family Doctor</string>
+
+
+
+    <string-array name="options">
+        <item>1111</item>
+        <item>2222</item>
+        <item>3333</item>
+        <item>4444</item>
+        <item>5555</item>
+        <item>6666</item>
+        <item>7777</item>
+        <item>8888</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
