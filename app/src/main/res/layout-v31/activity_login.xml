@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_gradient"
     android:clipToOutline="true"
-    tools:context=".Login">
+    tools:context=".activities.LoginActivity">
 
     <View
         android:id="@+id/maximum_blue_down"

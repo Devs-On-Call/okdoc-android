@@ -8,7 +8,7 @@
     android:background="@drawable/ic_background"
     android:clipToOutline="true"
     android:orientation="vertical"
-    tools:context=".Login"
+    tools:context=".activities.LoginActivity"
     tools:targetApi="s">
 
     <View
