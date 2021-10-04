@@ -5,9 +5,11 @@
     android:id="@+id/activity_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_gradient"
+    android:background="@drawable/ic_background"
     android:clipToOutline="true"
-    tools:context=".Login">
+    android:orientation="vertical"
+    tools:context=".activities.LoginActivity"
+    tools:targetApi="s">
 
     <View
         android:id="@+id/maximum_blue_down"
@@ -56,12 +58,12 @@
         android:id="@+id/doctors_image"
         android:layout_width="301dp"
         android:layout_height="217dp"
-        android:background="@drawable/ic_undraw_medicine_b1ol"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="80dp"
+        android:background="@drawable/ic_login"
+        app:layout_constraintBottom_toTopOf="@+id/editTextAmka"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.426" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/welcome_message_first_line"
@@ -69,49 +71,50 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/welcome_message_first_line"
+        android:textAlignment="center"
         android:textColor="@color/rich_black_80"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/welcome_message_second_line"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.165" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/welcome_message_second_line"
         style="@style/welcome_message_second_line"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         android:fontFamily="@font/poppins"
         android:text="@string/welcome_message_second_line"
+        android:textAlignment="center"
         android:textColor="@color/rich_black_80"
         android:textStyle="bold"
         android:typeface="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/doctors_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.218" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/getStartedButton"
         style="@style/get_started"
         android:layout_width="206dp"
         android:layout_height="62dp"
-        android:background="@drawable/ic_get_started"
-        android:elevation="50px"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/mandarin_border"
+        android:elevation="50dp"
+        android:text="@string/get_started_button"
         android:textAllCaps="false"
-        android:textColor="@color/rich_black_80"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textAlignment="center"
         app:cornerRadius="80dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/editTextAmka"
-        app:layout_constraintHorizontal_bias="0.451"
-        app:layout_constraintStart_toStartOf="@+id/editTextAmka"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.856"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         tools:ignore="TextContrastCheck,SpeakableTextPresentCheck" />
 
     <EditText
@@ -119,32 +122,17 @@
         style="@style/amka_field"
         android:layout_width="310dp"
         android:layout_height="52dp"
-        android:background="@drawable/edit_text_border"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/light_gray_border"
         android:ems="10"
         android:focusable="auto"
         android:hint="@string/amka_field_message"
         android:importantForAutofill="no"
         android:inputType="number"
-        android:phoneNumber="false"
         android:textAppearance="@style/amka_field"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/getStartedButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.544"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.698" />
-
-    <TextView
-        android:id="@+id/textViewLoginMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAlignment="viewStart"
-        android:textColor="@color/vermilion"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.738" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
