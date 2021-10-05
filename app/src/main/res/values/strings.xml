@@ -7,7 +7,7 @@
     <string name="past_diagnoses_button" lang="en">Past Diagnoses</string>
     <string name="prescriptions_button" lang="en">Prescriptions</string>
     <string name="schedule_appointment_button" lang="en">Schedule\nApoointment</string>
-    <string name="default_home_greeting" lang="en">👋🏻 Hi FirstName!</string>
+    <string name="default_home_greeting" lang="en">👋🏻 Hi </string>
     <string name="settings_languages" lang="en">Languages</string>
     <string name="settings_credits" lang="en">Credits</string>
     <string name="settings_logout" lang="en">Logout</string>
@@ -17,5 +17,10 @@
     <string name="profile_family_doctor" lang="en">Family Doctor</string>
     <string name="auth_token" lang="en">auth_token</string>
     <string name="patient_id" lang="en">patient_id</string>
+    <string name="patient_name" lang="en">patient_name</string>
+    <string name="patient_last_name" lang="en">patient_last_name</string>
+    <string name="patient_amka" lang="en">patient_amka</string>
+    <string name="patient_blood_type" lang="en">patient_blood_type</string>
+    <string name="patient_doctor" lang="en">patient_doctor</string>
 
 </resources>
