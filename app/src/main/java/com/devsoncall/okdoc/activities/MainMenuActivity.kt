@@ -21,7 +21,7 @@ class MainMenuActivity : AppCompatActivity() {
         val settingsFragment = SettingsFragment()
 
         // default fragment on activity creation
-        setCurrentFragment(profileFragment)
+        setCurrentFragment(homeFragment)
 
         bottomNavigationView.setOnNavigationItemSelectedListener {
             when(it.itemId) {
