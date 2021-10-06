@@ -32,7 +32,7 @@ class MainMenuActivity : AppCompatActivity() {
 
 
         // default fragment on activity creation
-        setCurrentFragment(prescriptionFragment)
+        setCurrentFragment(homeFragment)
 
         bottomNavigationView.setOnNavigationItemSelectedListener {
             when(it.itemId) {

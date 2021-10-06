@@ -1,55 +1,42 @@
 package com.devsoncall.okdoc.activities
 
-import android.Manifest
-import android.app.AlertDialog
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.constraintlayout.widget.ConstraintLayout
-import org.json.JSONObject
-import retrofit2.*
-import retrofit2.converter.gson.GsonConverterFactory
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
 import com.auth0.android.jwt.JWT
 import com.devsoncall.okdoc.R
-import com.devsoncall.okdoc.Token
-import com.devsoncall.okdoc.api.Api
 import com.devsoncall.okdoc.api.RetrofitClient
 import com.devsoncall.okdoc.models.BasicResponse
+import com.devsoncall.okdoc.models.GetPatientResponse
+import com.mohamedabulgasem.loadingoverlay.LoadingAnimation
+import com.mohamedabulgasem.loadingoverlay.LoadingOverlay
 import org.json.JSONException
+import org.json.JSONObject
+import retrofit2.*
 
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var api: Api
+    private val loadingOverlay: LoadingOverlay by lazy {
+        LoadingOverlay.with(
+            context = this@LoginActivity,
+            animation = LoadingAnimation.FADING_PROGRESS
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         setContentView(R.layout.activity_login)
 
-        //Retrofit init
-//        val retrofit = Retrofit.Builder()
-//            .baseUrl("https://okdoc-backend.herokuapp.com/")
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .build()
-//
-//        api = retrofit.create(Api::class.java)
-
-        val amkaField = findViewById<EditText>(R.id.editTextAmka)
         val getStartedButton = findViewById<Button>(R.id.getStartedButton)
-        val loginImage = findViewById<View>(R.id.doctors_image)
-        val activityRoot = findViewById<ConstraintLayout>(R.id.activity_root)
+//        val loginImage = findViewById<View>(R.id.doctors_image)
 
 //        amkaField.setOnFocusChangeListener { v, hasFocus ->
 //            Log.i("hasFocus", hasFocus.toString());
@@ -60,25 +47,25 @@ class LoginActivity : AppCompatActivity() {
 //            }
 //        }
 
-
         getStartedButton.setOnClickListener {
-//            Log.i("Listener", "Listener is running");
-            Toast.makeText(applicationContext, "Authenticating", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(applicationContext, "Authenticating", Toast.LENGTH_SHORT).show()
+            loadingOverlay.show()
             login()
         }
     }
 
-    //    @SuppressLint("SetTextI18n")
     private fun login() {
         val amka = findViewById<EditText>(R.id.editTextAmka).text.toString()
 
         if (amka.isEmpty()){
             Toast.makeText(applicationContext, "AMKA is required", Toast.LENGTH_LONG).show()
+            loadingOverlay.dismiss()
             return
         }
 
         if(amka.length != 11) {
             Toast.makeText(applicationContext, "Give a valid AMKA", Toast.LENGTH_LONG).show()
+            loadingOverlay.dismiss()
             return
         }
 
@@ -99,22 +86,65 @@ class LoginActivity : AppCompatActivity() {
                     val editor: SharedPreferences.Editor = sharedPreferences.edit()
                     editor.putString(getString(R.string.auth_token), jwt)
                     editor.putString(getString(R.string.patient_id), patientId)
-                    editor.commit();
-                    successfulLogin()
+                    editor.apply()
+                    if (jwt != null && patientId != null) getPatient(jwt, patientId)
                 } else if (response.code() == 401) {
                     try {
+                        loadingOverlay.dismiss()
                         val jsonObject = JSONObject(response.errorBody()?.string())
                         val errorMessage: String = jsonObject.getString("message")
                         Toast.makeText(applicationContext, errorMessage, Toast.LENGTH_LONG).show()
                     } catch (e: JSONException) {
-                        e.printStackTrace();
+                        e.printStackTrace()
                     }
                 }
             }
 
             override fun onFailure(call: Call<BasicResponse>, t: Throwable) {}
         })
+    }
 
+    private fun getPatient(authToken: String = "", patientId: String = "") {
+        val call: Call<GetPatientResponse>? =
+            RetrofitClient().getInstance()?.getApi()?.getPatient(patientId, authToken)
+
+        call!!.enqueue(object : Callback<GetPatientResponse> {
+            override fun onResponse(
+                call: Call<GetPatientResponse>,
+                response: Response<GetPatientResponse>
+            ) {
+                if (response.code() == 200) {
+                    loadingOverlay.dismiss()
+
+                    // saving in shared preferences
+                    val doctorFullNameString =
+                        response.body()?.data?.familyDoctor?.name + " " + response.body()?.data?.familyDoctor?.lastName
+
+                    val sharedPreferences =
+                        PreferenceManager.getDefaultSharedPreferences(this@LoginActivity)
+                    val editor: SharedPreferences.Editor = sharedPreferences.edit()
+                    editor.putString(getString(R.string.patient_name), response.body()?.data?.name)
+                    editor.putString(getString(R.string.patient_last_name), response.body()?.data?.lastName)
+                    editor.putString(getString(R.string.patient_amka), response.body()?.data?.amka)
+                    editor.putString(getString(R.string.patient_blood_type), response.body()?.data?.bloodType)
+                    editor.putString(getString(R.string.patient_doctor), doctorFullNameString)
+                    editor.apply()
+
+                    successfulLogin()
+                } else if (response.code() == 400) {
+                    try {
+                        loadingOverlay.dismiss()
+                        val jsonObject = JSONObject(response.errorBody()?.string())
+                        val errorMessage: String = jsonObject.getString("message")
+                        println(errorMessage)
+                    } catch (e: JSONException) {
+                        e.printStackTrace()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<GetPatientResponse>, t: Throwable) {}
+        })
 
     }
 
