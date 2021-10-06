@@ -19,6 +19,7 @@
         <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3828125" />
         <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable/background_gradient.xml" value="0.3828125" />
         <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable/edit_text_border.xml" value="0.3828125" />
+        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable/ic_app_logo.xml" value="0.3828125" />
         <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable/ic_back_arrow.xml" value="0.3828125" />
         <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable/ic_back_arrow_background.xml" value="0.3828125" />
         <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable/ic_back_arrow_foreground.xml" value="0.3828125" />
@@ -27,6 +28,7 @@
         <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable/ic_get_started.xml" value="0.5" />
         <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable/ic_home_background.xml" value="0.2890625" />
         <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable/ic_home_foreground.xml" value="0.2890625" />
+        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable/ic_launcher.xml" value="0.3828125" />
         <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3828125" />
         <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable/ic_login.xml" value="0.3828125" />
         <entry key="..\:/android-projects/okdoc-android/app/src/main/res/drawable/ic_person_foreground.xml" value="0.2890625" />
@@ -62,6 +64,9 @@
         <entry key="..\:/android-projects/okdoc-android/app/src/main/res/menu/bottom_nav_menu.xml" value="0.27291666666666664" />
         <entry key="..\:/android-projects/okdoc-android/app/src/main/res/mipmap-anydpi-v26/ic_back_arrow.xml" value="0.3828125" />
         <entry key="..\:/android-projects/okdoc-android/app/src/main/res/mipmap-anydpi-v26/ic_back_arrow_round.xml" value="0.2734375" />
+        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3828125" />
+        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3828125" />
+        <entry key="..\:/android-projects/okdoc-android/app/src/main/res/mipmap-anydpi-v26/ic_person.xml" value="0.2734375" />
         <entry key="..\:/android-projects/okdoc-android/app/src/main/res/mipmap-anydpi-v26/ic_settings.xml" value="0.2890625" />
       </map>
     </option>
