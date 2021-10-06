@@ -14,12 +14,21 @@ import com.devsoncall.okdoc.R
 import com.devsoncall.okdoc.api.RetrofitClient
 import com.devsoncall.okdoc.models.BasicResponse
 import com.devsoncall.okdoc.models.GetPatientResponse
+import com.mohamedabulgasem.loadingoverlay.LoadingAnimation
+import com.mohamedabulgasem.loadingoverlay.LoadingOverlay
 import org.json.JSONException
 import org.json.JSONObject
 import retrofit2.*
 
 
 class LoginActivity : AppCompatActivity() {
+
+    private val loadingOverlay: LoadingOverlay by lazy {
+        LoadingOverlay.with(
+            context = this@LoginActivity,
+            animation = LoadingAnimation.FADING_PROGRESS
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,8 +48,8 @@ class LoginActivity : AppCompatActivity() {
 //        }
 
         getStartedButton.setOnClickListener {
-            Toast.makeText(applicationContext, "Authenticating", Toast.LENGTH_SHORT).show()
-            // loader.visibility = View.VISIBLE
+//            Toast.makeText(applicationContext, "Authenticating", Toast.LENGTH_SHORT).show()
+            loadingOverlay.show()
             login()
         }
     }
@@ -50,13 +59,13 @@ class LoginActivity : AppCompatActivity() {
 
         if (amka.isEmpty()){
             Toast.makeText(applicationContext, "AMKA is required", Toast.LENGTH_LONG).show()
-            // loader.visibility = View.GONE
+            loadingOverlay.dismiss()
             return
         }
 
         if(amka.length != 11) {
             Toast.makeText(applicationContext, "Give a valid AMKA", Toast.LENGTH_LONG).show()
-            // loader.visibility = View.GONE
+            loadingOverlay.dismiss()
             return
         }
 
@@ -81,7 +90,7 @@ class LoginActivity : AppCompatActivity() {
                     if (jwt != null && patientId != null) getPatient(jwt, patientId)
                 } else if (response.code() == 401) {
                     try {
-                        // loader.visibility = View.GONE
+                        loadingOverlay.dismiss()
                         val jsonObject = JSONObject(response.errorBody()?.string())
                         val errorMessage: String = jsonObject.getString("message")
                         Toast.makeText(applicationContext, errorMessage, Toast.LENGTH_LONG).show()
@@ -105,7 +114,7 @@ class LoginActivity : AppCompatActivity() {
                 response: Response<GetPatientResponse>
             ) {
                 if (response.code() == 200) {
-                    // loader.visibility = View.GONE
+                    loadingOverlay.dismiss()
 
                     // saving in shared preferences
                     val doctorFullNameString =
@@ -124,7 +133,7 @@ class LoginActivity : AppCompatActivity() {
                     successfulLogin()
                 } else if (response.code() == 400) {
                     try {
-                        // loader.visibility = View.GONE
+                        loadingOverlay.dismiss()
                         val jsonObject = JSONObject(response.errorBody()?.string())
                         val errorMessage: String = jsonObject.getString("message")
                         println(errorMessage)
