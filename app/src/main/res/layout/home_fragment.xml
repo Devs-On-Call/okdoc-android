@@ -56,7 +56,7 @@
             android:layout_marginVertical="20dp">
 
             <Button
-                android:id="@+id/pastDiagnosesButton"
+                android:id="@+id/buttonPastDiagnoses"
                 android:layout_width="310dp"
                 android:layout_height="100dp"
                 android:layout_marginVertical="12dp"
@@ -72,13 +72,13 @@
             </Button>
 
             <Button
-                android:id="@+id/prescriptionsButton"
+                android:id="@+id/buttonPrescriptions"
                 android:layout_width="310dp"
                 android:layout_height="100dp"
                 android:layout_marginVertical="12dp"
                 android:layout_marginHorizontal="20dp"
                 android:background="@drawable/light_gray_border"
-                android:drawableRight="@drawable/ic_prescriptions"
+                android:drawableRight="@drawable/ic_prescriptions_list"
                 android:padding="20dp"
                 android:text="@string/prescriptions_button"
                 android:textColor="@color/rich_black_80"
@@ -88,7 +88,7 @@
             </Button>
 
             <Button
-                android:id="@+id/scheduleAppointmentButton"
+                android:id="@+id/buttonScheduleAppointment"
                 android:layout_width="310dp"
                 android:layout_height="100dp"
                 android:layout_marginVertical="12dp"

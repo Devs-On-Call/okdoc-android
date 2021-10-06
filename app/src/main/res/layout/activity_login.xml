@@ -103,7 +103,7 @@
         android:layout_width="206dp"
         android:layout_height="62dp"
         android:layout_marginBottom="100dp"
-        android:background="@drawable/mandarin_border"
+        android:background="@drawable/mandarin_border_40dp"
         android:elevation="50dp"
         android:text="@string/get_started_button"
         android:textAllCaps="false"

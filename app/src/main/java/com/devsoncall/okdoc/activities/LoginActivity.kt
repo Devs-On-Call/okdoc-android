@@ -64,7 +64,6 @@ class LoginActivity : AppCompatActivity() {
         getStartedButton.setOnClickListener {
 //            Log.i("Listener", "Listener is running");
             Toast.makeText(applicationContext, "Authenticating", Toast.LENGTH_SHORT).show()
-//            createToken(amkaField.text.toString())
             login()
         }
     }
