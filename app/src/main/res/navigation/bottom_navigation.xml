@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.devsoncall.okdoc.fragments.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/home_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.devsoncall.okdoc.fragments.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/profile_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.devsoncall.okdoc.fragments.SettingsFragment"
+        android:label="Settings"
+        tools:layout="@layout/settings_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_prescription"
+        android:name="com.devsoncall.okdoc.fragments.PrescriptionFragment"
+        android:label="Prescription"
+        tools:layout="@layout/prescription_fragment" />
+
+</navigation>
