@@ -36,19 +36,8 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         val getStartedButton = findViewById<Button>(R.id.getStartedButton)
-//        val loginImage = findViewById<View>(R.id.doctors_image)
-
-//        amkaField.setOnFocusChangeListener { v, hasFocus ->
-//            Log.i("hasFocus", hasFocus.toString());
-//            if (hasFocus) {
-//                loginImage.visibility = View.GONE
-//            } else {
-//                loginImage.visibility = View.VISIBLE
-//            }
-//        }
 
         getStartedButton.setOnClickListener {
-//            Toast.makeText(applicationContext, "Authenticating", Toast.LENGTH_SHORT).show()
             loadingOverlay.show()
             login()
         }

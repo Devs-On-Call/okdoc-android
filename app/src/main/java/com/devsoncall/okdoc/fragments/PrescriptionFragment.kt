@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devsoncall.okdoc.R
 import com.devsoncall.okdoc.adapters.MedicationAdapter
@@ -16,11 +17,6 @@ import kotlinx.android.synthetic.main.prescription_fragment.*
 
 class PrescriptionFragment : Fragment(R.layout.prescription_fragment) {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-
-    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,9 +38,9 @@ class PrescriptionFragment : Fragment(R.layout.prescription_fragment) {
         recyclerViewMedicationsList.adapter = adapter
         recyclerViewMedicationsList.layoutManager = LinearLayoutManager(this.context)
 
-//        buttonBack.setOnClickListener {
-//            activity?.supportFragmentManager?.popBackStack()
-//        }
+        buttonBack.setOnClickListener { view ->
+            view.findNavController().navigate(R.id.navigation_home)
+        }
 
         buttonDiagnosis.setOnClickListener {
             // TODO
