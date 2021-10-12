@@ -3,7 +3,7 @@ package com.devsoncall.okdoc.api
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class RetrofitClient() {
+class RetrofitClient {
     private val baseUrl = "https://okdoc-backend.herokuapp.com"
     private var mInstance: RetrofitClient? = null
     private var retrofit: Retrofit? = null

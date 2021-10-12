@@ -51,6 +51,11 @@
         <item name="android:letterSpacing">0.05</item>
     </style>
 
+    <style name="prescription_title">
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:letterSpacing">0.05</item>
+    </style>
+
     <style name="date">
         <item name="android:fontFamily">@font/poppins</item>
         <item name="android:textSize">16sp</item>
@@ -66,6 +71,4 @@
         <item name="android:textStyle">normal</item>
         <item name="android:background">@color/white</item>
     </style>
-
-
 </resources>

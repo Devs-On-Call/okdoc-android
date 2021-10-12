@@ -17,6 +17,15 @@
     <string name="profile_family_doctor" lang="en">Family Doctor</string>
     <string name="auth_token" lang="en">auth_token</string>
     <string name="patient_id" lang="en">patient_id</string>
+    <string name="prescription_header" lang="en">DD/MM/YY</string>
+    <string name="prescription_title" lang="en">Prescription Title</string>
+    <string name="doctor_name" lang="en">Doctor Name</string>
+    <string name="doctor_specialty" lang="en">Specialty</string>
+    <string name="diagnosis" lang="en">Diagnosis</string>
+    <string name="assigned_medication" lang="en">Assigned Medication</string>
+    <string name="medicine_title" lang="en">Medicine Title</string>
+    <string name="dosage" lang="en">Num per day</string>
+    <string name="duration" lang="en">Day DD/MM until Day DD/MM</string>
     <string name="patient_name" lang="en">patient_name</string>
     <string name="patient_last_name" lang="en">patient_last_name</string>
     <string name="patient_amka" lang="en">patient_amka</string>

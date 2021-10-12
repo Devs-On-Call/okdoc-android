@@ -11,9 +11,11 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
 import com.auth0.android.jwt.JWT
 import com.devsoncall.okdoc.R
-import com.devsoncall.okdoc.api.RetrofitClient
+import com.devsoncall.okdoc.api.calls.ApiGetPatient
+import com.devsoncall.okdoc.api.calls.ApiLogin
 import com.devsoncall.okdoc.models.BasicResponse
 import com.devsoncall.okdoc.models.GetPatientResponse
+import com.devsoncall.okdoc.models.Patient
 import com.mohamedabulgasem.loadingoverlay.LoadingAnimation
 import com.mohamedabulgasem.loadingoverlay.LoadingOverlay
 import org.json.JSONException
@@ -30,25 +32,16 @@ class LoginActivity : AppCompatActivity() {
         )
     }
 
+    private var sharedPreferences: SharedPreferences? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         setContentView(R.layout.activity_login)
 
-        val getStartedButton = findViewById<Button>(R.id.getStartedButton)
-//        val loginImage = findViewById<View>(R.id.doctors_image)
-
-//        amkaField.setOnFocusChangeListener { v, hasFocus ->
-//            Log.i("hasFocus", hasFocus.toString());
-//            if (hasFocus) {
-//                loginImage.visibility = View.GONE
-//            } else {
-//                loginImage.visibility = View.VISIBLE
-//            }
-//        }
-
-        getStartedButton.setOnClickListener {
-//            Toast.makeText(applicationContext, "Authenticating", Toast.LENGTH_SHORT).show()
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this@LoginActivity)
+        
+        findViewById<Button>(R.id.getStartedButton).setOnClickListener{
             loadingOverlay.show()
             login()
         }
@@ -69,29 +62,22 @@ class LoginActivity : AppCompatActivity() {
             return
         }
 
-        val call: Call<BasicResponse>? =
-            RetrofitClient().getInstance()?.getApi()?.createToken(amka)
-
-        call!!.enqueue(object : Callback<BasicResponse> {
-            override fun onResponse(
-                call: Call<BasicResponse>,
-                response: Response<BasicResponse>
-            ) {
-                if (response.code() == 200) {
-                    val jwt = response.headers().get("authorization")
+        val apiLogin = ApiLogin()
+        apiLogin.setOnDataListener(object : ApiLogin.DataInterface {
+            override fun responseData(loginResponse: Response<BasicResponse>) {
+                if (loginResponse.code() == 200) {
+                    val jwt = loginResponse.headers().get("authorization")
                     val decodedToken = jwt?.let { JWT(it) }
                     val patientId = decodedToken?.getClaim("_id")?.asString()
-                    val sharedPreferences =
-                        PreferenceManager.getDefaultSharedPreferences(this@LoginActivity)
-                    val editor: SharedPreferences.Editor = sharedPreferences.edit()
-                    editor.putString(getString(R.string.auth_token), jwt)
-                    editor.putString(getString(R.string.patient_id), patientId)
-                    editor.apply()
-                    if (jwt != null && patientId != null) getPatient(jwt, patientId)
-                } else if (response.code() == 401) {
+
+                    if (jwt != null && patientId != null) {
+                        saveAuthInfoInPrefs(jwt, patientId)
+                        getPatient(jwt, patientId)
+                    }
+                } else if (loginResponse.code() == 401) {
                     try {
                         loadingOverlay.dismiss()
-                        val jsonObject = JSONObject(response.errorBody()?.string())
+                        val jsonObject = JSONObject(loginResponse.errorBody()?.string())
                         val errorMessage: String = jsonObject.getString("message")
                         Toast.makeText(applicationContext, errorMessage, Toast.LENGTH_LONG).show()
                     } catch (e: JSONException) {
@@ -99,42 +85,24 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
             }
-
-            override fun onFailure(call: Call<BasicResponse>, t: Throwable) {}
         })
+        apiLogin.login(amka)
     }
 
     private fun getPatient(authToken: String = "", patientId: String = "") {
-        val call: Call<GetPatientResponse>? =
-            RetrofitClient().getInstance()?.getApi()?.getPatient(patientId, authToken)
-
-        call!!.enqueue(object : Callback<GetPatientResponse> {
-            override fun onResponse(
-                call: Call<GetPatientResponse>,
-                response: Response<GetPatientResponse>
-            ) {
-                if (response.code() == 200) {
+        val apiGetPatient = ApiGetPatient()
+        apiGetPatient.setOnDataListener(object : ApiGetPatient.DataInterface {
+            override fun responseData(getPatientResponse: Response<GetPatientResponse>) {
+                if (getPatientResponse.code() == 200) {
                     loadingOverlay.dismiss()
-
-                    // saving in shared preferences
-                    val doctorFullNameString =
-                        response.body()?.data?.familyDoctor?.name + " " + response.body()?.data?.familyDoctor?.lastName
-
-                    val sharedPreferences =
-                        PreferenceManager.getDefaultSharedPreferences(this@LoginActivity)
-                    val editor: SharedPreferences.Editor = sharedPreferences.edit()
-                    editor.putString(getString(R.string.patient_name), response.body()?.data?.name)
-                    editor.putString(getString(R.string.patient_last_name), response.body()?.data?.lastName)
-                    editor.putString(getString(R.string.patient_amka), response.body()?.data?.amka)
-                    editor.putString(getString(R.string.patient_blood_type), response.body()?.data?.bloodType)
-                    editor.putString(getString(R.string.patient_doctor), doctorFullNameString)
-                    editor.apply()
-
-                    successfulLogin()
-                } else if (response.code() == 400) {
+                    if (getPatientResponse.body()?.data != null) {
+                        savePatientInPrefs(getPatientResponse.body()?.data!!)
+                        successfulLogin()
+                    }
+                } else if (getPatientResponse.code() == 400) {
                     try {
                         loadingOverlay.dismiss()
-                        val jsonObject = JSONObject(response.errorBody()?.string())
+                        val jsonObject = JSONObject(getPatientResponse.errorBody()?.string())
                         val errorMessage: String = jsonObject.getString("message")
                         println(errorMessage)
                     } catch (e: JSONException) {
@@ -142,10 +110,8 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
             }
-
-            override fun onFailure(call: Call<GetPatientResponse>, t: Throwable) {}
         })
-
+        apiGetPatient.getPatient(authToken, patientId)
     }
 
     private fun successfulLogin() {
@@ -153,4 +119,21 @@ class LoginActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    private fun savePatientInPrefs(patient: Patient) {
+        val doctorFullNameString = patient.familyDoctor?.name + " " + patient.familyDoctor?.lastName
+        val editor: SharedPreferences.Editor? = sharedPreferences?.edit()
+        editor?.putString(getString(R.string.patient_name), patient.name)
+        editor?.putString(getString(R.string.patient_last_name), patient.lastName)
+        editor?.putString(getString(R.string.patient_amka), patient.amka)
+        editor?.putString(getString(R.string.patient_blood_type), patient.bloodType)
+        editor?.putString(getString(R.string.patient_doctor), doctorFullNameString)
+        editor?.apply()
+    }
+
+    private fun saveAuthInfoInPrefs(authToken: String = "", patientId: String = "") {
+        val editor: SharedPreferences.Editor? = sharedPreferences?.edit()
+        editor?.putString(getString(R.string.auth_token), authToken)
+        editor?.putString(getString(R.string.patient_id), patientId)
+        editor?.apply()
+    }
 }
