@@ -17,8 +17,5 @@ class MainMenuActivity : AppCompatActivity() {
         val navView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
         val navController = findNavController(R.id.nav_host_fragment)
         navView.setupWithNavController(navController)
-
     }
-
 }
-

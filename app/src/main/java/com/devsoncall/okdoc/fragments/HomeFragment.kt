@@ -29,6 +29,7 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val sharedPreferences =
             PreferenceManager.getDefaultSharedPreferences(this.context)
         val patientName = sharedPreferences.getString(getString(R.string.patient_name), "")

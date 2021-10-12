@@ -1,6 +1,7 @@
 package com.devsoncall.okdoc.fragments
 
 import android.annotation.SuppressLint
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -25,13 +26,14 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val sharedPreferences: SharedPreferences =
+            PreferenceManager.getDefaultSharedPreferences(this.context)
+
         val fullName: TextView = view.findViewById(R.id.fullName)
         val amka: TextView = view.findViewById(R.id.amka)
         val bloodType: TextView = view.findViewById(R.id.bloodType)
         val familyDoctor: TextView = view.findViewById(R.id.familyDoctor)
 
-        val sharedPreferences =
-            PreferenceManager.getDefaultSharedPreferences(this.context)
         val patientName = sharedPreferences.getString(getString(R.string.patient_name), "")
         val patientLastName = sharedPreferences.getString(getString(R.string.patient_last_name), "")
 
