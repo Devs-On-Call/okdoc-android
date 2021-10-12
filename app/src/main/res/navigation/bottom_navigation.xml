@@ -29,4 +29,10 @@
         android:label="Prescription"
         tools:layout="@layout/prescription_fragment" />
 
+    <fragment
+        android:id="@+id/navigation_prescription_list"
+        android:name="com.devsoncall.okdoc.fragments.PrescriptionListFragment"
+        android:label="Prescriptions List"
+        tools:layout="@layout/prescriptions_list_fragment" />
+
 </navigation>

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.devsoncall.okdoc.R
 import com.devsoncall.okdoc.adapters.PrescriptionsAdapter
 import com.devsoncall.okdoc.adapters.PrescriptionsElements
@@ -21,7 +22,14 @@ class PrescriptionListFragment : Fragment(R.layout.prescriptions_list_fragment) 
             savedInstanceState: Bundle?
         ): View? {
 
-            var prescriptionsList = mutableListOf(
+            return inflater.inflate(R.layout.prescriptions_list_fragment, container, false)
+        }
+
+        @SuppressLint("SetTextI18n")
+        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+            super.onViewCreated(view, savedInstanceState)
+
+            val prescriptionsList = mutableListOf(
                 PrescriptionsElements("25/09/2021", "Dr. Stella Sotiriou - Pathologist"),
                 PrescriptionsElements("05/03/2021", "Dr. Michael Dragoumis - Dermatologist"),
                 PrescriptionsElements("12/12/2020", "Dr. Giannis Papadoloulos - Obstetrics and Gynaecology"),
@@ -31,21 +39,17 @@ class PrescriptionListFragment : Fragment(R.layout.prescriptions_list_fragment) 
             )
 
             val adapter = PrescriptionsAdapter(prescriptionsList)
+            val rvPrescriptions = view.findViewById<RecyclerView>(R.id.rvPrescriptions)
             rvPrescriptions.adapter = adapter
             rvPrescriptions.layoutManager = LinearLayoutManager(context)
 
-            item_layout.setOnClickListener{
-                // when clicked it should lead to prescription_fragment
-            }
+//            item_layout.setOnClickListener{
+//                // when clicked it should lead to prescription_fragment
+//                adapter.notifyDataSetChanged()
+//
+//            }
 
 
-
-            return inflater.inflate(R.layout.prescriptions_list_fragment, container, false)
-        }
-
-        @SuppressLint("SetTextI18n")
-        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-            super.onViewCreated(view, savedInstanceState)
 
         }
 

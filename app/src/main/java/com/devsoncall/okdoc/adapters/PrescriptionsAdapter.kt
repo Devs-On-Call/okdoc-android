@@ -8,7 +8,7 @@ import com.devsoncall.okdoc.R
 import kotlinx.android.synthetic.main.item_prescription.view.*
 
 class PrescriptionsAdapter(
-    var prescriptions: List<PrescriptionsElements>
+    private val prescriptions: List<PrescriptionsElements>
 ) : RecyclerView.Adapter<PrescriptionsAdapter.PrescriptionsViewHolder>() {
 
     inner class PrescriptionsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
@@ -20,7 +20,7 @@ class PrescriptionsAdapter(
 
     override fun onBindViewHolder(holder: PrescriptionsViewHolder, position: Int) {
         holder.itemView.apply {
-            tvDate.text = prescriptions[position].date.toString()
+            tvDate.text = prescriptions[position].date
             tvDoctorDetails.text = prescriptions[position].doctor
         }
 
