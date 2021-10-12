@@ -22,21 +22,21 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
     ): View? {
 
         val homeView: View = inflater.inflate(R.layout.home_fragment, container, false)
-
-        val pastDiagnosesButton: Button = homeView.findViewById(R.id.pastDiagnosesButton) as Button
-        val prescriptionsButton: Button = homeView.findViewById(R.id.prescriptionsButton) as Button
-        val scheduleAppointmentButton: Button = homeView.findViewById(R.id.scheduleAppointmentButton) as Button
-
-        pastDiagnosesButton.setOnClickListener {
-
-        }
-        prescriptionsButton.setOnClickListener{
-            val prescriptionsFragment = PrescriptionListFragment()
-            //val transaction : FragmentTrasaction
-        }
-        scheduleAppointmentButton.setOnClickListener {
-
-        }
+//
+//        val pastDiagnosesButton: Button = homeView.findViewById(R.id.pastDiagnosesButton) as Button
+//        val prescriptionsButton: Button = homeView.findViewById(R.id.prescriptionsButton) as Button
+//        val scheduleAppointmentButton: Button = homeView.findViewById(R.id.scheduleAppointmentButton) as Button
+//
+//        pastDiagnosesButton.setOnClickListener {
+//
+//        }
+//        prescriptionsButton.setOnClickListener{
+//            val prescriptionsFragment = PrescriptionListFragment()
+//            //val transaction : FragmentTrasaction
+//        }
+//        scheduleAppointmentButton.setOnClickListener {
+//
+//        }
 
        return homeView
     }

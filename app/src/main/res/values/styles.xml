@@ -50,4 +50,22 @@
         <item name="android:background">@color/mandarin</item>
         <item name="android:letterSpacing">0.05</item>
     </style>
+
+    <style name="date">
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/rich_black_90</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:letterSpacing">-0.05</item>
+    </style>
+
+    <style name="doctor">
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/rich_black_80</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+
 </resources>

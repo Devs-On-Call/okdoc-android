@@ -31,8 +31,8 @@ class PrescriptionListFragment : Fragment(R.layout.prescriptions_list_fragment) 
             )
 
             val adapter = PrescriptionsAdapter(prescriptionsList)
-//            rvPrescriptions.adapter = adapter
-//            rvPrescriptions.layoutManager = LinearLayoutManager(context)
+            rvPrescriptions.adapter = adapter
+            rvPrescriptions.layoutManager = LinearLayoutManager(context)
 
             item_layout.setOnClickListener{
                 // when clicked it should lead to prescription_fragment

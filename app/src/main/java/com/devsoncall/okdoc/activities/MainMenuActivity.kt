@@ -1,10 +1,12 @@
 package com.devsoncall.okdoc.activities
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.devsoncall.okdoc.R
 import com.devsoncall.okdoc.fragments.HomeFragment
+import com.devsoncall.okdoc.fragments.PrescriptionListFragment
 import com.devsoncall.okdoc.fragments.ProfileFragment
 import com.devsoncall.okdoc.fragments.SettingsFragment
 import kotlinx.android.synthetic.main.activity_main_menu.*
@@ -15,14 +17,14 @@ class MainMenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_menu)
 
-
+        val prescriptionListFragment = PrescriptionListFragment()
         val homeFragment = HomeFragment()
         val profileFragment = ProfileFragment()
         val settingsFragment = SettingsFragment()
 
         // default fragment on activity creation
-        setCurrentFragment(homeFragment)
-
+       // setCurrentFragment(homeFragment)
+        setCurrentFragment(prescriptionListFragment)
         bottomNavigationView.setOnNavigationItemSelectedListener {
             when(it.itemId) {
                 R.id.home -> setCurrentFragment(homeFragment)

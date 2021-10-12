@@ -22,5 +22,8 @@
     <string name="patient_amka" lang="en">patient_amka</string>
     <string name="patient_blood_type" lang="en">patient_blood_type</string>
     <string name="patient_doctor" lang="en">patient_doctor</string>
+    <string name="prescriptions" lang="en">Prescriptions</string>
+    <string name="date" lang ="en">DD/MM/YYYY</string>
+    <string name="doctor" lang ="en">Doctor Name - Specialty</string>
 
 </resources>
