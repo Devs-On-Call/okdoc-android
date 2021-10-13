@@ -28,7 +28,7 @@
                 style="@style/date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="@drawable/white_border"
                 android:paddingHorizontal="18dp"
                 android:paddingTop="5dp"
                 android:textAlignment="center"
@@ -42,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:background="@color/white"
+                android:background="@drawable/white_border"
                 android:paddingHorizontal="18dp"
                 android:text="@string/doctor"
                 android:textAlignment="center" />
