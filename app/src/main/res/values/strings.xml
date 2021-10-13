@@ -4,9 +4,10 @@
     <string name="welcome_message_second_line" lang="en">OkDoc!</string>
     <string name="amka_field_message" lang="en">Enter your AMKA to proceed</string>
     <string name="get_started_button" lang="en">Get started</string>
-    <string name="past_diagnoses_button" lang="en">Past Diagnoses</string>
+    <string name="past_diagnoses_button" lang="en">Past\nDiagnoses</string>
     <string name="prescriptions_button" lang="en">Prescriptions</string>
-    <string name="schedule_appointment_button" lang="en">Schedule\nApoointment</string>
+    <string name="view_appointments_button" lang="en">View\nAppointments</string>
+    <string name="schedule_appointment_button" lang="en">Schedule\nAppointment</string>
     <string name="default_home_greeting" lang="en">👋🏻 Hi </string>
     <string name="settings_languages" lang="en">Languages</string>
     <string name="settings_credits" lang="en">Credits</string>
