@@ -1,7 +1,6 @@
 package com.devsoncall.okdoc.models
 
-class BasicResponse {
-    val success: Boolean = false
-    val message: String = ""
-
-}
+data class BasicResponse(
+    val success: Boolean,
+    val message: String
+)
