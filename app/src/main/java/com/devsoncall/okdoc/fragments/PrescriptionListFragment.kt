@@ -63,7 +63,7 @@ class PrescriptionListFragment : Fragment(R.layout.prescriptions_list_fragment),
 
         override fun onItemClick(position: Int, view: View) {
             view.findNavController().navigate(R.id.navigation_prescription)
-           // Toast.makeText(this.context, "Item $position clicked", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this.context, "Item $position clicked", Toast.LENGTH_SHORT).show()
 
 //
         }
