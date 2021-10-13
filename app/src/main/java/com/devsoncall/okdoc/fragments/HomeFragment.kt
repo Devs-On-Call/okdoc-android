@@ -17,7 +17,6 @@ import com.devsoncall.okdoc.R
 
 class HomeFragment : Fragment(R.layout.home_fragment) {
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

@@ -120,7 +120,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun savePatientInPrefs(patient: Patient) {
-        val doctorFullNameString = patient.familyDoctor?.name + " " + patient.familyDoctor?.lastName
+        val doctorFullNameString = patient.familyDoctor.name + " " + patient.familyDoctor.lastName
         val editor: SharedPreferences.Editor? = sharedPreferences?.edit()
         editor?.putString(getString(R.string.patient_name), patient.name)
         editor?.putString(getString(R.string.patient_last_name), patient.lastName)
