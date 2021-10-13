@@ -13,7 +13,7 @@ class DiagnosesAdapter(
 ) : RecyclerView.Adapter<DiagnosesAdapter.DiagnosesViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DiagnosesViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_prescription, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_diagnosis, parent, false)
 
         return DiagnosesViewHolder(view)
     }

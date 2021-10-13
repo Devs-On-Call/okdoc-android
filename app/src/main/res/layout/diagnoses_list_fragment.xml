@@ -18,11 +18,11 @@
         android:paddingStart="40dp"
         android:paddingEnd="30dp"
         android:drawableEnd="@drawable/ic_past_diagnoses"
-        android:text="@string/diagnoses_text"
+        android:text="@string/past_diagnoses"
         android:textAlignment="viewStart"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
-        android:textSize="18sp"
+        android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
