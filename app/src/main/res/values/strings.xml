@@ -37,6 +37,10 @@
     <string name="doctor" lang="en">Doctor Name - Specialty</string>
     <string name="past_diagnoses">Past Diagnoses</string>
     <string name="diagnoses_text">Diagnosis</string>
+    <string name="hospitals">Select Hospital</string>
+    <string name="hospital_name">Hospital Name</string>
+    <string name="hospital_location">Location</string>
+
 
 
 </resources>

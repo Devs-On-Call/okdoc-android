@@ -49,6 +49,13 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
             view.findNavController().navigate(R.id.navigation_diagnoses_list)
         }
 
+        val buttonScheduleAppointment = view.findViewById<Button>(R.id.buttonScheduleAppointment)
+
+        buttonScheduleAppointment.setOnClickListener { view ->
+            view.findNavController().navigate(R.id.navigation_hospitals_list)
+        }
+
+
 
 
     }
