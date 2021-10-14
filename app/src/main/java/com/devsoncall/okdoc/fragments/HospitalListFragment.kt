@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
@@ -20,7 +19,6 @@ import com.devsoncall.okdoc.models.Hospital
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.hospital_list_fragment.*
-import kotlinx.android.synthetic.main.prescriptions_list_fragment.*
 import org.json.JSONException
 import org.json.JSONObject
 import retrofit2.Response
@@ -114,6 +112,4 @@ class HospitalListFragment : Fragment(R.layout.hospital_list_fragment), Hospital
         rvHospitals.adapter = adapter
         rvHospitals.layoutManager = LinearLayoutManager(this.context)
     }
-
-
 }

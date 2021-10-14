@@ -57,9 +57,5 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
             editor?.apply()
             view.findNavController().navigate(R.id.navigation_hospital_list)
         }
-
-
-
-
     }
 }
