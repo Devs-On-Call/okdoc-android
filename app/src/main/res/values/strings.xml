@@ -32,11 +32,11 @@
     <string name="patient_amka" lang="en">patient_amka</string>
     <string name="patient_blood_type" lang="en">patient_blood_type</string>
     <string name="patient_doctor" lang="en">patient_doctor</string>
-    <string name="past_diagnoses">Past Diagnoses</string>
-    <string name="diagnoses_text">Diagnosis</string>
-    <string name="hospitals">Select Hospital</string>
-    <string name="hospital_name">Hospital Name</string>
-    <string name="hospital_location">Location</string>
+    <string name="past_diagnoses" lang="en">Past Diagnoses</string>
+    <string name="diagnoses_text" lang="en">Diagnosis</string>
+    <string name="hospitals" lang="en">Select Hospital</string>
+    <string name="hospital_name" lang="en">Hospital Name</string>
+    <string name="hospital_location" lang="en">Location</string>
     <string name="prescriptions" lang="en">Prescriptions</string>
     <string name="date" lang ="en">DD/MM/YYYY</string>
     <string name="doctor" lang ="en">Doctor Name - Specialty</string>
