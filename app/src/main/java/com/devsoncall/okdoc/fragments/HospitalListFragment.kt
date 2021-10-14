@@ -55,7 +55,7 @@ class HospitalListFragment : Fragment(R.layout.hospital_list_fragment), Hospital
     }
 
     override fun onItemClick(position: Int, view: View) {
-        //view.findNavController().navigate(R.id.navigation_prescription)
+        //view.findNavController().navigate(R.id.navigation_prescription) //navigation_specialty
         Toast.makeText(this.context, "Item $position clicked", Toast.LENGTH_SHORT).show()
 
     }

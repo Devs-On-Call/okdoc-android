@@ -48,7 +48,7 @@
     <!--        tools:layout="@layout/diagnosis_fragment" />-->
 
     <fragment
-        android:id="@+id/navigation_hospitals_list"
+        android:id="@+id/navigation_hospital_list"
         android:name="com.devsoncall.okdoc.fragments.HospitalListFragment"
         android:label="Hospitals List"
         tools:layout="@layout/hospital_list_fragment" />
