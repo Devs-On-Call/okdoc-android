@@ -21,7 +21,7 @@ class MedicationAdapter(
 
     override fun onBindViewHolder(holder: MedicationViewHolder, position: Int) {
         holder.itemView.apply {
-            textViewMedicineTitle.text = medicationList[position].diagnosis
+            textViewMedicineTitle.text = medicationList[position].drug
             textViewDosage.text = medicationList[position].dosage
             textViewDuration.text = medicationList[position].duration
         }

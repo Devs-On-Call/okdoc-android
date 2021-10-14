@@ -32,15 +32,14 @@
     <string name="patient_amka" lang="en">patient_amka</string>
     <string name="patient_blood_type" lang="en">patient_blood_type</string>
     <string name="patient_doctor" lang="en">patient_doctor</string>
-    <string name="prescriptions" lang="en">Prescriptions</string>
-    <string name="date" lang="en">DD/MM/YYYY</string>
-    <string name="doctor" lang="en">Doctor Name - Specialty</string>
     <string name="past_diagnoses">Past Diagnoses</string>
     <string name="diagnoses_text">Diagnosis</string>
     <string name="hospitals">Select Hospital</string>
     <string name="hospital_name">Hospital Name</string>
     <string name="hospital_location">Location</string>
-
-
-
+    <string name="prescriptions" lang="en">Prescriptions</string>
+    <string name="date" lang ="en">DD/MM/YYYY</string>
+    <string name="doctor" lang ="en">Doctor Name - Specialty</string>
+    <string name="serialized_prescriptions" lang ="en">serialized_prescriptions</string>
+    <string name="prescription_clicked" lang ="en">prescription_clicked</string>
 </resources>

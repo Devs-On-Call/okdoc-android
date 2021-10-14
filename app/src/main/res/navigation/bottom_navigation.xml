@@ -41,16 +41,17 @@
         android:label="Diagnoses List"
         tools:layout="@layout/diagnoses_list_fragment" />
 
-<!--    <fragment-->
-<!--        android:id="@+id/navigation_diagnosis"-->
-<!--        android:name="com.devsoncall.okdoc.fragments.DiagnosisFragment"-->
-<!--        android:label="Diagnosis"-->
-<!--        tools:layout="@layout/diagnosis_fragment" />-->
+    <!--    <fragment-->
+    <!--        android:id="@+id/navigation_diagnosis"-->
+    <!--        android:name="com.devsoncall.okdoc.fragments.DiagnosisFragment"-->
+    <!--        android:label="Diagnosis"-->
+    <!--        tools:layout="@layout/diagnosis_fragment" />-->
 
     <fragment
         android:id="@+id/navigation_hospitals_list"
         android:name="com.devsoncall.okdoc.fragments.HospitalListFragment"
         android:label="Hospitals List"
         tools:layout="@layout/hospital_list_fragment" />
+
 
 </navigation>
