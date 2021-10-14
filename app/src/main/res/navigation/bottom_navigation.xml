@@ -35,4 +35,16 @@
         android:label="Prescriptions List"
         tools:layout="@layout/prescriptions_list_fragment" />
 
+    <fragment
+        android:id="@+id/navigation_diagnoses_list"
+        android:name="com.devsoncall.okdoc.fragments.DiagnosesListFragment"
+        android:label="Diagnoses List"
+        tools:layout="@layout/diagnoses_list_fragment" />
+
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_diagnosis"-->
+<!--        android:name="com.devsoncall.okdoc.fragments.DiagnosisFragment"-->
+<!--        android:label="Diagnosis"-->
+<!--        tools:layout="@layout/diagnosis_fragment" />-->
+
 </navigation>
