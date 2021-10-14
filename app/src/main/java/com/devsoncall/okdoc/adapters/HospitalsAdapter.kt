@@ -5,10 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.devsoncall.okdoc.R
+import com.devsoncall.okdoc.models.Hospital
 import kotlinx.android.synthetic.main.item_hospital.view.*
 
 class HospitalsAdapter(
-    private val hospitals: List<HospitalsElements>,
+    private val hospitals: List<Hospital>,
     private val listener: OnItemClickListener
 ) : RecyclerView.Adapter<HospitalsAdapter.HospitalsViewHolder>() {
 
@@ -21,10 +22,8 @@ class HospitalsAdapter(
     override fun onBindViewHolder(holder: HospitalsViewHolder, position: Int) {
         holder.itemView.apply {
             tvHospitalName.text = hospitals[position].name
-            tvHospitalLocation.text = hospitals[position].location
+            tvHospitalLocation.text = hospitals[position].address
         }
-
-
     }
 
     override fun getItemCount(): Int {
@@ -41,14 +40,14 @@ class HospitalsAdapter(
             val position = bindingAdapterPosition
             if (position != RecyclerView.NO_POSITION) {
                 if (v != null) {
-                    listener.onItemClick(position, v)
+                    listener.onItemClick(hospitals[position], v)
                 }
             }
         }
     }
 
     interface OnItemClickListener {
-        fun onItemClick(position: Int, view: View)
+        fun onItemClick(hospital: Hospital, view: View)
     }
 
 }

@@ -42,4 +42,8 @@
     <string name="doctor" lang ="en">Doctor Name - Specialty</string>
     <string name="serialized_prescriptions" lang ="en">serialized_prescriptions</string>
     <string name="prescription_clicked" lang ="en">prescription_clicked</string>
+    <string name="serialized_professions" lang ="en">serialized_professions</string>
+    <string name="profession_id_clicked" lang ="en">profession_id_clicked</string>
+    <string name="serialized_hospitals" lang ="en">serialized_hospitals</string>
+    <string name="hospital_id_clicked" lang ="en">hospital_id_clicked</string>
 </resources>

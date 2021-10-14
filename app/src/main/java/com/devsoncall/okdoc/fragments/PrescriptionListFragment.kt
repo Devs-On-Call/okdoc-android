@@ -47,7 +47,6 @@ class PrescriptionListFragment : Fragment(R.layout.prescriptions_list_fragment),
 
         val serializedPrescriptions = sharedPreferences?.getString(getString(R.string.serialized_prescriptions), null)
         val prescriptions: List<Prescription>
-        rvPrescriptions.layoutManager = LinearLayoutManager(this.context)
 
         if (serializedPrescriptions != null) {
             val gson = Gson()
@@ -115,5 +114,6 @@ class PrescriptionListFragment : Fragment(R.layout.prescriptions_list_fragment),
     private fun setAdapter(prescriptions: List<Prescription>){
         adapter = PrescriptionsAdapter(prescriptions, this)
         rvPrescriptions.adapter = adapter
+        rvPrescriptions.layoutManager = LinearLayoutManager(this.context)
     }
 }
