@@ -39,5 +39,7 @@
     <string name="diagnoses_text" lang = "en">Diagnosis</string>
     <string name="serialized_prescriptions" lang ="en">serialized_prescriptions</string>
     <string name="prescription_clicked" lang ="en">prescription_clicked</string>
+    <string name="serialized_diagnoses" lang ="en">serialized_diagnoses</string>
+    <string name="diagnosis_clicked" lang ="en">diagnosis_clicked</string>
 
 </resources>
