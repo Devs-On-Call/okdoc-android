@@ -35,8 +35,9 @@
     <string name="prescriptions" lang="en">Prescriptions</string>
     <string name="date" lang="en">DD/MM/YYYY</string>
     <string name="doctor" lang="en">Doctor Name - Specialty</string>
-    <string name="past_diagnoses">Past Diagnoses</string>
-    <string name="diagnoses_text">Diagnosis</string>
-
+    <string name="past_diagnoses" lang = "en">Past Diagnoses</string>
+    <string name="diagnoses_text" lang = "en">Diagnosis</string>
+    <string name="serialized_prescriptions" lang ="en">serialized_prescriptions</string>
+    <string name="prescription_clicked" lang ="en">prescription_clicked</string>
 
 </resources>

@@ -6,10 +6,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.devsoncall.okdoc.R
+import com.mohamedabulgasem.loadingoverlay.LoadingAnimation
+import com.mohamedabulgasem.loadingoverlay.LoadingOverlay
 
 
 class MainMenuActivity : AppCompatActivity() {
-
+    val loadingOverlay: LoadingOverlay by lazy {
+        LoadingOverlay.with(
+            context = this@MainMenuActivity,
+            animation = LoadingAnimation.FADING_PROGRESS
+        )
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_menu)

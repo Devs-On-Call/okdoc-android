@@ -1,7 +1,9 @@
 package com.devsoncall.okdoc.api
 
 import com.devsoncall.okdoc.models.BasicResponse
+import com.devsoncall.okdoc.models.DataListResponse
 import com.devsoncall.okdoc.models.GetPatientResponse
+import com.devsoncall.okdoc.models.Prescription
 import retrofit2.Call;
 import retrofit2.http.*
 
@@ -18,4 +20,10 @@ interface Api {
         @Path("patientId") patientId: String,
         @Header("Authorization") token: String
     ): Call<GetPatientResponse>
+
+    @GET("/api/patients/{patientId}/prescriptions")
+    fun getPrescriptions(
+        @Path("patientId") patientId: String,
+        @Header("Authorization") token: String
+    ): Call<DataListResponse<Prescription>>
 }
