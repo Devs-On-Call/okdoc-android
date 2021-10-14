@@ -12,20 +12,14 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.devsoncall.okdoc.R
 import com.devsoncall.okdoc.adapters.DiagnosesAdapter
-import com.devsoncall.okdoc.adapters.DiagnosesElements
-import com.devsoncall.okdoc.adapters.PrescriptionsAdapter
 import com.devsoncall.okdoc.api.calls.ApiGetDiagnoses
-import com.devsoncall.okdoc.api.calls.ApiGetPrescriptions
 import com.devsoncall.okdoc.models.DataListResponse
 import com.devsoncall.okdoc.models.Diagnosis
-import com.devsoncall.okdoc.models.Prescription
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.diagnoses_list_fragment.*
-import kotlinx.android.synthetic.main.prescriptions_list_fragment.*
 import org.json.JSONException
 import org.json.JSONObject
 import retrofit2.Response
@@ -70,17 +64,13 @@ class DiagnosesListFragment : Fragment(R.layout.diagnoses_list_fragment), Diagno
         buttonBack.setOnClickListener { view ->
             view.findNavController().navigate(R.id.navigation_home)
         }
-
-
     }
 
     override fun onItemClick(position: Int, view: View) {
         saveDiagnosisClickedInPrefs(position)
         //view.findNavController().navigate(R.id.navigation_diagnosis)
         Toast.makeText(this.context, "Item $position clicked", Toast.LENGTH_SHORT).show()
-
     }
-
 
     private fun getDiagnoses(authToken: String = "", patientId: String = "") {
         val apiGetDiagnoses = ApiGetDiagnoses()
@@ -126,6 +116,4 @@ class DiagnosesListFragment : Fragment(R.layout.diagnoses_list_fragment), Diagno
         adapter = DiagnosesAdapter(diagnoses, this)
         rvDiagnoses.adapter = adapter
     }
-
-
 }

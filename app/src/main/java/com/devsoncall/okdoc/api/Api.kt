@@ -30,4 +30,10 @@ interface Api {
         @Header("Authorization") token: String
     ): Call<DataListResponse<Diagnosis>>
 
+    @GET("/api/hospitals")
+    fun getHospitals(
+        @Query("professionId") professionId: String,
+        @Header("Authorization") token: String
+    ): Call<DataListResponse<Hospital>>
+
 }

@@ -29,14 +29,11 @@ class DiagnosesAdapter(
             tvDate.text = diagnoses[position].date
             tvDiagnosis.text = diagnoses[position].diagnosis
         }
-
-
     }
 
     override fun getItemCount(): Int {
         return diagnoses.size
     }
-
 
     inner class DiagnosesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener{
         init {
@@ -56,5 +53,4 @@ class DiagnosesAdapter(
     interface OnItemClickListener {
         fun onItemClick(position: Int, view: View)
     }
-
 }
