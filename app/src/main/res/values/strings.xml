@@ -38,15 +38,29 @@
     <string name="prescriptions" lang="en">Prescriptions</string>
     <string name="date" lang="en">DD/MM/YYYY</string>
     <string name="doctor" lang="en">Doctor Name - Specialty</string>
-    <string name="past_diagnoses" lang = "en">Past Diagnoses</string>
-    <string name="diagnoses_text" lang = "en">Diagnosis</string>
-    <string name="serialized_prescriptions" lang ="en">serialized_prescriptions</string>
-    <string name="prescription_clicked" lang ="en">prescription_clicked</string>
-    <string name="serialized_professions" lang ="en">serialized_professions</string>
-    <string name="profession_id_clicked" lang ="en">profession_id_clicked</string>
-    <string name="serialized_hospitals" lang ="en">serialized_hospitals</string>
-    <string name="hospital_id_clicked" lang ="en">hospital_id_clicked</string>
-    <string name="serialized_diagnoses" lang ="en">serialized_diagnoses</string>
-    <string name="diagnosis_clicked" lang ="en">diagnosis_clicked</string>
+    <string name="past_diagnoses" lang="en">Past Diagnoses</string>
+    <string name="diagnoses_text" lang="en">Diagnosis</string>
+    <string name="serialized_prescriptions" lang="en">serialized_prescriptions</string>
+    <string name="prescription_clicked" lang="en">prescription_clicked</string>
+    <string name="serialized_professions" lang="en">serialized_professions</string>
+    <string name="profession_id_clicked" lang="en">profession_id_clicked</string>
+    <string name="serialized_hospitals" lang="en">serialized_hospitals</string>
+    <string name="hospital_id_clicked" lang="en">hospital_id_clicked</string>
+    <string name="serialized_diagnoses" lang="en">serialized_diagnoses</string>
+    <string name="diagnosis_clicked" lang="en">diagnosis_clicked</string>
+    <string name="developed_by">Developed by</string>
+    <string name="team_members">
+        <![CDATA[
+        <u>Front-End &amp; Design</u><br></br>
+        Marina Kipourou<br></br>
+        Christodoulos Antoniou<br></br>
+        Efstratios Bekstasiadis<br></br>
+        <br></br><u>Back-End</u><br></br>
+        Elena Konstantinidi<br></br>
+        Mitrofanos Ntatidis<br></br>
+        <br></br><u>Full Stack &amp; DevOps</u><br></br>
+        Jim Skretas Kazakis<br></br>
+        ]]>
+    </string>
 
 </resources>

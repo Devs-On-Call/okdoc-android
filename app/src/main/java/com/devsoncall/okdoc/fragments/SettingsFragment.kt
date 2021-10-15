@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import com.devsoncall.okdoc.R
 import com.devsoncall.okdoc.activities.LoginActivity
@@ -29,9 +30,13 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
         super.onViewCreated(view, savedInstanceState)
 
         val logoutButton: Button = view.findViewById(R.id.logoutButton)
-
         logoutButton.setOnClickListener {
             logout()
+        }
+
+        val creditsButton: Button = view.findViewById(R.id.creditsButton)
+        creditsButton.setOnClickListener {
+            view.findNavController().navigate(R.id.navigation_credits)
         }
     }
 
