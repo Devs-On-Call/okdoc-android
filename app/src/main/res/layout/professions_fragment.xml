@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_background"
+    tools:context=".fragments.ProfessionsFragment">
+
+
+    <Button
+        android:id="@+id/btProfessions"
+        android:layout_width="310dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="18dp"
+        android:background="@drawable/mandarin_border_12dp"
+        android:paddingStart="40dp"
+        android:paddingEnd="30dp"
+        android:drawableEnd="@drawable/ic_prescription"
+        android:text="@string/professions"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="@color/rich_black_80"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btBack"
+        android:layout_width="43dp"
+        android:layout_height="81dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="55dp"
+        android:background="@drawable/mandarin_border_12dp"
+        android:drawableStart="@drawable/ic_back_arrow"
+        android:paddingHorizontal="13dp"
+        app:layout_constraintEnd_toStartOf="@+id/btProfessions"
+        app:layout_constraintHorizontal_bias="0.595"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvProfessions"
+        android:layout_width="358dp"
+        android:layout_height="462dp"
+        android:layout_marginVertical="20dp"
+        android:background="@drawable/light_gray_border"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.765" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

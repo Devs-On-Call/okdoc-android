@@ -63,7 +63,7 @@ class HospitalListFragment : Fragment(R.layout.hospital_list_fragment), Hospital
     }
 
     override fun onItemClick(hospital: Hospital, view: View) {
-        //view.findNavController().navigate(R.id.navigation_doctors) //navigation_doctors
+        view.findNavController().navigate(R.id.navigation_professions) //navigation_professions
         saveHospitalIdClickedInPrefs(hospital._id)
     }
 
