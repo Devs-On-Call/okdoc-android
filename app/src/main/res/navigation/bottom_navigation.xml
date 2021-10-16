@@ -24,6 +24,12 @@
         tools:layout="@layout/settings_fragment" />
 
     <fragment
+        android:id="@+id/navigation_credits"
+        android:name="com.devsoncall.okdoc.fragments.CreditsFragment"
+        android:label="Credits"
+        tools:layout="@layout/credits_fragment" />
+
+    <fragment
         android:id="@+id/navigation_prescription"
         android:name="com.devsoncall.okdoc.fragments.PrescriptionFragment"
         android:label="Prescription"
