@@ -59,5 +59,11 @@
         android:label="Hospitals List"
         tools:layout="@layout/hospital_list_fragment" />
 
+    <fragment
+        android:id="@+id/navigation_professions"
+        android:name="com.devsoncall.okdoc.fragments.ProfessionsFragment"
+        android:label="Professions"
+        tools:layout="@layout/professions_fragment" />
+
 
 </navigation>

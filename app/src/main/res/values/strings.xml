@@ -38,16 +38,18 @@
     <string name="prescriptions" lang="en">Prescriptions</string>
     <string name="date" lang="en">DD/MM/YYYY</string>
     <string name="doctor" lang="en">Doctor Name - Specialty</string>
-    <string name="past_diagnoses" lang="en">Past Diagnoses</string>
-    <string name="diagnoses_text" lang="en">Diagnosis</string>
-    <string name="serialized_prescriptions" lang="en">serialized_prescriptions</string>
-    <string name="prescription_clicked" lang="en">prescription_clicked</string>
-    <string name="serialized_professions" lang="en">serialized_professions</string>
-    <string name="profession_id_clicked" lang="en">profession_id_clicked</string>
-    <string name="serialized_hospitals" lang="en">serialized_hospitals</string>
-    <string name="hospital_id_clicked" lang="en">hospital_id_clicked</string>
-    <string name="serialized_diagnoses" lang="en">serialized_diagnoses</string>
-    <string name="diagnosis_clicked" lang="en">diagnosis_clicked</string>
+    <string name="past_diagnoses" lang = "en">Past Diagnoses</string>
+    <string name="diagnoses_text" lang = "en">Diagnosis</string>
+    <string name="serialized_prescriptions" lang ="en">serialized_prescriptions</string>
+    <string name="prescription_clicked" lang ="en">prescription_clicked</string>
+    <string name="serialized_professions" lang ="en">serialized_professions</string>
+    <string name="profession_id_clicked" lang ="en">profession_id_clicked</string>
+    <string name="serialized_hospitals" lang ="en">serialized_hospitals</string>
+    <string name="hospital_id_clicked" lang ="en">hospital_id_clicked</string>
+    <string name="serialized_diagnoses" lang ="en">serialized_diagnoses</string>
+    <string name="diagnosis_clicked" lang ="en">diagnosis_clicked</string>
+    <string name="specialty" lang ="en">Specialty</string>
+    <string name="professions" lang = "en">Select Doctor Specialty</string>
     <string name="developed_by">Developed by</string>
     <string name="team_members">
         <![CDATA[
@@ -62,5 +64,6 @@
         Jim Skretas Kazakis<br></br>
         ]]>
     </string>
+
 
 </resources>
