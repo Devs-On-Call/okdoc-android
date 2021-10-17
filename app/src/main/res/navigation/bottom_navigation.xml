@@ -30,6 +30,12 @@
         tools:layout="@layout/credits_fragment" />
 
     <fragment
+        android:id="@+id/navigation_appointments"
+        android:name="com.devsoncall.okdoc.fragments.AppointmentsFragment"
+        android:label="Appointments"
+        tools:layout="@layout/appointments_fragment" />
+
+    <fragment
         android:id="@+id/navigation_prescription"
         android:name="com.devsoncall.okdoc.fragments.PrescriptionFragment"
         android:label="Prescription"

@@ -52,22 +52,21 @@ class ProfessionsFragment : Fragment(R.layout.professions_fragment), Professions
             setAdapter(professions)
         } else {
             val authToken = sharedPreferences?.getString(getString(R.string.auth_token), "")
-            val professionId = sharedPreferences?.getString(getString(R.string.profession_id_clicked), "")
-            if(authToken != "" && professionId != "" && authToken != null && professionId != null)
-                getProfessions(authToken, professionId)
+            if(authToken != "" && authToken != null)
+                getProfessions(authToken)
         }
 
         view.findViewById<Button>(R.id.btBack).setOnClickListener { view ->
-            view.findNavController().navigate(R.id.navigation_home)
+            view.findNavController().popBackStack()
         }
     }
 
     override fun onItemClick(profession: Profession, view: View) {
-       // view.findNavController().navigate(R.id.navigation_doctors) //navigation_doctors
         saveProfessionIdClickedInPrefs(profession._id)
+        view.findNavController().navigate(R.id.navigation_hospital_list)
     }
 
-    private fun getProfessions(authToken: String = "", professionId: String = "") {
+    private fun getProfessions(authToken: String = "") {
         val apiGetProfessions = ApiGetProfessions()
         apiGetProfessions.setOnDataListener(object : ApiGetProfessions.DataInterface {
             override fun responseData(getProfessionsResponse: Response<DataListResponse<Profession>>) {
@@ -90,7 +89,7 @@ class ProfessionsFragment : Fragment(R.layout.professions_fragment), Professions
                 }
             }
         })
-        apiGetProfessions.getProfessions(authToken, professionId)
+        apiGetProfessions.getProfessions(authToken)
     }
 
     private fun saveProfessionsInPrefs(professions: List<Profession>) {
