@@ -18,6 +18,12 @@ interface Api {
         @Header("Authorization") token: String
     ): Call<GetPatientResponse>
 
+    @GET("/api/patients/{patientId}/appointments")
+    fun getAppointments(
+        @Path("patientId") patientId: String,
+        @Header("Authorization") token: String
+    ): Call<DataListResponse<Appointment>>
+
     @GET("/api/patients/{patientId}/prescriptions")
     fun getPrescriptions(
         @Path("patientId") patientId: String,

@@ -40,7 +40,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this@LoginActivity)
-        
+        sharedPreferences?.edit()?.clear()?.apply()
         findViewById<Button>(R.id.getStartedButton).setOnClickListener{
             loadingOverlay.show()
             login()

@@ -7,5 +7,5 @@ data class Prescription(
     val dosage: String,
     val drug: String,
     val duration: String,
-    val doctor: Doctor?
+    val doctor: Doctor
 )
