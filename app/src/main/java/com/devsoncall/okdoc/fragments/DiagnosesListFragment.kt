@@ -71,8 +71,8 @@ class DiagnosesListFragment : Fragment(R.layout.diagnoses_list_fragment), Diagno
 
     override fun onItemClick(position: Int, view: View) {
         saveDiagnosisClickedInPrefs(position)
-        //view.findNavController().navigate(R.id.navigation_diagnosis)
-        Toast.makeText(this.context, "Item $position clicked", Toast.LENGTH_SHORT).show()
+        view.findNavController().navigate(R.id.navigation_diagnosis)
+//        Toast.makeText(this.context, "Item $position clicked", Toast.LENGTH_SHORT).show()
     }
 
     private fun getDiagnoses(authToken: String = "", patientId: String = "") {
