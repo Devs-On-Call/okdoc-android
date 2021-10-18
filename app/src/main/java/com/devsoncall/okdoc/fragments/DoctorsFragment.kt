@@ -50,12 +50,12 @@ class DoctorsFragment : Fragment(R.layout.doctors_fragment), DoctorsAdapter.OnIt
             getDoctors(authToken, professionId, hospitalId)
 
         view.findViewById<Button>(R.id.btBack).setOnClickListener { view ->
-            view.findNavController().popBackStack()
+            view.findNavController().navigate(R.id.navigation_hospital_list)
         }
     }
 
     override fun onItemClick(doctor: Doctor, view: View) {
-//        view.findNavController().navigate(R.id.navigation_calendar) //navigation_calendar
+        view.findNavController().navigate(R.id.navigation_calendar) //navigation_calendar
         saveDoctorIdClickedInPrefs(doctor._id)
     }
 
