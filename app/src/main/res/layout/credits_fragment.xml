@@ -63,13 +63,13 @@
         android:id="@+id/btBack"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="584dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="24dp"
         android:background="@drawable/mandarin_border_12dp"
         android:drawableStart="@drawable/ic_back_arrow"
         android:paddingHorizontal="13dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
