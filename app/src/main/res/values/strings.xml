@@ -47,10 +47,12 @@
     <string name="profession_id_clicked" lang="en">profession_id_clicked</string>
     <string name="serialized_hospitals" lang="en">serialized_hospitals</string>
     <string name="hospital_id_clicked" lang="en">hospital_id_clicked</string>
+    <string name="doctor_id_clicked" lang="en">doctor_id_clicked</string>
     <string name="serialized_diagnoses" lang="en">serialized_diagnoses</string>
     <string name="diagnosis_clicked" lang="en">diagnosis_clicked</string>
     <string name="specialty" lang="en">Specialty</string>
     <string name="professions" lang="en">Select Doctor Specialty</string>
+    <string name="doctors" lang="en">Select Doctor</string>
     <string name="developed_by">Developed by</string>
     <string name="team_members">
         <![CDATA[

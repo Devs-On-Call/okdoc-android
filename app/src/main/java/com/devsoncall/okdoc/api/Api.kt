@@ -36,16 +36,24 @@ interface Api {
         @Header("Authorization") token: String
     ): Call<DataListResponse<Diagnosis>>
 
+    @GET("/api/professions")
+    fun getProfessions(
+        @Query("professionId") professionId: String,
+        @Header("Authorization") token: String
+    ): Call<DataListResponse<Profession>>
+
     @GET("/api/hospitals")
     fun getHospitals(
         @Query("professionId") professionId: String,
         @Header("Authorization") token: String
     ): Call<DataListResponse<Hospital>>
 
-    @GET("/api/professions")
-    fun getProfessions(
+    @GET("/api/doctors")
+    fun getDoctors(
         @Query("professionId") professionId: String,
+        @Query("hospitalId") hospitalId: String,
         @Header("Authorization") token: String
-    ): Call<DataListResponse<Profession>>
+    ): Call<DataListResponse<Doctor>>
+
 
 }

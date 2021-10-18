@@ -20,9 +20,11 @@ class HospitalsAdapter(
     }
 
     override fun onBindViewHolder(holder: HospitalsViewHolder, position: Int) {
+        println(hospitals[position])
         holder.itemView.apply {
             tvHospitalName.text = hospitals[position].name
-            tvHospitalLocation.text = hospitals[position].address
+            // need to update back-end to return address
+//            tvHospitalLocation.text = hospitals[position].address
         }
     }
 

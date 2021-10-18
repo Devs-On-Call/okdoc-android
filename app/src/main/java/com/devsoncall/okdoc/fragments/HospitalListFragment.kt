@@ -13,6 +13,7 @@ import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devsoncall.okdoc.R
 import com.devsoncall.okdoc.adapters.HospitalsAdapter
+import com.devsoncall.okdoc.api.calls.ApiGetDoctors
 import com.devsoncall.okdoc.api.calls.ApiGetHospitals
 import com.devsoncall.okdoc.models.DataListResponse
 import com.devsoncall.okdoc.models.Hospital
@@ -50,7 +51,7 @@ class HospitalListFragment : Fragment(R.layout.hospital_list_fragment), Hospital
     }
 
     override fun onItemClick(hospital: Hospital, view: View) {
-//        view.findNavController().navigate(R.id.navigation_doctors) //navigation_doctors
+        view.findNavController().navigate(R.id.navigation_doctors)
         saveHospitalIdClickedInPrefs(hospital._id)
     }
 
