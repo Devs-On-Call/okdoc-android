@@ -69,6 +69,9 @@
     </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="diagnosis_details">Diagnosis Details</string>
+    <string name="diagnosis_text">Diagnosis\ndetails\ntext\nshould\nbe\nhere</string>
+    <string name="prescription">Prescription</string>
 
 
 </resources>

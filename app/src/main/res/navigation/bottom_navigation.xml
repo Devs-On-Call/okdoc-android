@@ -76,7 +76,11 @@
         android:name="com.devsoncall.okdoc.fragments.DoctorsFragment"
         android:label="Doctor List"
         tools:layout="@layout/doctors_fragment" />
-
+    <fragment
+        android:id="@+id/navigation_diagnosis"
+        android:name="com.devsoncall.okdoc.fragments.DiagnosisFragment"
+        android:label="diagnosis_fragment"
+        tools:layout="@layout/diagnosis_fragment" />
 
 
 </navigation>
