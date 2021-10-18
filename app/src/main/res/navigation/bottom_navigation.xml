@@ -60,16 +60,23 @@
     <!--        tools:layout="@layout/diagnosis_fragment" />-->
 
     <fragment
+        android:id="@+id/navigation_professions"
+        android:name="com.devsoncall.okdoc.fragments.ProfessionsFragment"
+        android:label="Professions"
+        tools:layout="@layout/professions_fragment" />
+
+    <fragment
         android:id="@+id/navigation_hospital_list"
         android:name="com.devsoncall.okdoc.fragments.HospitalListFragment"
         android:label="Hospitals List"
         tools:layout="@layout/hospital_list_fragment" />
 
     <fragment
-        android:id="@+id/navigation_professions"
-        android:name="com.devsoncall.okdoc.fragments.ProfessionsFragment"
-        android:label="Professions"
-        tools:layout="@layout/professions_fragment" />
+        android:id="@+id/navigation_doctors"
+        android:name="com.devsoncall.okdoc.fragments.DoctorsFragment"
+        android:label="Doctor List"
+        tools:layout="@layout/doctors_fragment" />
+
 
 
 </navigation>
