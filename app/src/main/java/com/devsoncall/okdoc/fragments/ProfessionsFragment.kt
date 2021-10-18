@@ -60,7 +60,7 @@ class ProfessionsFragment : Fragment(R.layout.professions_fragment), Professions
         }
 
         view.findViewById<Button>(R.id.btBack).setOnClickListener { view ->
-            view.findNavController().popBackStack()
+            view.findNavController().navigate(R.id.navigation_home)
         }
     }
 

@@ -49,7 +49,7 @@ class HospitalListFragment : Fragment(R.layout.hospital_list_fragment), Hospital
             getHospitals(authToken, professionId)
 
         view.findViewById<Button>(R.id.btBack).setOnClickListener { view ->
-            view.findNavController().popBackStack()
+            view.findNavController().navigate(R.id.navigation_professions)
         }
     }
 

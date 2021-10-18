@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.CalendarFragment">
+
+    <Button
+        android:id="@+id/buttonSelectDate"
+        android:layout_width="310dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="22dp"
+        android:background="@drawable/mandarin_border_12dp"
+        android:drawableEnd="@drawable/ic_select_date"
+        android:paddingStart="40dp"
+        android:paddingEnd="30dp"
+        android:text="@string/select_date"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="@color/rich_black_80"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonBack"
+        android:layout_width="43dp"
+        android:layout_height="81dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/mandarin_border_12dp"
+        android:drawableStart="@drawable/ic_back_arrow"
+        android:paddingHorizontal="13dp"
+        app:layout_constraintEnd_toStartOf="@+id/buttonSelectDate"
+        app:layout_constraintHorizontal_bias="0.595"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="358dp"
+        android:layout_height="520dp"
+        android:layout_marginVertical="20dp"
+        android:background="@drawable/light_gray_border"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSelectDate" />
+
+    <View
+        android:layout_width="320dp"
+        android:layout_height="380dp"
+        android:background="@drawable/white_border"
+        app:layout_constraintBottom_toBottomOf="@+id/calendarView"
+        app:layout_constraintEnd_toEndOf="@+id/calendarView"
+        app:layout_constraintStart_toStartOf="@+id/calendarView"
+        app:layout_constraintTop_toTopOf="@+id/calendarView" />
+
+
+    <com.applandeo.materialcalendarview.CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="320dp"
+        android:layout_height="360dp"
+        app:forwardButtonSrc="@drawable/ic_forward_arrow"
+        app:headerColor="@color/white"
+        app:headerLabelColor="@color/rich_black"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toTopOf="@+id/view2"
+        app:previousButtonSrc="@drawable/ic_previous_arrow"
+        app:selectionColor="@color/mandarin_80"
+        app:selectionLabelColor="@color/rich_black"
+        app:todayLabelColor="@color/mandarin"
+        app:type="one_day_picker" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
