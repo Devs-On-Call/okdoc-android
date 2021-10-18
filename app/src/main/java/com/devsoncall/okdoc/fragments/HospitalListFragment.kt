@@ -12,6 +12,7 @@ import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devsoncall.okdoc.R
+import com.devsoncall.okdoc.activities.MainMenuActivity
 import com.devsoncall.okdoc.adapters.HospitalsAdapter
 import com.devsoncall.okdoc.api.calls.ApiGetDoctors
 import com.devsoncall.okdoc.api.calls.ApiGetHospitals
@@ -26,6 +27,7 @@ class HospitalListFragment : Fragment(R.layout.hospital_list_fragment), Hospital
 
     private var sharedPreferences: SharedPreferences? = null
     private var adapter: HospitalsAdapter? = null
+    private var mainMenuActivity: MainMenuActivity? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,6 +35,7 @@ class HospitalListFragment : Fragment(R.layout.hospital_list_fragment), Hospital
         savedInstanceState: Bundle?
     ): View? {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.context)
+        mainMenuActivity = activity as MainMenuActivity
         return inflater.inflate(R.layout.hospital_list_fragment, container, false)
     }
 
@@ -56,18 +59,17 @@ class HospitalListFragment : Fragment(R.layout.hospital_list_fragment), Hospital
     }
 
     private fun getHospitals(authToken: String = "", professionId: String = "") {
+        mainMenuActivity?.loadingOverlay?.show()
         val apiGetHospitals = ApiGetHospitals()
         apiGetHospitals.setOnDataListener(object : ApiGetHospitals.DataInterface {
             override fun responseData(getHospitalsResponse: Response<DataListResponse<Hospital>>) {
                 if (getHospitalsResponse.code() == 200) {
-//                    loadingOverlay.dismiss()
                     if (getHospitalsResponse.body()?.data != null) {
                         val hospitals = getHospitalsResponse.body()?.data!!
                         setAdapter(hospitals)
                     }
                 } else if (getHospitalsResponse.code() == 400) {
                     try {
-//                        loadingOverlay.dismiss()
                         val jsonObject = JSONObject(getHospitalsResponse.errorBody()?.string())
                         val errorMessage: String = jsonObject.getString("message")
                         println(errorMessage)
@@ -75,6 +77,7 @@ class HospitalListFragment : Fragment(R.layout.hospital_list_fragment), Hospital
                         e.printStackTrace()
                     }
                 }
+                mainMenuActivity?.loadingOverlay?.dismiss()
             }
         })
         apiGetHospitals.getHospitals(authToken, professionId)

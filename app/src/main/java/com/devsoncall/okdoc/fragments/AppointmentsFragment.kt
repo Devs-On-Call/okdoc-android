@@ -12,6 +12,7 @@ import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devsoncall.okdoc.R
+import com.devsoncall.okdoc.activities.MainMenuActivity
 import com.devsoncall.okdoc.adapters.AppointmentsAdapter
 import com.devsoncall.okdoc.api.calls.ApiGetAppointments
 import com.devsoncall.okdoc.models.Appointment
@@ -29,12 +30,14 @@ class AppointmentsFragment : Fragment(R.layout.appointments_fragment), Appointme
 
     private var sharedPreferences: SharedPreferences? = null
     private var adapter: AppointmentsAdapter? = null
+    private var mainMenuActivity: MainMenuActivity? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.context)
+        mainMenuActivity = activity as MainMenuActivity
         return inflater.inflate(R.layout.appointments_fragment, container, false)
     }
 
@@ -67,11 +70,11 @@ class AppointmentsFragment : Fragment(R.layout.appointments_fragment), Appointme
     }
 
     private fun getAppointments(authToken: String = "", patientId: String = "") {
+        mainMenuActivity?.loadingOverlay?.show()
         val apiGetAppointments = ApiGetAppointments()
         apiGetAppointments.setOnDataListener(object : ApiGetAppointments.DataInterface {
             override fun responseData(getAppointmentsResponse: Response<DataListResponse<Appointment>>) {
                 if (getAppointmentsResponse.code() == 200) {
-//                    loadingOverlay.dismiss()
                     if (getAppointmentsResponse.body()?.data != null) {
                         val appointments = getAppointmentsResponse.body()?.data!!
                         saveAppointmentsInPrefs(appointments)
@@ -79,7 +82,6 @@ class AppointmentsFragment : Fragment(R.layout.appointments_fragment), Appointme
                     }
                 } else if (getAppointmentsResponse.code() == 400) {
                     try {
-//                        loadingOverlay.dismiss()
                         val jsonObject = JSONObject(getAppointmentsResponse.errorBody()?.string())
                         val errorMessage: String = jsonObject.getString("message")
                         println(errorMessage)
@@ -87,6 +89,7 @@ class AppointmentsFragment : Fragment(R.layout.appointments_fragment), Appointme
                         e.printStackTrace()
                     }
                 }
+                mainMenuActivity?.loadingOverlay?.dismiss()
             }
         })
         apiGetAppointments.getAppointments(authToken, patientId)

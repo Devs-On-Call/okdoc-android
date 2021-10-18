@@ -12,6 +12,7 @@ import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devsoncall.okdoc.R
+import com.devsoncall.okdoc.activities.MainMenuActivity
 import com.devsoncall.okdoc.adapters.DoctorsAdapter
 import com.devsoncall.okdoc.api.calls.ApiGetDoctors
 import com.devsoncall.okdoc.models.DataListResponse
@@ -25,12 +26,14 @@ class DoctorsFragment : Fragment(R.layout.doctors_fragment), DoctorsAdapter.OnIt
 
     private var sharedPreferences: SharedPreferences? = null
     private var adapter: DoctorsAdapter? = null
+    private var mainMenuActivity: MainMenuActivity? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.context)
+        mainMenuActivity = activity as MainMenuActivity
         return inflater.inflate(R.layout.doctors_fragment, container, false)
     }
 
@@ -57,18 +60,17 @@ class DoctorsFragment : Fragment(R.layout.doctors_fragment), DoctorsAdapter.OnIt
     }
 
     private fun getDoctors(authToken: String = "", professionId: String = "", hospitalId: String = "") {
+        mainMenuActivity?.loadingOverlay?.show()
         val apiGetDoctors = ApiGetDoctors()
         apiGetDoctors.setOnDataListener(object : ApiGetDoctors.DataInterface {
             override fun responseData(getDoctorsResponse: Response<DataListResponse<Doctor>>) {
                 if (getDoctorsResponse.code() == 200) {
-//                    loadingOverlay.dismiss()
                     if (getDoctorsResponse.body()?.data != null) {
                         val hospitals = getDoctorsResponse.body()?.data!!
                         setAdapter(hospitals)
                     }
                 } else if (getDoctorsResponse.code() == 400) {
                     try {
-//                        loadingOverlay.dismiss()
                         val jsonObject = JSONObject(getDoctorsResponse.errorBody()?.string())
                         val errorMessage: String = jsonObject.getString("message")
                         println(errorMessage)
@@ -76,6 +78,7 @@ class DoctorsFragment : Fragment(R.layout.doctors_fragment), DoctorsAdapter.OnIt
                         e.printStackTrace()
                     }
                 }
+                mainMenuActivity?.loadingOverlay?.dismiss()
             }
         })
         apiGetDoctors.getDoctors(authToken, professionId, hospitalId)
