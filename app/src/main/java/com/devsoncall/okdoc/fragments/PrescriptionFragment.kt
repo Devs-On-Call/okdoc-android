@@ -13,6 +13,7 @@ import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devsoncall.okdoc.R
+import com.devsoncall.okdoc.activities.MainMenuActivity
 import com.devsoncall.okdoc.adapters.MedicationAdapter
 import com.devsoncall.okdoc.api.calls.ApiGetPrescriptions
 import com.devsoncall.okdoc.models.DataListResponse
@@ -22,7 +23,6 @@ import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.prescription_fragment.*
 import org.json.JSONException
 import org.json.JSONObject
-import org.w3c.dom.Text
 import retrofit2.Response
 import java.lang.reflect.Type
 
@@ -31,6 +31,7 @@ class PrescriptionFragment : Fragment(R.layout.prescription_fragment) {
 
     private var sharedPreferences: SharedPreferences? = null
     private var adapter: MedicationAdapter? = null
+    private var mainMenuActivity: MainMenuActivity? = null
 
     // UI Elements
     private lateinit var prescriptionTitle: TextView
@@ -43,6 +44,7 @@ class PrescriptionFragment : Fragment(R.layout.prescription_fragment) {
         savedInstanceState: Bundle?
     ): View? {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.context)
+        mainMenuActivity = activity as MainMenuActivity
         return inflater.inflate(R.layout.prescription_fragment, container, false)
     }
 
@@ -84,11 +86,11 @@ class PrescriptionFragment : Fragment(R.layout.prescription_fragment) {
     }
 
     private fun getPrescriptions(authToken: String = "", patientId: String = "", prescriptionClicked: Int) {
+        mainMenuActivity?.loadingOverlay?.show()
         val apiGetPrescriptions = ApiGetPrescriptions()
         apiGetPrescriptions.setOnDataListener(object : ApiGetPrescriptions.DataInterface {
             override fun responseData(getPrescriptionsResponse: Response<DataListResponse<Prescription>>) {
                 if (getPrescriptionsResponse.code() == 200) {
-//                    loadingOverlay.dismiss()
                     if (getPrescriptionsResponse.body()?.data != null) {
                         val prescriptions = getPrescriptionsResponse.body()?.data!!
                         savePrescriptionsInPrefs(prescriptions)
@@ -100,7 +102,6 @@ class PrescriptionFragment : Fragment(R.layout.prescription_fragment) {
                     }
                 } else if (getPrescriptionsResponse.code() == 400) {
                     try {
-//                        loadingOverlay.dismiss()
                         val jsonObject = JSONObject(getPrescriptionsResponse.errorBody()?.string())
                         val errorMessage: String = jsonObject.getString("message")
                         println(errorMessage)
@@ -108,6 +109,7 @@ class PrescriptionFragment : Fragment(R.layout.prescription_fragment) {
                         e.printStackTrace()
                     }
                 }
+                mainMenuActivity?.loadingOverlay?.dismiss()
             }
         })
         apiGetPrescriptions.getPrescriptions(authToken, patientId)

@@ -12,6 +12,7 @@ import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devsoncall.okdoc.R
+import com.devsoncall.okdoc.activities.MainMenuActivity
 import com.devsoncall.okdoc.adapters.ProfessionsAdapter
 import com.devsoncall.okdoc.api.calls.ApiGetProfessions
 import com.devsoncall.okdoc.models.DataListResponse
@@ -28,6 +29,7 @@ class ProfessionsFragment : Fragment(R.layout.professions_fragment), Professions
 
     private var sharedPreferences: SharedPreferences? = null
     private var adapter: ProfessionsAdapter? = null
+    private var mainMenuActivity: MainMenuActivity? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,6 +37,7 @@ class ProfessionsFragment : Fragment(R.layout.professions_fragment), Professions
         savedInstanceState: Bundle?
     ): View? {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.context)
+        mainMenuActivity = activity as MainMenuActivity
         return inflater.inflate(R.layout.professions_fragment, container, false)
     }
 
@@ -67,11 +70,11 @@ class ProfessionsFragment : Fragment(R.layout.professions_fragment), Professions
     }
 
     private fun getProfessions(authToken: String = "") {
+        mainMenuActivity?.loadingOverlay?.show()
         val apiGetProfessions = ApiGetProfessions()
         apiGetProfessions.setOnDataListener(object : ApiGetProfessions.DataInterface {
             override fun responseData(getProfessionsResponse: Response<DataListResponse<Profession>>) {
                 if (getProfessionsResponse.code() == 200) {
-//                    loadingOverlay.dismiss()
                     if (getProfessionsResponse.body()?.data != null) {
                         val professions = getProfessionsResponse.body()?.data!!
                         saveProfessionsInPrefs(professions)
@@ -79,7 +82,6 @@ class ProfessionsFragment : Fragment(R.layout.professions_fragment), Professions
                     }
                 } else if (getProfessionsResponse.code() == 400) {
                     try {
-//                        loadingOverlay.dismiss()
                         val jsonObject = JSONObject(getProfessionsResponse.errorBody()?.string())
                         val errorMessage: String = jsonObject.getString("message")
                         println(errorMessage)
@@ -87,6 +89,7 @@ class ProfessionsFragment : Fragment(R.layout.professions_fragment), Professions
                         e.printStackTrace()
                     }
                 }
+                mainMenuActivity?.loadingOverlay?.dismiss()
             }
         })
         apiGetProfessions.getProfessions(authToken)

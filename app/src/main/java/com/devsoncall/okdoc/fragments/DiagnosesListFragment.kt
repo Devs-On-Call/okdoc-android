@@ -13,6 +13,7 @@ import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devsoncall.okdoc.R
+import com.devsoncall.okdoc.activities.MainMenuActivity
 import com.devsoncall.okdoc.adapters.DiagnosesAdapter
 import com.devsoncall.okdoc.api.calls.ApiGetDiagnoses
 import com.devsoncall.okdoc.models.DataListResponse
@@ -29,6 +30,7 @@ class DiagnosesListFragment : Fragment(R.layout.diagnoses_list_fragment), Diagno
 
     private var sharedPreferences: SharedPreferences? = null
     private var adapter: DiagnosesAdapter? = null
+    private var mainMenuActivity: MainMenuActivity? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,6 +38,7 @@ class DiagnosesListFragment : Fragment(R.layout.diagnoses_list_fragment), Diagno
         savedInstanceState: Bundle?
     ): View? {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.context)
+        mainMenuActivity = activity as MainMenuActivity
         return inflater.inflate(R.layout.diagnoses_list_fragment, container, false)
     }
 
@@ -73,11 +76,11 @@ class DiagnosesListFragment : Fragment(R.layout.diagnoses_list_fragment), Diagno
     }
 
     private fun getDiagnoses(authToken: String = "", patientId: String = "") {
+        mainMenuActivity?.loadingOverlay?.show()
         val apiGetDiagnoses = ApiGetDiagnoses()
         apiGetDiagnoses.setOnDataListener(object : ApiGetDiagnoses.DataInterface {
             override fun responseData(getDiagnosesResponse: Response<DataListResponse<Diagnosis>>) {
                 if (getDiagnosesResponse.code() == 200) {
-//                    loadingOverlay.dismiss()
                     if (getDiagnosesResponse.body()?.data != null) {
                         val diagnoses = getDiagnosesResponse.body()?.data!!
                         saveDiagnosesInPrefs(diagnoses)
@@ -85,7 +88,6 @@ class DiagnosesListFragment : Fragment(R.layout.diagnoses_list_fragment), Diagno
                     }
                 } else if (getDiagnosesResponse.code() == 400) {
                     try {
-//                        loadingOverlay.dismiss()
                         val jsonObject = JSONObject(getDiagnosesResponse.errorBody()?.string())
                         val errorMessage: String = jsonObject.getString("message")
                         println(errorMessage)
@@ -93,6 +95,7 @@ class DiagnosesListFragment : Fragment(R.layout.diagnoses_list_fragment), Diagno
                         e.printStackTrace()
                     }
                 }
+                mainMenuActivity?.loadingOverlay?.dismiss()
             }
         })
         apiGetDiagnoses.getDiagnoses(authToken, patientId)
