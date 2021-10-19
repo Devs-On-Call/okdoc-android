@@ -2,11 +2,14 @@ package com.devsoncall.okdoc.fragments
 
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
@@ -14,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.devsoncall.okdoc.R
 import com.devsoncall.okdoc.activities.MainMenuActivity
 import com.devsoncall.okdoc.adapters.DiagnosesAdapter
+import com.devsoncall.okdoc.api.ApiUtils
 import com.devsoncall.okdoc.api.calls.ApiGetDiagnoses
 import com.devsoncall.okdoc.models.DataListResponse
 import com.devsoncall.okdoc.models.Diagnosis
@@ -41,6 +45,7 @@ class DiagnosesListFragment : Fragment(R.layout.diagnoses_list_fragment), Diagno
         return inflater.inflate(R.layout.diagnoses_list_fragment, container, false)
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -57,7 +62,10 @@ class DiagnosesListFragment : Fragment(R.layout.diagnoses_list_fragment), Diagno
             val authToken = sharedPreferences?.getString(getString(R.string.auth_token), "")
             val patientId = sharedPreferences?.getString(getString(R.string.patient_id), "")
             if(authToken != "" && patientId != "" && authToken != null && patientId != null)
-                getDiagnoses(authToken, patientId)
+                if(ApiUtils().isOnline(this.requireContext()))
+                    getDiagnoses(authToken, patientId)
+                else
+                    Toast.makeText(this.context, "Check your internet connection", Toast.LENGTH_SHORT).show()
         }
 
         view.findViewById<Button>(R.id.btBack).setOnClickListener { view ->
@@ -91,6 +99,11 @@ class DiagnosesListFragment : Fragment(R.layout.diagnoses_list_fragment), Diagno
                     }
                 }
                 mainMenuActivity?.loadingOverlay?.dismiss()
+            }
+
+            override fun failureData(t: Throwable) {
+                mainMenuActivity?.loadingOverlay?.dismiss()
+                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
             }
         })
         apiGetDiagnoses.getDiagnoses(authToken, patientId)

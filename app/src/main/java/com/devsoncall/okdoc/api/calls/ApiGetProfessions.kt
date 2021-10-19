@@ -25,6 +25,7 @@ class ApiGetProfessions {
 
             override fun onFailure(call: Call<DataListResponse<Profession>>, t: Throwable) {
                 println(t.cause)
+                mListener?.failureData(t)
             }
         })
     }
@@ -35,5 +36,6 @@ class ApiGetProfessions {
 
     interface DataInterface {
         fun responseData(getProfessionsResponse: Response<DataListResponse<Profession>>)
+        fun failureData(t: Throwable)
     }
 }

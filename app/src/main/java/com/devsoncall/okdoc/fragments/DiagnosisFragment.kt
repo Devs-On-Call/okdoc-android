@@ -7,10 +7,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import com.devsoncall.okdoc.R
 import com.devsoncall.okdoc.activities.MainMenuActivity
+import com.devsoncall.okdoc.api.ApiUtils
 import com.devsoncall.okdoc.api.calls.ApiGetDiagnoses
 import com.devsoncall.okdoc.models.DataListResponse
 import com.devsoncall.okdoc.models.Diagnosis
@@ -59,7 +61,10 @@ class DiagnosisFragment : Fragment(R.layout.diagnosis_fragment) {
             val authToken = sharedPreferences?.getString(getString(R.string.auth_token), "")
             val patientId = sharedPreferences?.getString(getString(R.string.patient_id), "")
             if(authToken != "" && patientId != "" && authToken != null && patientId != null)
-                getDiagnoses(authToken, patientId, diagnosisIdClicked)
+                if(ApiUtils().isOnline(this.requireContext()))
+                    getDiagnoses(authToken, patientId, diagnosisIdClicked)
+                else
+                    Toast.makeText(this.context, "Check your internet connection", Toast.LENGTH_SHORT).show()
         }
 
         buttonBack.setOnClickListener { view ->
@@ -104,6 +109,11 @@ class DiagnosisFragment : Fragment(R.layout.diagnosis_fragment) {
                     }
                 }
                 mainMenuActivity?.loadingOverlay?.dismiss()
+            }
+
+            override fun failureData(t: Throwable) {
+                mainMenuActivity?.loadingOverlay?.dismiss()
+                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
             }
         })
         apiGetDiagnoses.getDiagnoses(authToken, patientId)
