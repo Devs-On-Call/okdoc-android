@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome_message_first_line">Καλώς ορίσατε στο</string>
+    <string name="amka_field_message">Πληκτρολογήστε τον ΑΜΚΑ σας για να προχωρήσετε</string>
+    <string name="get_started_button">Ξεκινήστε</string>
+    <string name="profile_full_name">Ονοματεπώνυμο</string>
+    <string name="profile_blood_type">Ομάδα αίματος</string>
+    <string name="profile_family_doctor">Οικογενειακός γιατρός</string>
+    <string name="default_home_greeting">👋🏻 Γεια σου,</string>
+    <string name="past_diagnoses_button">Διαγνώσεις</string>
+    <string name="prescriptions_button">Συνταγές</string>
+    <string name="view_appointments_button">Δες τα ραντεβού</string>
+    <string name="schedule_appointment_button">Κλείσε ραντεβού</string>
+    <string name="doctor_specialty">Ειδικότητα</string>
+    <string name="diagnosis">Διάγνωση</string>
+    <string name="prescription">Συνταγή</string>
+    <string name="settings_languages">Γλώσσες</string>
+    <string name="settings_logout">Αποσύνδεση</string>
+    <string name="professions">Διάλεξε Ειδικότητα</string>
+    <string name="hospitals">Διάλεξε Νοσοκομείο</string>
+    <string name="doctors">Διάλεξε Γιατρό</string>
+    <string name="select_date">Διάλεξε Ημέρα</string>
+</resources>
