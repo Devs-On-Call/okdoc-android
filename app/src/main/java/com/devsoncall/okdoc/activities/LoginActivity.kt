@@ -2,15 +2,18 @@ package com.devsoncall.okdoc.activities
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
 import com.auth0.android.jwt.JWT
 import com.devsoncall.okdoc.R
+import com.devsoncall.okdoc.api.ApiUtils
 import com.devsoncall.okdoc.api.calls.ApiGetPatient
 import com.devsoncall.okdoc.api.calls.ApiLogin
 import com.devsoncall.okdoc.models.BasicResponse
@@ -34,6 +37,7 @@ class LoginActivity : AppCompatActivity() {
 
     private var sharedPreferences: SharedPreferences? = null
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
@@ -41,9 +45,12 @@ class LoginActivity : AppCompatActivity() {
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this@LoginActivity)
         sharedPreferences?.edit()?.clear()?.apply()
+
         findViewById<Button>(R.id.getStartedButton).setOnClickListener{
-            loadingOverlay.show()
-            login()
+            if(ApiUtils().isOnline(this@LoginActivity))
+                login()
+            else
+                Toast.makeText(applicationContext, "Check your internet connection", Toast.LENGTH_LONG).show()
         }
     }
 
@@ -62,8 +69,10 @@ class LoginActivity : AppCompatActivity() {
             return
         }
 
+        loadingOverlay.show()
         val apiLogin = ApiLogin()
         apiLogin.setOnDataListener(object : ApiLogin.DataInterface {
+            @RequiresApi(Build.VERSION_CODES.M)
             override fun responseData(loginResponse: Response<BasicResponse>) {
                 if (loginResponse.code() == 200) {
                     val jwt = loginResponse.headers().get("authorization")
@@ -72,7 +81,10 @@ class LoginActivity : AppCompatActivity() {
 
                     if (jwt != null && patientId != null) {
                         saveAuthInfoInPrefs(jwt, patientId)
-                        getPatient(jwt, patientId)
+                        if(ApiUtils().isOnline(this@LoginActivity))
+                            getPatient(jwt, patientId)
+                        else
+                            Toast.makeText(applicationContext, "Check your internet connection", Toast.LENGTH_LONG).show()
                     }
                 } else if (loginResponse.code() == 401) {
                     try {
@@ -84,6 +96,11 @@ class LoginActivity : AppCompatActivity() {
                         e.printStackTrace()
                     }
                 }
+            }
+
+            override fun failureData(t: Throwable) {
+                loadingOverlay.dismiss()
+                Toast.makeText(applicationContext, "Something went wrong", Toast.LENGTH_LONG).show()
             }
         })
         apiLogin.login(amka)
@@ -109,6 +126,11 @@ class LoginActivity : AppCompatActivity() {
                         e.printStackTrace()
                     }
                 }
+            }
+
+            override fun failureData(t: Throwable) {
+                loadingOverlay.dismiss()
+                Toast.makeText(applicationContext, "Something went wrong", Toast.LENGTH_LONG).show()
             }
         })
         apiGetPatient.getPatient(authToken, patientId)

@@ -22,7 +22,10 @@ class ApiLogin {
                 mListener?.responseData(response)
             }
 
-            override fun onFailure(call: Call<BasicResponse>, t: Throwable) {}
+            override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
+                println(t.cause)
+                mListener?.failureData(t)
+            }
         })
     }
 
@@ -32,6 +35,7 @@ class ApiLogin {
 
     interface DataInterface {
         fun responseData(loginResponse: Response<BasicResponse>)
+        fun failureData(t: Throwable)
     }
 
 }

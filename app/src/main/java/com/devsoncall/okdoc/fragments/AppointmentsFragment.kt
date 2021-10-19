@@ -2,18 +2,22 @@ package com.devsoncall.okdoc.fragments
 
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devsoncall.okdoc.R
 import com.devsoncall.okdoc.activities.MainMenuActivity
 import com.devsoncall.okdoc.adapters.AppointmentsAdapter
+import com.devsoncall.okdoc.api.ApiUtils
 import com.devsoncall.okdoc.api.calls.ApiGetAppointments
 import com.devsoncall.okdoc.models.Appointment
 import com.devsoncall.okdoc.models.DataListResponse
@@ -41,6 +45,7 @@ class AppointmentsFragment : Fragment(R.layout.appointments_fragment), Appointme
         return inflater.inflate(R.layout.appointments_fragment, container, false)
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -57,7 +62,10 @@ class AppointmentsFragment : Fragment(R.layout.appointments_fragment), Appointme
             val authToken = sharedPreferences?.getString(getString(R.string.auth_token), "")
             val patientId = sharedPreferences?.getString(getString(R.string.patient_id), "")
             if(authToken != "" && patientId != "" && authToken != null && patientId != null)
-                getAppointments(authToken, patientId)
+                if(ApiUtils().isOnline(this.requireContext()))
+                    getAppointments(authToken, patientId)
+                else
+                    Toast.makeText(this.context, "Check your internet connection", Toast.LENGTH_SHORT).show()
         }
 
         view.findViewById<Button>(R.id.btBack).setOnClickListener { view ->
@@ -90,6 +98,11 @@ class AppointmentsFragment : Fragment(R.layout.appointments_fragment), Appointme
                     }
                 }
                 mainMenuActivity?.loadingOverlay?.dismiss()
+            }
+
+            override fun failureData(t: Throwable) {
+                mainMenuActivity?.loadingOverlay?.dismiss()
+                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
             }
         })
         apiGetAppointments.getAppointments(authToken, patientId)

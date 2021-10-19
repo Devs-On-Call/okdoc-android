@@ -2,18 +2,22 @@ package com.devsoncall.okdoc.fragments
 
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devsoncall.okdoc.R
 import com.devsoncall.okdoc.activities.MainMenuActivity
 import com.devsoncall.okdoc.adapters.DoctorsAdapter
+import com.devsoncall.okdoc.api.ApiUtils
 import com.devsoncall.okdoc.api.calls.ApiGetDoctors
 import com.devsoncall.okdoc.models.DataListResponse
 import com.devsoncall.okdoc.models.Doctor
@@ -37,6 +41,7 @@ class DoctorsFragment : Fragment(R.layout.doctors_fragment), DoctorsAdapter.OnIt
         return inflater.inflate(R.layout.doctors_fragment, container, false)
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -47,7 +52,10 @@ class DoctorsFragment : Fragment(R.layout.doctors_fragment), DoctorsAdapter.OnIt
 
         if(authToken != "" && professionId != "" && hospitalId != "" &&
             authToken != null && professionId != null && hospitalId != null)
-            getDoctors(authToken, professionId, hospitalId)
+            if(ApiUtils().isOnline(this.requireContext()))
+                getDoctors(authToken, professionId, hospitalId)
+            else
+                Toast.makeText(this.context, "Check your internet connection", Toast.LENGTH_SHORT).show()
 
         view.findViewById<Button>(R.id.btBack).setOnClickListener { view ->
             view.findNavController().navigate(R.id.navigation_hospital_list)
@@ -79,6 +87,11 @@ class DoctorsFragment : Fragment(R.layout.doctors_fragment), DoctorsAdapter.OnIt
                     }
                 }
                 mainMenuActivity?.loadingOverlay?.dismiss()
+            }
+
+            override fun failureData(t: Throwable) {
+                mainMenuActivity?.loadingOverlay?.dismiss()
+                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
             }
         })
         apiGetDoctors.getDoctors(authToken, professionId, hospitalId)
