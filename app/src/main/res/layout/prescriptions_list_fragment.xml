@@ -18,7 +18,7 @@
         android:paddingStart="40dp"
         android:paddingEnd="30dp"
         android:drawableEnd="@drawable/ic_prescriptions_list"
-        android:text="@string/prescriptions"
+        android:text="@string/prescriptions_button"
         android:textAlignment="viewStart"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"

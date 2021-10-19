@@ -26,7 +26,6 @@ import org.json.JSONObject
 import retrofit2.Response
 import java.lang.reflect.Type
 
-
 class PrescriptionListFragment : Fragment(R.layout.prescriptions_list_fragment), PrescriptionsAdapter.OnItemClickListener {
 
     private var sharedPreferences: SharedPreferences? = null
@@ -67,8 +66,8 @@ class PrescriptionListFragment : Fragment(R.layout.prescriptions_list_fragment),
         }
     }
 
-    override fun onItemClick(position: Int, view: View) {
-        savePrescriptionClickedInPrefs(position)
+    override fun onItemClick(prescription: Prescription, view: View) {
+        savePrescriptionIdClickedInPrefs(prescription._id)
         view.findNavController().navigate(R.id.navigation_prescription)
     }
 
@@ -106,9 +105,9 @@ class PrescriptionListFragment : Fragment(R.layout.prescriptions_list_fragment),
         editor?.apply()
     }
 
-    private fun savePrescriptionClickedInPrefs(prescriptionClicked: Int) {
+    private fun savePrescriptionIdClickedInPrefs(prescriptionIdClicked: String) {
         val editor: SharedPreferences.Editor? = sharedPreferences?.edit()
-        editor?.putInt(getString(R.string.prescription_clicked), prescriptionClicked)
+        editor?.putString(getString(R.string.prescription_id_clicked), prescriptionIdClicked)
         editor?.apply()
     }
     

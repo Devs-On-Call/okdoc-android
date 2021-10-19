@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
@@ -48,7 +47,6 @@ class DiagnosesListFragment : Fragment(R.layout.diagnoses_list_fragment), Diagno
 
         val serializedDiagnoses = sharedPreferences?.getString(getString(R.string.serialized_diagnoses), null)
         val diagnoses: List<Diagnosis>
-        rvDiagnoses.layoutManager = LinearLayoutManager(this.context)
 
         if (serializedDiagnoses != null) {
             val gson = Gson()
@@ -62,17 +60,14 @@ class DiagnosesListFragment : Fragment(R.layout.diagnoses_list_fragment), Diagno
                 getDiagnoses(authToken, patientId)
         }
 
-
-        val buttonBack = view.findViewById<Button>(R.id.btBack)
-        buttonBack.setOnClickListener { view ->
+        view.findViewById<Button>(R.id.btBack).setOnClickListener { view ->
             view.findNavController().navigate(R.id.navigation_home)
         }
     }
 
-    override fun onItemClick(position: Int, view: View) {
-        saveDiagnosisClickedInPrefs(position)
+    override fun onItemClick(diagnosis: Diagnosis, view: View) {
+        saveDiagnosisIdClickedInPrefs(diagnosis._id)
         view.findNavController().navigate(R.id.navigation_diagnosis)
-//        Toast.makeText(this.context, "Item $position clicked", Toast.LENGTH_SHORT).show()
     }
 
     private fun getDiagnoses(authToken: String = "", patientId: String = "") {
@@ -109,14 +104,15 @@ class DiagnosesListFragment : Fragment(R.layout.diagnoses_list_fragment), Diagno
         editor?.apply()
     }
 
-    private fun saveDiagnosisClickedInPrefs(diagnosisClicked: Int) {
+    private fun saveDiagnosisIdClickedInPrefs(diagnosisIdClicked: String) {
         val editor: SharedPreferences.Editor? = sharedPreferences?.edit()
-        editor?.putInt(getString(R.string.diagnosis_clicked), diagnosisClicked)
+        editor?.putString(getString(R.string.diagnosis_id_clicked), diagnosisIdClicked)
         editor?.apply()
     }
 
     private fun setAdapter(diagnoses: List<Diagnosis>){
         adapter = DiagnosesAdapter(diagnoses, this)
         rvDiagnoses.adapter = adapter
+        rvDiagnoses.layoutManager = LinearLayoutManager(this.context)
     }
 }

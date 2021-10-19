@@ -7,7 +7,7 @@
     tools:context=".fragments.DiagnosisFragment">
 
     <Button
-        android:id="@+id/buttonPastDiagnoses"
+        android:id="@+id/buttonDiagnosisDate"
         android:layout_width="310dp"
         android:layout_height="100dp"
         android:layout_marginStart="10dp"
@@ -17,7 +17,7 @@
         android:drawableEnd="@drawable/ic_diagnosis"
         android:paddingStart="40dp"
         android:paddingEnd="30dp"
-        android:text="@string/prescription_header"
+        android:hint="@string/prescription_header"
         android:textAlignment="viewStart"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
@@ -35,7 +35,7 @@
         android:background="@drawable/mandarin_border_12dp"
         android:drawableStart="@drawable/ic_back_arrow"
         android:paddingHorizontal="13dp"
-        app:layout_constraintEnd_toStartOf="@+id/buttonPastDiagnoses"
+        app:layout_constraintEnd_toStartOf="@+id/buttonDiagnosisDate"
         app:layout_constraintHorizontal_bias="0.595"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -53,28 +53,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonPastDiagnoses"
+        app:layout_constraintTop_toBottomOf="@+id/buttonDiagnosisDate"
         app:layout_constraintVertical_bias="0.466" />
 
     <TextView
-        android:id="@+id/textViewTitle"
+        android:id="@+id/textViewDiagnosisTitle"
         style="@style/prescription_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingHorizontal="18dp"
         android:paddingTop="10dp"
-        android:text="@string/prescription_title"
+        android:text="@string/diagnosis"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/LinearLayoutPrescription"
-        app:layout_constraintTop_toTopOf="@+id/LinearLayoutPrescription"
-        tools:text="@string/prescription_title" />
+        app:layout_constraintTop_toTopOf="@+id/LinearLayoutPrescription" />
 
     <TextView
-        android:id="@+id/textViewAssignedMedication"
+        android:id="@+id/textViewDiagnosisDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
@@ -86,10 +85,10 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/LinearLayoutPrescription"
-        app:layout_constraintTop_toBottomOf="@+id/fullNameDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewDiagnosisDoctorProfession" />
 
     <ScrollView
-        android:id="@+id/recyclerViewMedicationsList"
+        android:id="@+id/scrollViewMedicationsList"
         android:layout_width="320dp"
         android:layout_height="350dp"
         android:layout_marginTop="5dp"
@@ -99,12 +98,13 @@
         app:layout_constraintBottom_toBottomOf="@+id/LinearLayoutPrescription"
         app:layout_constraintEnd_toEndOf="@+id/LinearLayoutPrescription"
         app:layout_constraintStart_toStartOf="@+id/LinearLayoutPrescription"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAssignedMedication">
+        app:layout_constraintTop_toBottomOf="@+id/textViewDiagnosisDetails">
 
         <TextView
+            android:id="@+id/diagnosisDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/diagnosis_text"
+            android:hint="@string/diagnosis_text"
             android:padding="18dp"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
@@ -114,30 +114,30 @@
     </ScrollView>
 
     <TextView
-        android:id="@+id/textViewDoctor"
+        android:id="@+id/textViewDiagnosisDoctor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingHorizontal="18dp"
-        android:text="@string/doctor_name"
+        android:hint="@string/doctor_name"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/LinearLayoutPrescription"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewDiagnosisTitle" />
 
     <TextView
-        android:id="@+id/fullNameDescription"
+        android:id="@+id/textViewDiagnosisDoctorProfession"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingHorizontal="18dp"
-        android:text="@string/doctor_specialty"
+        android:hint="@string/doctor_specialty"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/LinearLayoutPrescription"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDoctor" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewDiagnosisDoctor" />
 
     <ImageButton
         android:id="@+id/imageButtonShareDiagnosis"
@@ -147,7 +147,7 @@
         android:background="@drawable/mandarin_border_12dp"
         android:src="@drawable/ic_share"
         app:layout_constraintEnd_toStartOf="@+id/buttonPrescription"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewDiagnosisTitle" />
 
     <Button
         android:id="@+id/buttonPrescription"
@@ -160,7 +160,7 @@
         android:textColor="@color/rich_black_80"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/LinearLayoutPrescription"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewDiagnosisTitle" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

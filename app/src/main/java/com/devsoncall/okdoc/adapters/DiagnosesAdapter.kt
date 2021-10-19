@@ -44,13 +44,13 @@ class DiagnosesAdapter(
             val position = bindingAdapterPosition
             if (position != RecyclerView.NO_POSITION) {
                 if (v != null) {
-                    listener.onItemClick(position, v)
+                    listener.onItemClick(diagnoses[position], v)
                 }
             }
         }
     }
 
     interface OnItemClickListener {
-        fun onItemClick(position: Int, view: View)
+        fun onItemClick(diagnosis: Diagnosis, view: View)
     }
 }
