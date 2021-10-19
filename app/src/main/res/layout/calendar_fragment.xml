@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.CalendarFragment">
+    tools:context=".fragments.CalendarFragment"
+    android:id="@+id/constraintLayoutCalendar">
 
     <Button
         android:id="@+id/buttonSelectDate"
@@ -42,7 +43,7 @@
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <View
-        android:id="@+id/view2"
+        android:id="@+id/viewCalendarBackground"
         android:layout_width="358dp"
         android:layout_height="520dp"
         android:layout_marginVertical="20dp"
@@ -53,13 +54,15 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonSelectDate" />
 
     <View
+        android:id="@+id/viewCalendarBorders"
         android:layout_width="320dp"
         android:layout_height="380dp"
         android:background="@drawable/white_border"
-        app:layout_constraintBottom_toBottomOf="@+id/calendarView"
-        app:layout_constraintEnd_toEndOf="@+id/calendarView"
-        app:layout_constraintStart_toStartOf="@+id/calendarView"
-        app:layout_constraintTop_toTopOf="@+id/calendarView" />
+        app:layout_constraintBottom_toTopOf="@+id/buttonConfirm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewCalendarBackground" />
 
 
     <com.applandeo.materialcalendarview.CalendarView
@@ -69,15 +72,34 @@
         app:forwardButtonSrc="@drawable/ic_forward_arrow"
         app:headerColor="@color/white"
         app:headerLabelColor="@color/rich_black"
-        app:layout_constraintBottom_toBottomOf="@+id/view2"
-        app:layout_constraintEnd_toEndOf="@+id/view2"
-        app:layout_constraintStart_toStartOf="@+id/view2"
-        app:layout_constraintTop_toTopOf="@+id/view2"
+        app:disabledDaysLabelsColor="@color/light_gray"
+        app:layout_constraintBottom_toBottomOf="@+id/viewCalendarBorders"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/viewCalendarBorders"
         app:previousButtonSrc="@drawable/ic_previous_arrow"
         app:selectionColor="@color/mandarin_80"
         app:selectionLabelColor="@color/rich_black"
         app:todayLabelColor="@color/mandarin"
         app:type="one_day_picker" />
+
+    <Button
+        android:id="@+id/buttonConfirm"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/mandarin_border_12dp"
+        android:text="@string/confirm"
+        android:textAllCaps="false"
+        android:textColor="@color/rich_black_80"
+        android:textSize="17sp"
+        android:enabled="false"
+        app:layout_constraintBottom_toTopOf="@+id/viewCalendarBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewCalendarBorders" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

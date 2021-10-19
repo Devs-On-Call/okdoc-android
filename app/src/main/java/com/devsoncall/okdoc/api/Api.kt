@@ -19,10 +19,10 @@ interface Api {
     ): Call<GetPatientResponse>
 
     @GET("/api/patients/{patientId}/appointments")
-    fun getAppointments(
+    fun getPatientAppointments(
         @Path("patientId") patientId: String,
         @Header("Authorization") token: String
-    ): Call<DataListResponse<Appointment>>
+    ): Call<DataListResponse<PatientAppointment>>
 
     @GET("/api/patients/{patientId}/prescriptions")
     fun getPrescriptions(
@@ -55,5 +55,9 @@ interface Api {
         @Header("Authorization") token: String
     ): Call<DataListResponse<Doctor>>
 
-
+    @GET("/api/appointments")
+    fun getDoctorAppointments(
+        @Query("doctorId") doctorId: String,
+        @Header("Authorization") token: String
+    ): Call<DataListResponse<DoctorAppointment>>
 }
