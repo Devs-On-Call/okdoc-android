@@ -73,6 +73,10 @@
     <string name="diagnosis_text">Diagnosis\ndetails\ntext\nshould\nbe\nhere</string>
     <string name="prescription">Prescription</string>
     <string name="select_date">Select Date</string>
+    <string name="hours">HH:MM - HH:MM</string>
+    <string name="select_time">Select Time</string>
+    <string name="serialized_hours">Serialized_hours</string>
+    <string name="hour_id_clicked">hour_id_clicked</string>
 
 
 </resources>
