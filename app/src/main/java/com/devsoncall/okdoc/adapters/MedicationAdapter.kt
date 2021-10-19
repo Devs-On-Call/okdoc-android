@@ -9,7 +9,7 @@ import com.devsoncall.okdoc.models.Prescription
 import kotlinx.android.synthetic.main.medication_item.view.*
 
 class MedicationAdapter(
-    var medicationList: List<Prescription>
+    var medicationList: MutableList<Prescription>
 ) : RecyclerView.Adapter<MedicationAdapter.MedicationViewHolder>() {
 
     inner class MedicationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)

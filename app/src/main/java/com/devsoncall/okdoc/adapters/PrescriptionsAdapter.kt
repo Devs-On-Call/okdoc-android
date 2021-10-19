@@ -50,14 +50,14 @@ class PrescriptionsAdapter(
             val position = bindingAdapterPosition
             if (position != RecyclerView.NO_POSITION) {
                 if (v != null) {
-                    listener.onItemClick(position, v)
+                    listener.onItemClick(prescriptions[position], v)
                 }
             }
         }
     }
 
     interface OnItemClickListener {
-        fun onItemClick(position: Int, view: View)
+        fun onItemClick(prescription: Prescription, view: View)
     }
 
 }

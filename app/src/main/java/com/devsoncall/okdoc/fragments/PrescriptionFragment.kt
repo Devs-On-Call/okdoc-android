@@ -6,8 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
@@ -33,12 +31,6 @@ class PrescriptionFragment : Fragment(R.layout.prescription_fragment) {
     private var adapter: MedicationAdapter? = null
     private var mainMenuActivity: MainMenuActivity? = null
 
-    // UI Elements
-    private lateinit var prescriptionTitle: TextView
-    private lateinit var doctorName: TextView
-    private lateinit var doctorProfession: TextView
-    private lateinit var date: Button
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -54,22 +46,23 @@ class PrescriptionFragment : Fragment(R.layout.prescription_fragment) {
 
         recyclerViewMedicationsList.layoutManager = LinearLayoutManager(this.context)
         val serializedPrescriptions = sharedPreferences?.getString(getString(R.string.serialized_prescriptions), null)
-        val prescriptionClicked = sharedPreferences?.getInt(getString(R.string.prescription_clicked), -1)
+        val prescriptionIdClicked = sharedPreferences?.getString(getString(R.string.prescription_id_clicked), "")
         val prescriptions: List<Prescription>
+        var selectedPrescription: Prescription? = null
 
-        if(serializedPrescriptions != null && prescriptionClicked != -1 && prescriptionClicked != null) {
+        if(serializedPrescriptions != null && prescriptionIdClicked != "" && prescriptionIdClicked != null) {
             val gson = Gson()
             val type: Type = object : TypeToken<List<Prescription?>?>() {}.type
             prescriptions = gson.fromJson(serializedPrescriptions, type)
-            val selectedPrescription = prescriptions.elementAt(prescriptionClicked)
+            selectedPrescription = prescriptions.firstOrNull { it._id == prescriptionIdClicked }!!
             val medications = mutableListOf(selectedPrescription)
             setUIElements(selectedPrescription)
             setAdapter(medications)
-        } else if (prescriptionClicked != -1 && prescriptionClicked != null){
+        } else if (prescriptionIdClicked != "" && prescriptionIdClicked != null){
             val authToken = sharedPreferences?.getString(getString(R.string.auth_token), "")
             val patientId = sharedPreferences?.getString(getString(R.string.patient_id), "")
             if(authToken != "" && patientId != "" && authToken != null && patientId != null)
-                getPrescriptions(authToken, patientId, prescriptionClicked)
+                getPrescriptions(authToken, patientId, prescriptionIdClicked)
         }
 
         buttonBack.setOnClickListener { view ->
@@ -77,15 +70,15 @@ class PrescriptionFragment : Fragment(R.layout.prescription_fragment) {
         }
 
         buttonDiagnosis.setOnClickListener {
-            // TODO
-            // change to diagnosis fragment
-//            val add = Prescription("id","date","diagnosis","dosage","drug","duration", null)
-//            medicationList.add(add)
-//            adapter.notifyItemInserted(medicationList.size - 1)
+            val selectedDiagnosisId = selectedPrescription?.diagnosis?._id
+            if (selectedDiagnosisId != null)
+                saveDiagnosisIdClickedInPrefs(selectedDiagnosisId)
+
+            view.findNavController().navigate(R.id.navigation_diagnosis)
         }
     }
 
-    private fun getPrescriptions(authToken: String = "", patientId: String = "", prescriptionClicked: Int) {
+    private fun getPrescriptions(authToken: String = "", patientId: String = "", prescriptionIdClicked: String) {
         mainMenuActivity?.loadingOverlay?.show()
         val apiGetPrescriptions = ApiGetPrescriptions()
         apiGetPrescriptions.setOnDataListener(object : ApiGetPrescriptions.DataInterface {
@@ -95,8 +88,8 @@ class PrescriptionFragment : Fragment(R.layout.prescription_fragment) {
                         val prescriptions = getPrescriptionsResponse.body()?.data!!
                         savePrescriptionsInPrefs(prescriptions)
 
-                        val selectedPrescription = prescriptions.elementAt(prescriptionClicked)
-                        val medications = mutableListOf(prescriptions.elementAt(prescriptionClicked))
+                        val selectedPrescription = prescriptions.firstOrNull { it._id == prescriptionIdClicked }!!
+                        val medications = mutableListOf(selectedPrescription)
                         setUIElements(selectedPrescription)
                         setAdapter(medications)
                     }
@@ -123,15 +116,21 @@ class PrescriptionFragment : Fragment(R.layout.prescription_fragment) {
         editor?.apply()
     }
 
+    private fun saveDiagnosisIdClickedInPrefs(diagnosisIdClicked: String) {
+        val editor: SharedPreferences.Editor? = sharedPreferences?.edit()
+        editor?.putString(getString(R.string.diagnosis_id_clicked), diagnosisIdClicked)
+        editor?.apply()
+    }
+
     @SuppressLint("SetTextI18n")
     private fun setUIElements(prescription: Prescription) {
         buttonPastDiagnoses.text = prescription.date
         textViewTitle.text = prescription.diagnosis.diagnosis
-        textViewDoctor.text = "${prescription.doctor?.name} ${prescription.doctor?.lastName}"
-        fullNameDescription.text = prescription.doctor?.profession?.name
+        textViewDoctor.text = "${prescription.doctor.name} ${prescription.doctor.lastName}"
+        fullNameDescription.text = prescription.doctor.profession.name
     }
 
-    private fun setAdapter(medication: List<Prescription>){
+    private fun setAdapter(medication: MutableList<Prescription>){
         adapter = MedicationAdapter(medication)
         recyclerViewMedicationsList.adapter = adapter
     }
