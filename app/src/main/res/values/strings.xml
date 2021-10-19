@@ -5,14 +5,16 @@
     <string name="patient_id" lang="en" translatable="false">patient_id</string>
     <string name="serialized_prescriptions" lang="en" translatable="false">serialized_prescriptions</string>
     <string name="serialized_diagnoses" lang="en" translatable="false">serialized_diagnoses</string>
-    <string name="serialized_appointments" lang="en" translatable="false">serialized_appointments</string>
+    <string name="serialized_patient_appointments" lang="en" translatable="false">serialized_patient_appointments</string>
+    <string name="serialized_doctor_appointments" lang="en" translatable="false">serialized_doctor_appointments</string>
     <string name="serialized_professions" lang="en" translatable="false">serialized_professions</string>
     <string name="serialized_hospitals" lang="en" translatable="false">serialized_hospitals</string>
+    <string name="serialized_booked_times" translatable="false">serialized_booked_times</string>
     <string name="prescription_id_clicked" lang="en" translatable="false">prescription_id_clicked</string>
     <string name="diagnosis_id_clicked" lang="en" translatable="false">diagnosis_id_clicked</string>
     <string name="profession_id_clicked" lang="en" translatable="false">profession_id_clicked</string>
-    <string name="hospital_id_clicked" lang="en">hospital_id_clicked</string>
-    <string name="doctor_id_clicked" lang="en">doctor_id_clicked</string>
+    <string name="hospital_id_clicked" lang="en" translatable="false">hospital_id_clicked</string>
+    <string name="doctor_id_clicked" lang="en" translatable="false">doctor_id_clicked</string>
 
     <!--  Welcome screen UI strings  -->
     <string name="app_name" translatable="false">OkDoc</string>
@@ -36,7 +38,7 @@
 
     <!--  Diagnosis screen UI strings  -->
     <string name="doctor_specialty" lang="en">Specialty</string>
-    <string name="doctor_name" lang="en">Doctor Name</string>
+    <string name="doctor_name" lang="en" translatable="false">Doctor Name</string>
     <string name="diagnosis" lang="en">Diagnosis</string>
     <string name="prescription">Prescription</string>
 
@@ -74,6 +76,9 @@
     <!--  Calendar screen UI strings  -->
     <string name="select_date">Select Date</string>
 
+    <!--    -->
+    <string name="confirm">Confirm</string>
+
     <!-- Placeholder text -->
     <string name="date" lang="en" translatable="false">DD/MM/YYYY</string>
     <string name="prescription_header" lang="en" translatable="false">DD/MM/YY</string>
@@ -95,5 +100,7 @@
     <string name="diagnoses_text" lang="en" translatable="false">Diagnosis</string>
     <string name="diagnosis_details" translatable="false">Diagnosis Details</string>
     <string name="specialty" lang="en" translatable="false">Specialty</string>
+
+
 
 </resources>
