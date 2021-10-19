@@ -8,14 +8,13 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.devsoncall.okdoc.R
-import com.devsoncall.okdoc.models.Appointment
+import com.devsoncall.okdoc.models.PatientAppointment
 import kotlinx.android.synthetic.main.item_appointment.view.*
-import kotlinx.android.synthetic.main.item_prescription.view.*
 import kotlinx.android.synthetic.main.item_prescription.view.tvDate
 import kotlinx.android.synthetic.main.item_prescription.view.tvDoctorDetails
 
 class AppointmentsAdapter(
-    private val appointments: List<Appointment>,
+    private val appointments: List<PatientAppointment>,
     private val listener: OnItemClickListener
 ) : RecyclerView.Adapter<AppointmentsAdapter.AppointmentsViewHolder>() {
 

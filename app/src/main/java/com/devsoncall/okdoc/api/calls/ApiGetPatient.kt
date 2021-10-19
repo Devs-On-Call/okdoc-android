@@ -22,7 +22,10 @@ class ApiGetPatient {
                 mListener?.responseData(response)
             }
 
-            override fun onFailure(call: Call<GetPatientResponse>, t: Throwable) {}
+            override fun onFailure(call: Call<GetPatientResponse>, t: Throwable) {
+                println(t.cause)
+                mListener?.failureData(t)
+            }
         })
     }
 
@@ -32,6 +35,7 @@ class ApiGetPatient {
 
     interface DataInterface {
         fun responseData(getPatientResponse: Response<GetPatientResponse>)
+        fun failureData(t: Throwable)
     }
 
 }

@@ -26,6 +26,7 @@ class ApiGetPrescriptions {
 
             override fun onFailure(call: Call<DataListResponse<Prescription>>, t: Throwable) {
                 println(t.cause)
+                mListener?.failureData(t)
             }
         })
     }
@@ -36,5 +37,6 @@ class ApiGetPrescriptions {
 
     interface DataInterface {
         fun responseData(getPrescriptionsResponse: Response<DataListResponse<Prescription>>)
+        fun failureData(t: Throwable)
     }
 }

@@ -1,30 +1,31 @@
 <resources>
 
     <!--  Shared prefs strings  -->
-    <string name="auth_token" lang="en">auth_token</string>
-    <string name="patient_id" lang="en">patient_id</string>
-    <string name="serialized_prescriptions" lang="en">serialized_prescriptions</string>
-    <string name="serialized_diagnoses" lang="en">serialized_diagnoses</string>
-    <string name="serialized_appointments" lang="en">serialized_appointments</string>
-    <string name="serialized_professions" lang="en">serialized_professions</string>
-    <string name="serialized_hospitals" lang="en">serialized_hospitals</string>
-    <string name="prescription_id_clicked" lang="en">prescription_id_clicked</string>
-    <string name="diagnosis_id_clicked" lang="en">diagnosis_id_clicked</string>
-    <string name="profession_id_clicked" lang="en">profession_id_clicked</string>
-    <string name="hospital_id_clicked" lang="en">hospital_id_clicked</string>
-    <string name="doctor_id_clicked" lang="en">doctor_id_clicked</string>
-    <string name="selected_hour" lang = "en">selected_hour</string>
+    <string name="auth_token" lang="en" translatable="false">auth_token</string>
+    <string name="patient_id" lang="en" translatable="false">patient_id</string>
+    <string name="serialized_prescriptions" lang="en" translatable="false">serialized_prescriptions</string>
+    <string name="serialized_diagnoses" lang="en" translatable="false">serialized_diagnoses</string>
+    <string name="serialized_patient_appointments" lang="en" translatable="false">serialized_patient_appointments</string>
+    <string name="serialized_doctor_appointments" lang="en" translatable="false">serialized_doctor_appointments</string>
+    <string name="serialized_professions" lang="en" translatable="false">serialized_professions</string>
+    <string name="serialized_hospitals" lang="en" translatable="false">serialized_hospitals</string>
+    <string name="serialized_booked_times" translatable="false">serialized_booked_times</string>
+    <string name="prescription_id_clicked" lang="en" translatable="false">prescription_id_clicked</string>
+    <string name="diagnosis_id_clicked" lang="en" translatable="false">diagnosis_id_clicked</string>
+    <string name="profession_id_clicked" lang="en" translatable="false">profession_id_clicked</string>
+    <string name="hospital_id_clicked" lang="en" translatable="false">hospital_id_clicked</string>
+    <string name="doctor_id_clicked" lang="en" translatable="false">doctor_id_clicked</string>
 
     <!--  Welcome screen UI strings  -->
-    <string name="app_name">OkDoc</string>
+    <string name="app_name" translatable="false">OkDoc</string>
     <string name="welcome_message_first_line" lang="en">Welcome to</string>
-    <string name="welcome_message_second_line" lang="en">OkDoc!</string>
+    <string name="welcome_message_second_line" lang="en" translatable="false">OkDoc!</string>
     <string name="amka_field_message" lang="en">Enter your AMKA to proceed</string>
     <string name="get_started_button" lang="en">Get started</string>
 
     <!--  Profile screen UI strings  -->
     <string name="profile_full_name" lang="en">Full Name</string>
-    <string name="profile_AMKA" lang="en">AMKA</string>
+    <string name="profile_AMKA" lang="en" translatable="false">AMKA</string>
     <string name="profile_blood_type" lang="en">Blood Type</string>
     <string name="profile_family_doctor" lang="en">Family Doctor</string>
 
@@ -37,18 +38,18 @@
 
     <!--  Diagnosis screen UI strings  -->
     <string name="doctor_specialty" lang="en">Specialty</string>
-    <string name="doctor_name" lang="en">Doctor Name</string>
+    <string name="doctor_name" lang="en" translatable="false">Doctor Name</string>
     <string name="diagnosis" lang="en">Diagnosis</string>
     <string name="prescription">Prescription</string>
 
     <!--  Settings screen UI strings  -->
     <string name="settings_languages" lang="en">Languages</string>
-    <string name="settings_credits" lang="en">Credits</string>
+    <string name="settings_credits" lang="en" translatable="false">Credits</string>
     <string name="settings_logout" lang="en">Logout</string>
 
     <!--  Credits UI strings  -->
-    <string name="developed_by">Developed by</string>
-    <string name="team_members">
+    <string name="developed_by" translatable="false">Developed by</string>
+    <string name="team_members" translatable="false">
         <![CDATA[
         <u>Front-End &amp; Design</u><br></br>
         Marina Kipourou<br></br>
@@ -74,32 +75,32 @@
 
     <!--  Calendar screen UI strings  -->
     <string name="select_date">Select Date</string>
-    <string name="hours">HH:MM - HH:MM</string>
-    <string name="select_time">Select Time</string>
-    <string name="serialized_hours">Serialized_hours</string>
-    <string name="hour_id_clicked">hour_id_clicked</string>
+
+    <!--    -->
+    <string name="confirm">Confirm</string>
 
     <!-- Placeholder text -->
-    <string name="date" lang="en">DD/MM/YYYY</string>
-    <string name="prescription_header" lang="en">DD/MM/YY</string>
-    <string name="prescription_title" lang="en">Prescription Title</string>
-    <string name="doctor" lang="en">Doctor Name - Specialty</string>
-    <string name="diagnosis_text">Diagnosis\ndetails\ntext\nshould\nbe\nhere</string>
-    <string name="assigned_medication" lang="en">Assigned Medication</string>
-    <string name="medicine_title" lang="en">Medicine Title</string>
-    <string name="dosage" lang="en">Num per day</string>
-    <string name="duration" lang="en">Day DD/MM until Day DD/MM</string>
-    <string name="patient_name" lang="en">patient_name</string>
-    <string name="patient_last_name" lang="en">patient_last_name</string>
-    <string name="patient_amka" lang="en">patient_amka</string>
-    <string name="patient_blood_type" lang="en">patient_blood_type</string>
-    <string name="patient_doctor" lang="en">patient_doctor</string>
-    <string name="hospital_name" lang="en">Hospital Name</string>
-    <string name="hospital_location" lang="en">Location</string>
-    <string name="past_diagnoses" lang="en">Past Diagnoses</string>
-    <string name="diagnoses_text" lang="en">Diagnosis</string>
-    <string name="diagnosis_details">Diagnosis Details</string>
-    <string name="specialty" lang="en">Specialty</string>
+    <string name="date" lang="en" translatable="false">DD/MM/YYYY</string>
+    <string name="prescription_header" lang="en" translatable="false">DD/MM/YY</string>
+    <string name="prescription_title" lang="en" translatable="false">Prescription Title</string>
+    <string name="doctor" lang="en" translatable="false">Doctor Name - Specialty</string>
+    <string name="diagnosis_text" translatable="false">Diagnosis\ndetails\ntext\nshould\nbe\nhere</string>
+    <string name="assigned_medication" lang="en" translatable="false">Assigned Medication</string>
+    <string name="medicine_title" lang="en" translatable="false">Medicine Title</string>
+    <string name="dosage" lang="en" translatable="false">Num per day</string>
+    <string name="duration" lang="en" translatable="false">Day DD/MM until Day DD/MM</string>
+    <string name="patient_name" lang="en" translatable="false">patient_name</string>
+    <string name="patient_last_name" lang="en" translatable="false">patient_last_name</string>
+    <string name="patient_amka" lang="en" translatable="false">patient_amka</string>
+    <string name="patient_blood_type" lang="en" translatable="false">patient_blood_type</string>
+    <string name="patient_doctor" lang="en" translatable="false">patient_doctor</string>
+    <string name="hospital_name" lang="en" translatable="false">Hospital Name</string>
+    <string name="hospital_location" lang="en" translatable="false">Location</string>
+    <string name="past_diagnoses" lang="en" translatable="false">Past Diagnoses</string>
+    <string name="diagnoses_text" lang="en" translatable="false">Diagnosis</string>
+    <string name="diagnosis_details" translatable="false">Diagnosis Details</string>
+    <string name="specialty" lang="en" translatable="false">Specialty</string>
+
 
 
 </resources>

@@ -1,6 +1,6 @@
 package com.devsoncall.okdoc.models
 
-data class Appointment(
+data class PatientAppointment(
     val _id: String,
     val date: String,
     val reason: String,

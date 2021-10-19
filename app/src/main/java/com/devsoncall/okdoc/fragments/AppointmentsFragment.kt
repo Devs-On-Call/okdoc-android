@@ -2,20 +2,24 @@ package com.devsoncall.okdoc.fragments
 
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devsoncall.okdoc.R
 import com.devsoncall.okdoc.activities.MainMenuActivity
 import com.devsoncall.okdoc.adapters.AppointmentsAdapter
-import com.devsoncall.okdoc.api.calls.ApiGetAppointments
-import com.devsoncall.okdoc.models.Appointment
+import com.devsoncall.okdoc.api.ApiUtils
+import com.devsoncall.okdoc.api.calls.ApiGetPatientAppointments
+import com.devsoncall.okdoc.models.PatientAppointment
 import com.devsoncall.okdoc.models.DataListResponse
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -41,23 +45,33 @@ class AppointmentsFragment : Fragment(R.layout.appointments_fragment), Appointme
         return inflater.inflate(R.layout.appointments_fragment, container, false)
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val serializedAppointments = sharedPreferences?.getString(getString(R.string.serialized_appointments), null)
-        val appointments: List<Appointment>
+        val serializedAppointments = sharedPreferences?.getString(getString(R.string.serialized_patient_appointments), null)
+        val appointments: List<PatientAppointment>
 
         if (serializedAppointments != null) {
             val gson = Gson()
-            val type: Type = object : TypeToken<List<Appointment?>?>() {}.type
+            val type: Type = object : TypeToken<List<PatientAppointment?>?>() {}.type
             appointments = gson.fromJson(serializedAppointments, type)
             setAdapter(appointments)
         } else {
             val authToken = sharedPreferences?.getString(getString(R.string.auth_token), "")
             val patientId = sharedPreferences?.getString(getString(R.string.patient_id), "")
             if(authToken != "" && patientId != "" && authToken != null && patientId != null)
-                getAppointments(authToken, patientId)
+
+                if(ApiUtils().isOnline(this.requireContext()))
+                    getPatientAppointments(authToken, patientId)
+                else
+                    Toast.makeText(this.context, "Check your internet connection", Toast.LENGTH_SHORT).show()
+
+            if (authToken != null && patientId != null) {
+                getPatientAppointments(authToken, patientId)
+            }
+
         }
 
         view.findViewById<Button>(R.id.btBack).setOnClickListener { view ->
@@ -69,15 +83,15 @@ class AppointmentsFragment : Fragment(R.layout.appointments_fragment), Appointme
 //        Toast.makeText(this.context, "Item $position clicked", Toast.LENGTH_SHORT).show()
     }
 
-    private fun getAppointments(authToken: String = "", patientId: String = "") {
+    private fun getPatientAppointments(authToken: String = "", patientId: String = "") {
         mainMenuActivity?.loadingOverlay?.show()
-        val apiGetAppointments = ApiGetAppointments()
-        apiGetAppointments.setOnDataListener(object : ApiGetAppointments.DataInterface {
-            override fun responseData(getAppointmentsResponse: Response<DataListResponse<Appointment>>) {
+        val apiGetAppointments = ApiGetPatientAppointments()
+        apiGetAppointments.setOnDataListener(object : ApiGetPatientAppointments.DataInterface {
+            override fun responseData(getAppointmentsResponse: Response<DataListResponse<PatientAppointment>>) {
                 if (getAppointmentsResponse.code() == 200) {
                     if (getAppointmentsResponse.body()?.data != null) {
                         val appointments = getAppointmentsResponse.body()?.data!!
-                        saveAppointmentsInPrefs(appointments)
+                        savePatientAppointmentsInPrefs(appointments)
                         setAdapter(appointments)
                     }
                 } else if (getAppointmentsResponse.code() == 400) {
@@ -91,19 +105,24 @@ class AppointmentsFragment : Fragment(R.layout.appointments_fragment), Appointme
                 }
                 mainMenuActivity?.loadingOverlay?.dismiss()
             }
+
+            override fun failureData(t: Throwable) {
+                mainMenuActivity?.loadingOverlay?.dismiss()
+                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
+            }
         })
         apiGetAppointments.getAppointments(authToken, patientId)
     }
 
-    private fun saveAppointmentsInPrefs(appointments: List<Appointment>) {
+    private fun savePatientAppointmentsInPrefs(appointments: List<PatientAppointment>) {
         val gson = Gson()
         val serializedAppointments = gson.toJson(appointments)
         val editor: SharedPreferences.Editor? = sharedPreferences?.edit()
-        editor?.putString(getString(R.string.serialized_appointments), serializedAppointments)
+        editor?.putString(getString(R.string.serialized_patient_appointments), serializedAppointments)
         editor?.apply()
     }
 
-    private fun setAdapter(appointments: List<Appointment>) {
+    private fun setAdapter(appointments: List<PatientAppointment>) {
         adapter = AppointmentsAdapter(appointments, this)
         rvAppointments.adapter = adapter
         rvAppointments.layoutManager = LinearLayoutManager(this.context)

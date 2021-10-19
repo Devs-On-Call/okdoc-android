@@ -26,6 +26,7 @@ class ApiGetHospitals {
 
             override fun onFailure(call: Call<DataListResponse<Hospital>>, t: Throwable) {
                 println(t.cause)
+                mListener?.failureData(t)
             }
         })
     }
@@ -36,5 +37,6 @@ class ApiGetHospitals {
 
     interface DataInterface {
         fun responseData(getHospitalsResponse: Response<DataListResponse<Hospital>>)
+        fun failureData(t: Throwable)
     }
 }
