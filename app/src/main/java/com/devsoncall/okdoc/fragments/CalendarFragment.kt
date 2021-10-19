@@ -8,11 +8,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import com.devsoncall.okdoc.R
 import kotlinx.android.synthetic.main.calendar_fragment.*
 import com.devsoncall.okdoc.activities.MainMenuActivity
+import com.devsoncall.okdoc.api.ApiUtils
 import com.devsoncall.okdoc.api.calls.ApiGetDoctorAppointments
 import com.devsoncall.okdoc.models.DataListResponse
 import com.devsoncall.okdoc.models.DoctorAppointment
@@ -26,13 +28,11 @@ import java.lang.reflect.Type
 import java.util.*
 import java.util.ArrayList
 
-
-
-
 class CalendarFragment : Fragment(R.layout.calendar_fragment) {
 
     private var sharedPreferences: SharedPreferences? = null
     private var mainMenuActivity: MainMenuActivity? = null
+    private var appointments: List<DoctorAppointment>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,27 +43,26 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment) {
         return inflater.inflate(R.layout.calendar_fragment, container, false)
     }
 
-
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val serializedAppointments = sharedPreferences?.getString(getString(R.string.serialized_doctor_appointments), null)
-        var appointments: List<DoctorAppointment>
         var clickedDayCalendar: Calendar = Calendar.getInstance()
 
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-//            calendarView.setAllowClickWhenDisabled(false)
-//        }
         if (serializedAppointments != null) {
             val gson = Gson()
             val type: Type = object : TypeToken<List<DoctorAppointment?>?>() {}.type
             appointments = gson.fromJson(serializedAppointments, type)
-            setDisabledDays(appointments)
+            appointments?.let { setDisabledDays(it) }
         } else {
             val authToken = sharedPreferences?.getString(getString(R.string.auth_token), "")
             val doctorId = sharedPreferences?.getString(getString(R.string.doctor_id_clicked), "")
             if(authToken != "" && doctorId != "" && authToken != null && doctorId != null) {
-                getAppointments(authToken, doctorId)
+                if(ApiUtils().isOnline(this.requireContext()))
+                    getAppointments(authToken, doctorId)
+                else
+                    Toast.makeText(this.context, "Check your internet connection", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -72,7 +71,6 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment) {
         }
 
         calendarView.setOnDayClickListener { eventDay ->
-
             if (eventDay.isEnabled) {
                 clickedDayCalendar = eventDay.calendar
                 buttonConfirm.isEnabled = true;
@@ -82,16 +80,13 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment) {
         }
 
         buttonConfirm.setOnClickListener {
-            // TODO
-            // navigate to select time fragment
-            // save booked times for selected date
-
             val date = clickedDayCalendar.get(Calendar.YEAR).toString() + "-" +
-                    (clickedDayCalendar.get(Calendar.MONTH) + 1).toString() + "-" +
-                    clickedDayCalendar.get(Calendar.DAY_OF_MONTH).toString()
+                    String.format("%02d", clickedDayCalendar.get(Calendar.MONTH) + 1) + "-" +
+                    String.format("%02d", clickedDayCalendar.get(Calendar.DAY_OF_MONTH))
+            val selectedDateBookedHours = appointments?.firstOrNull { it._id == date }
 
-
-//            view.findNavController().navigate(R.id.navigation_time)
+            saveSelectedDateHoursInPrefs(selectedDateBookedHours, date)
+//            view.findNavController().navigate(R.id.navigation_hours)
             Toast.makeText(this.context, date, Toast.LENGTH_SHORT).show()
         }
 
@@ -104,17 +99,9 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment) {
             override fun responseData(getAppointmentsResponse: Response<DataListResponse<DoctorAppointment>>) {
                 if (getAppointmentsResponse.code() == 200) {
                     if (getAppointmentsResponse.body()?.data != null) {
-
-                        // dummy data for testing
-//                        val appointment_test_1 = DoctorAppointment("2021-11-05", MutableList(14) { "0" })
-//                        val appointment_test_2 = DoctorAppointment("2021-10-20", MutableList(16) { "0" })
-//                        val appointments : MutableList<DoctorAppointment> = arrayListOf()
-//                        appointments.add(appointment_test_1)
-//                        appointments.add(appointment_test_2)
-
-                        val appointments : List<DoctorAppointment> = getAppointmentsResponse.body()?.data!!
-                        setDisabledDays(appointments)
-                        saveDoctorAppointmentsInPrefs(appointments)
+                        appointments = getAppointmentsResponse.body()?.data!!
+                        setDisabledDays(appointments!!)
+                        saveDoctorAppointmentsInPrefs(appointments!!)
                     }
                 } else if (getAppointmentsResponse.code() == 400) {
                     try {
@@ -126,6 +113,11 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment) {
                     }
                 }
             mainMenuActivity?.loadingOverlay?.dismiss()
+            }
+
+            override fun failureData(t: Throwable) {
+                mainMenuActivity?.loadingOverlay?.dismiss()
+                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
             }
         })
         apiGetAppointments.getAppointments(authToken, doctorId)
@@ -143,8 +135,6 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment) {
         val disabledDays = ArrayList<Calendar>()
 
         for (date in doctorAppointments) {
-
-//            Toast.makeText(this.context, date._id + " " + date.booked_times.size, Toast.LENGTH_SHORT).show()
 
             if (date.booked_times.size < 16) {
                 continue
@@ -169,11 +159,16 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment) {
         editor?.apply()
     }
 
-    private fun saveSelectedDateHoursInPrefs(bookedTimes: List<String>) {
-        val gson = Gson()
-        val serializedAppointments = gson.toJson(bookedTimes)
+    private fun saveSelectedDateHoursInPrefs(bookedTimes: DoctorAppointment?, date:String) {
         val editor: SharedPreferences.Editor? = sharedPreferences?.edit()
-        editor?.putString(getString(R.string.serialized_booked_times), serializedAppointments)
+        if(bookedTimes != null) {
+            val gson = Gson()
+            val serializedAppointments = gson.toJson(bookedTimes)
+            editor?.putString(getString(R.string.serialized_booked_times), serializedAppointments)
+        } else {
+            editor?.remove(getString(R.string.serialized_booked_times))
+        }
+        editor?.putString(getString(R.string.date_clicked), date)
         editor?.apply()
     }
 }
