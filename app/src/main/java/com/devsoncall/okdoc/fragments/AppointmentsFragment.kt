@@ -62,7 +62,6 @@ class AppointmentsFragment : Fragment(R.layout.appointments_fragment), Appointme
             val authToken = sharedPreferences?.getString(getString(R.string.auth_token), "")
             val patientId = sharedPreferences?.getString(getString(R.string.patient_id), "")
             if(authToken != "" && patientId != "" && authToken != null && patientId != null)
-
                 if(ApiUtils().isOnline(this.requireContext()))
                     getPatientAppointments(authToken, patientId)
                 else

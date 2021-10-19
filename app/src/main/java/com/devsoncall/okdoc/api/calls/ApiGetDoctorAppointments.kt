@@ -27,6 +27,7 @@ class ApiGetDoctorAppointments {
 
             override fun onFailure(call: Call<DataListResponse<DoctorAppointment>>, t: Throwable) {
                 println(t.cause)
+                mListener?.failureData(t)
             }
         })
     }
@@ -37,6 +38,7 @@ class ApiGetDoctorAppointments {
 
     interface DataInterface {
         fun responseData(getAppointmentsResponse: Response<DataListResponse<DoctorAppointment>>)
+        fun failureData(t: Throwable)
     }
 
 }
