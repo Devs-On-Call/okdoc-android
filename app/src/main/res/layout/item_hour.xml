@@ -24,7 +24,7 @@
         app:layout_constraintVertical_bias="0.024">
 
         <TextView
-            android:id="@+id/tvProfession"
+            android:id="@+id/tvHours"
             style="@style/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

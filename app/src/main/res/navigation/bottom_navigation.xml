@@ -88,5 +88,11 @@
         android:label="calendar_fragment"
         tools:layout="@layout/calendar_fragment" />
 
+    <fragment
+        android:id="@+id/navigation_hours"
+        android:name="com.devsoncall.okdoc.fragments.HoursFragment"
+        android:label="hours_fragment"
+        tools:layout="@layout/hours_fragment" />
+
 
 </navigation>

@@ -55,5 +55,11 @@ interface Api {
         @Header("Authorization") token: String
     ): Call<DataListResponse<Doctor>>
 
+    @GET("/api/appointments")
+    fun getHours(
+        @Query("doctorId") doctorId: String,
+        @Header("Authorization") token: String
+    ): Call<DataListResponse<BookedHours>>
+
 
 }

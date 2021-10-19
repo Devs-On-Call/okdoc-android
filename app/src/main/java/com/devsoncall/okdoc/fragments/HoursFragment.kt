@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.devsoncall.okdoc.R
 import com.devsoncall.okdoc.activities.MainMenuActivity
 import com.devsoncall.okdoc.adapters.HoursAdapter
+import com.devsoncall.okdoc.api.calls.ApiGetHours
 import com.devsoncall.okdoc.models.DataListResponse
 import com.devsoncall.okdoc.models.BookedHours
 import com.google.gson.Gson
@@ -51,54 +53,69 @@ class HoursFragment : Fragment(R.layout.hours_fragment), HoursAdapter.OnItemClic
             val gson = Gson()
             val type: Type = object : TypeToken<List<BookedHours?>?>() {}.type
             hours = gson.fromJson(serializedHours, type)
+            getTimeSlots(hours)
             setAdapter(hours)
-        } else {
-            val authToken = sharedPreferences?.getString(getString(R.string.auth_token), "")
-            if(authToken != "" && authToken != null)
-                getHours(authToken)
         }
+
 
         view.findViewById<Button>(R.id.btBack).setOnClickListener { view ->
             view.findNavController().navigate(R.id.navigation_home)
         }
     }
 
-    override fun onItemClick(hours: BookedHours, view: View) {
-        saveHourIdClickedInPrefs(hours._id)   //TODO FIX
-        //view.findNavController().navigate(R.id.navigation_hospital_list) //TODO FIX
+//    override fun onItemClick(hours: BookedHours, view: View) {
+//        saveHourIdClickedInPrefs(hours._id)   //TODO FIX
+//        view.findNavController().navigate(R.id.navigation_hospital_list) //TODO FIX
+//    }
+
+    override fun onItemClick(position: Int, view: View) {
+        Toast.makeText(this.context, "Item $position clicked", Toast.LENGTH_SHORT).show()
     }
 
-    private fun getHours(authToken: String = "") {
-        mainMenuActivity?.loadingOverlay?.show()
-        val apiGetHours = ApiGetHours()
-        apiGetHours.setOnDataListener(object : ApiGetHours.DataInterface {
-            override fun responseData(getHoursResponse: Response<DataListResponse<BookedHours>>) {
-                if (getHoursResponse.code() == 200) {
-                    if (getHoursResponse.body()?.data != null) {
-                        val hours = getHoursResponse.body()?.data!!
-                        saveHoursInPrefs(hours)
-                        setAdapter(hours)
-                    }
-                } else if (getHoursResponse.code() == 400) {
-                    try {
-                        val jsonObject = JSONObject(getHoursResponse.errorBody()?.string())
-                        val errorMessage: String = jsonObject.getString("message")
-                        println(errorMessage)
-                    } catch (e: JSONException) {
-                        e.printStackTrace()
-                    }
-                }
-                mainMenuActivity?.loadingOverlay?.dismiss()
+    private fun getTimeSlots(hours: List<BookedHours>){
+
+        val slots = listOf(
+            setOf("09:00", "09:30"),
+            setOf("09:30", "10:00"),
+            setOf("10:00", "10:30"),
+            setOf("10:30", "11:00"),
+            setOf("11:00", "11:30"),
+            setOf("11:30", "12:00"),
+            setOf("12:00", "12:30"),
+            setOf("12:30", "13:00"),
+            setOf("13:00", "13:30"),
+            setOf("13:30", "14:00"),
+            setOf("14:00", "14:30"),
+            setOf("14:30", "15:00"),
+            setOf("15:00", "15:30"),
+            setOf("15:30", "16:00"),
+            setOf("16:00", "16:30"),
+            setOf("16:30", "17:00")
+        )
+
+            for (pos in hours.indices) {
+                var booked = hours[pos].booked_hours
+
+                for (startTime in booked)
+                    for (position in slots.indices)
+                        if (slots[position].contains(startTime))
+                            println("TEST OUTPUT" + slots[position])
+
             }
-        })
-        apiGetHours.getHours(authToken)
+
+
+//        for (i in slots.indices)
+//            slots.contains(startTime)
+//            if (startTime.equals(slots.containsKeys))
+//       if(startTime.any(slots::equals))
+
+
+
     }
 
-    private fun saveHoursInPrefs(hours: List<BookedHours>) {
-        val gson = Gson()
-        val serializedHours= gson.toJson(hours)
+    private fun saveHoursInPrefs(selected_hour: String) {
         val editor: SharedPreferences.Editor? = sharedPreferences?.edit()
-        editor?.putString(getString(R.string.serialized_hours), serializedHours)
+        editor?.putString(getString(R.string.selected_hour), selected_hour)
         editor?.apply()
     }
 
@@ -113,4 +130,5 @@ class HoursFragment : Fragment(R.layout.hours_fragment), HoursAdapter.OnItemClic
         rvHours.adapter = adapter
         rvHours.layoutManager = LinearLayoutManager(this.context)
     }
+
 }

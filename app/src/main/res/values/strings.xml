@@ -13,6 +13,7 @@
     <string name="profession_id_clicked" lang="en">profession_id_clicked</string>
     <string name="hospital_id_clicked" lang="en">hospital_id_clicked</string>
     <string name="doctor_id_clicked" lang="en">doctor_id_clicked</string>
+    <string name="selected_hour" lang = "en">selected_hour</string>
 
     <!--  Welcome screen UI strings  -->
     <string name="app_name">OkDoc</string>
@@ -99,5 +100,6 @@
     <string name="diagnoses_text" lang="en">Diagnosis</string>
     <string name="diagnosis_details">Diagnosis Details</string>
     <string name="specialty" lang="en">Specialty</string>
+
 
 </resources>
