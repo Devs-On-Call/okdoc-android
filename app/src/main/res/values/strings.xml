@@ -16,6 +16,8 @@
     <string name="hospital_id_clicked" lang="en" translatable="false">hospital_id_clicked</string>
     <string name="doctor_id_clicked" lang="en" translatable="false">doctor_id_clicked</string>
     <string name="date_clicked" lang="en" translatable="false">date_clicked</string>
+    <string name="selected_hour" lang = "en" translatable="false">selected_hour</string>
+    <string name="hour_clicked" lang = "en" translatable="false">hour_clicked</string>
 
     <!--  Welcome screen UI strings  -->
     <string name="app_name" translatable="false">OkDoc</string>
@@ -80,6 +82,9 @@
     <!--    -->
     <string name="confirm">Confirm</string>
 
+    <!--  Hours screen UI strings  -->
+    <string name="select_time">Select Time</string>
+
     <!-- Placeholder text -->
     <string name="date" lang="en" translatable="false">DD/MM/YYYY</string>
     <string name="prescription_header" lang="en" translatable="false">DD/MM/YY</string>
@@ -101,6 +106,7 @@
     <string name="diagnoses_text" lang="en" translatable="false">Diagnosis</string>
     <string name="diagnosis_details" translatable="false">Diagnosis Details</string>
     <string name="specialty" lang="en" translatable="false">Specialty</string>
+    <string name="hours" lang = "en" translatable="false">HH:MM - HH:MM</string>
 
 
 

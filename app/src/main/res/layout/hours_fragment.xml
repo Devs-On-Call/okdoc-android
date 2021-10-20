@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ic_background"
-    tools:context=".fragments.ProfessionsFragment">
+    tools:context=".fragments.HoursFragment">
 
 
     <Button
-        android:id="@+id/btProfessions"
+        android:id="@+id/btTime"
         android:layout_width="310dp"
         android:layout_height="100dp"
         android:layout_marginTop="36dp"
@@ -17,8 +17,8 @@
         android:background="@drawable/mandarin_border_12dp"
         android:paddingStart="40dp"
         android:paddingEnd="30dp"
-        android:drawableEnd="@drawable/ic_prescription"
-        android:text="@string/professions"
+        android:drawableEnd="@drawable/ic_time"
+        android:text="@string/select_time"
         android:textAlignment="viewStart"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
@@ -35,14 +35,14 @@
         android:background="@drawable/mandarin_border_12dp"
         android:drawableStart="@drawable/ic_back_arrow"
         android:paddingHorizontal="13dp"
-        app:layout_constraintEnd_toStartOf="@+id/btProfessions"
+        app:layout_constraintEnd_toStartOf="@+id/btTime"
         app:layout_constraintHorizontal_bias="0.595"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvProfessions"
+        android:id="@+id/rvHours"
         android:layout_width="358dp"
         android:layout_height="462dp"
         android:layout_marginVertical="20dp"

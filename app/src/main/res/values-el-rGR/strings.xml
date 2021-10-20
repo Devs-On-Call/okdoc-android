@@ -21,4 +21,6 @@
     <string name="doctors">Διάλεξε Γιατρό</string>
     <string name="select_date">Διάλεξε Ημέρα</string>
     <string name="confirm">Επόμενο</string>
+    <string name="select_time">Διάλεξε Ώρα</string>
+
 </resources>
