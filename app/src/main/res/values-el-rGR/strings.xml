@@ -22,5 +22,8 @@
     <string name="select_date">Διάλεξε Ημέρα</string>
     <string name="confirm">Επόμενο</string>
     <string name="select_time">Διάλεξε Ώρα</string>
+    <string name="confirmation">Επιβεβαίωση</string>
+    <string name="confirmation_text">Πρόκειται να κλείσεται το παρακάτω ραντεβού:</string>
+    <string name="cancel">Άκυρο</string>
 
 </resources>
