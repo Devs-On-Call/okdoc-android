@@ -16,7 +16,7 @@
     <string name="hospital_id_clicked" lang="en" translatable="false">hospital_id_clicked</string>
     <string name="doctor_id_clicked" lang="en" translatable="false">doctor_id_clicked</string>
     <string name="date_clicked" lang="en" translatable="false">date_clicked</string>
-    <string name="hour_clicked" lang = "en" translatable="false">hour_clicked</string>
+    <string name="hour_clicked" lang="en" translatable="false">hour_clicked</string>
     <string name="profession_name_clicked" translatable="false">profession_name_clicked</string>
     <string name="day_of_week_clicked" translatable="false">day_of_week_clicked</string>
 
@@ -90,6 +90,11 @@
     <string name="confirmation_text">You are about to schedule an appointment:</string>
     <string name="cancel">Cancel</string>
 
+    <!--  Confirmed screen UI strings-->
+    <string name="confirmed">Confirmed</string>
+    <string name="ok" translatable="false">OK</string>
+    <string name="appointment_scheduled">Appointment scheduled\nsuccessfully!</string>
+
 
     <!-- Placeholder text -->
     <string name="date" lang="en" translatable="false">DD/MM/YYYY</string>
@@ -112,7 +117,7 @@
     <string name="diagnoses_text" lang="en" translatable="false">Diagnosis</string>
     <string name="diagnosis_details" translatable="false">Diagnosis Details</string>
     <string name="specialty" lang="en" translatable="false">Specialty</string>
-    <string name="hours" lang = "en" translatable="false">HH:MM - HH:MM</string>
+    <string name="hours" lang="en" translatable="false">HH:MM - HH:MM</string>
     <string name="time" translatable="false">9:00 am</string>
 
 

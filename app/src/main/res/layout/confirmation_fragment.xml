@@ -169,7 +169,6 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:background="@drawable/mandarin_border_12dp"
-        android:enabled="false"
         android:text="@string/confirm"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
