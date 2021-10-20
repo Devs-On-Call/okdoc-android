@@ -14,6 +14,7 @@ import androidx.annotation.RequiresApi
 import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.devsoncall.okdoc.R
 import com.devsoncall.okdoc.activities.MainMenuActivity
 import com.devsoncall.okdoc.adapters.AppointmentsAdapter
@@ -30,11 +31,12 @@ import retrofit2.Response
 import java.lang.reflect.Type
 
 
-class AppointmentsFragment : Fragment(R.layout.appointments_fragment), AppointmentsAdapter.OnItemClickListener {
+class AppointmentsFragment : Fragment(R.layout.appointments_fragment), AppointmentsAdapter.OnItemClickListener, SwipeRefreshLayout.OnRefreshListener {
 
     private var sharedPreferences: SharedPreferences? = null
     private var adapter: AppointmentsAdapter? = null
     private var mainMenuActivity: MainMenuActivity? = null
+    private var mSwipeRefreshLayout: SwipeRefreshLayout? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,6 +51,14 @@ class AppointmentsFragment : Fragment(R.layout.appointments_fragment), Appointme
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        mSwipeRefreshLayout = view.findViewById(R.id.swipe_appointments_container)
+        mSwipeRefreshLayout!!.setOnRefreshListener(this)
+        mSwipeRefreshLayout!!.setColorSchemeResources(
+            android.R.color.holo_green_dark,
+            android.R.color.holo_orange_dark,
+            android.R.color.holo_blue_dark
+        )
 
         val serializedAppointments = sharedPreferences?.getString(getString(R.string.serialized_patient_appointments), null)
         val appointments: List<PatientAppointment>
@@ -66,11 +76,6 @@ class AppointmentsFragment : Fragment(R.layout.appointments_fragment), Appointme
                     getPatientAppointments(authToken, patientId)
                 else
                     Toast.makeText(this.context, "Check your internet connection", Toast.LENGTH_SHORT).show()
-
-            if (authToken != null && patientId != null) {
-                getPatientAppointments(authToken, patientId)
-            }
-
         }
 
         view.findViewById<Button>(R.id.btBack).setOnClickListener { view ->
@@ -80,6 +85,20 @@ class AppointmentsFragment : Fragment(R.layout.appointments_fragment), Appointme
 
     override fun onItemClick(position: Int, view: View) {
 //        Toast.makeText(this.context, "Item $position clicked", Toast.LENGTH_SHORT).show()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    override fun onRefresh() {
+        val authToken = sharedPreferences?.getString(getString(R.string.auth_token), "")
+        val patientId = sharedPreferences?.getString(getString(R.string.patient_id), "")
+        if(authToken != "" && patientId != "" && authToken != null && patientId != null)
+            if(ApiUtils().isOnline(this.requireContext())) {
+                mSwipeRefreshLayout!!.isRefreshing = true
+                getPatientAppointments(authToken, patientId)
+            } else {
+                Toast.makeText(this.context, "Check your internet connection", Toast.LENGTH_SHORT)
+                    .show()
+            }
     }
 
     private fun getPatientAppointments(authToken: String = "", patientId: String = "") {
@@ -102,10 +121,12 @@ class AppointmentsFragment : Fragment(R.layout.appointments_fragment), Appointme
                         e.printStackTrace()
                     }
                 }
+                mSwipeRefreshLayout!!.isRefreshing = false
                 mainMenuActivity?.loadingOverlay?.dismiss()
             }
 
             override fun failureData(t: Throwable) {
+                mSwipeRefreshLayout!!.isRefreshing = false
                 mainMenuActivity?.loadingOverlay?.dismiss()
                 Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
             }
@@ -126,5 +147,4 @@ class AppointmentsFragment : Fragment(R.layout.appointments_fragment), Appointme
         rvAppointments.adapter = adapter
         rvAppointments.layoutManager = LinearLayoutManager(this.context)
     }
-
 }

@@ -16,7 +16,6 @@
     <string name="hospital_id_clicked" lang="en" translatable="false">hospital_id_clicked</string>
     <string name="doctor_id_clicked" lang="en" translatable="false">doctor_id_clicked</string>
     <string name="date_clicked" lang="en" translatable="false">date_clicked</string>
-    <string name="selected_hour" lang = "en" translatable="false">selected_hour</string>
     <string name="hour_clicked" lang = "en" translatable="false">hour_clicked</string>
 
     <!--  Welcome screen UI strings  -->

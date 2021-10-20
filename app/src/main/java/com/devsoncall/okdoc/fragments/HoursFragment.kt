@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -44,19 +43,20 @@ class HoursFragment : Fragment(R.layout.hours_fragment), HoursAdapter.OnItemClic
         super.onViewCreated(view, savedInstanceState)
 
         val serializedHours = sharedPreferences?.getString(getString(R.string.serialized_booked_times), null)
-       // val serializedAppointments = sharedPreferences?.getString(getString(R.string.serialized_doctor_appointments), null)
-        val booked_hours: DoctorAppointment
+        val dateClicked = sharedPreferences?.getString(getString(R.string.date_clicked), null)
+        val doctorAppointment: DoctorAppointment
 
-        //getTimeSlots(serializedHours)
-
-        if (serializedHours != null) {
-            val gson = Gson()
-            val type: Type = object : TypeToken<DoctorAppointment?>() {}.type
-            booked_hours = gson.fromJson(serializedHours, type)
-            val hours = availableHours(booked_hours)
-            setAdapter(hours)
+        if (dateClicked != null) {
+            var bookedHours: List<String> = emptyList()
+            if (serializedHours != null) {
+                val gson = Gson()
+                val type: Type = object : TypeToken<DoctorAppointment?>() {}.type
+                doctorAppointment = gson.fromJson(serializedHours, type)
+                bookedHours = doctorAppointment.booked_times
+            }
+            val availableHours = availableHours(bookedHours)
+            setAdapter(availableHours)
         }
-
 
         view.findViewById<Button>(R.id.btBack).setOnClickListener { view ->
             view.findNavController().navigate(R.id.navigation_calendar)
@@ -68,9 +68,9 @@ class HoursFragment : Fragment(R.layout.hours_fragment), HoursAdapter.OnItemClic
         view.findNavController().navigate(R.id.navigation_confirmation)
     }
 
-    private fun availableHours(bookedHours: DoctorAppointment): List<String> {
+    private fun availableHours(bookedHours: List<String>): List<String> {
         val timeSlots = listOf("09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30")
-        val sum = timeSlots + bookedHours.booked_times
+        val sum = timeSlots + bookedHours
         return sum.groupBy { it }.filter { it.value.size == 1 }.flatMap { it.value }
     }
 

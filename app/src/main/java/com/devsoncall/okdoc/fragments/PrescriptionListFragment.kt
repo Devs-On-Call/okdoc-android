@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.devsoncall.okdoc.R
 import com.devsoncall.okdoc.activities.MainMenuActivity
 import com.devsoncall.okdoc.adapters.PrescriptionsAdapter
@@ -30,11 +31,12 @@ import org.json.JSONObject
 import retrofit2.Response
 import java.lang.reflect.Type
 
-class PrescriptionListFragment : Fragment(R.layout.prescriptions_list_fragment), PrescriptionsAdapter.OnItemClickListener {
+class PrescriptionListFragment : Fragment(R.layout.prescriptions_list_fragment), PrescriptionsAdapter.OnItemClickListener, SwipeRefreshLayout.OnRefreshListener {
 
     private var sharedPreferences: SharedPreferences? = null
     private var adapter: PrescriptionsAdapter? = null
     private var mainMenuActivity: MainMenuActivity? = null
+    private var mSwipeRefreshLayout: SwipeRefreshLayout? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,6 +52,14 @@ class PrescriptionListFragment : Fragment(R.layout.prescriptions_list_fragment),
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        mSwipeRefreshLayout = view.findViewById(R.id.swipe_prescriptions_container)
+        mSwipeRefreshLayout!!.setOnRefreshListener(this)
+        mSwipeRefreshLayout!!.setColorSchemeResources(
+            android.R.color.holo_green_dark,
+            android.R.color.holo_orange_dark,
+            android.R.color.holo_blue_dark
+        )
 
         val serializedPrescriptions = sharedPreferences?.getString(getString(R.string.serialized_prescriptions), null)
         val prescriptions: List<Prescription>
@@ -79,6 +89,20 @@ class PrescriptionListFragment : Fragment(R.layout.prescriptions_list_fragment),
         view.findNavController().navigate(R.id.navigation_prescription)
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
+    override fun onRefresh() {
+        val authToken = sharedPreferences?.getString(getString(R.string.auth_token), "")
+        val patientId = sharedPreferences?.getString(getString(R.string.patient_id), "")
+        if(authToken != "" && patientId != "" && authToken != null && patientId != null)
+            if(ApiUtils().isOnline(this.requireContext())) {
+                mSwipeRefreshLayout!!.isRefreshing = true
+                getPrescriptions(authToken, patientId)
+            } else {
+                Toast.makeText(this.context, "Check your internet connection", Toast.LENGTH_SHORT)
+                    .show()
+            }
+    }
+
     private fun getPrescriptions(authToken: String = "", patientId: String = "") {
         mainMenuActivity?.loadingOverlay?.show()
         val apiGetPrescriptions = ApiGetPrescriptions()
@@ -99,10 +123,12 @@ class PrescriptionListFragment : Fragment(R.layout.prescriptions_list_fragment),
                         e.printStackTrace()
                     }
                 }
+                mSwipeRefreshLayout!!.isRefreshing = false
                 mainMenuActivity?.loadingOverlay?.dismiss()
             }
 
             override fun failureData(t: Throwable) {
+                mSwipeRefreshLayout!!.isRefreshing = false
                 mainMenuActivity?.loadingOverlay?.dismiss()
                 Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
             }
