@@ -2,12 +2,14 @@ package com.devsoncall.okdoc.fragments
 
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import com.devsoncall.okdoc.R
@@ -17,6 +19,8 @@ import com.devsoncall.okdoc.api.calls.ApiGetDiagnoses
 import com.devsoncall.okdoc.models.DataListResponse
 import com.devsoncall.okdoc.models.Diagnosis
 import com.devsoncall.okdoc.models.Prescription
+import com.devsoncall.okdoc.utils.formatDateString
+import com.devsoncall.okdoc.utils.getDayOfWeek
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.diagnosis_fragment.*
@@ -43,6 +47,7 @@ class DiagnosisFragment : Fragment(R.layout.diagnosis_fragment) {
         return inflater.inflate(R.layout.diagnosis_fragment, container, false)
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -135,7 +140,9 @@ class DiagnosisFragment : Fragment(R.layout.diagnosis_fragment) {
 
     @SuppressLint("SetTextI18n")
     private fun setUIElements(diagnosis: Diagnosis) {
-        buttonDiagnosisDate.text = diagnosis.date
+        val date = diagnosis.date.take(10)
+        val dayOfWeek = getDayOfWeek(date).toString()
+        buttonDiagnosisDate.text = formatDateString(date, dayOfWeek).replace(", ", ",\n")
         diagnosisDetails.text = diagnosis.diagnosis
         textViewDiagnosisDoctor.text = "Dr. ${diagnosis.doctor.name} ${diagnosis.doctor.lastName}"
         textViewDiagnosisDoctorProfession.text = diagnosis.doctor.profession.name
