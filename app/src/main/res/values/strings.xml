@@ -78,12 +78,16 @@
 
     <!--  Calendar screen UI strings  -->
     <string name="select_date">Select Date</string>
-
-    <!--    -->
     <string name="confirm">Confirm</string>
 
     <!--  Hours screen UI strings  -->
     <string name="select_time">Select Time</string>
+
+    <!--  Confirmation screen UI string  -->
+    <string name="confirmation">Confrimation</string>
+    <string name="confirmation_text">You are about to schedule an appointment:</string>
+    <string name="cancel">Cancel</string>
+
 
     <!-- Placeholder text -->
     <string name="date" lang="en" translatable="false">DD/MM/YYYY</string>
@@ -107,7 +111,7 @@
     <string name="diagnosis_details" translatable="false">Diagnosis Details</string>
     <string name="specialty" lang="en" translatable="false">Specialty</string>
     <string name="hours" lang = "en" translatable="false">HH:MM - HH:MM</string>
-
+    <string name="time" translatable="false">9:00 am</string>
 
 
 </resources>

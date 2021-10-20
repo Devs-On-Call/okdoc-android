@@ -94,5 +94,11 @@
         android:label="hours_fragment"
         tools:layout="@layout/hours_fragment" />
 
+    <fragment
+        android:id="@+id/navigation_confirmation"
+        android:name="com.devsoncall.okdoc.fragments.ConfirmationFragment"
+        android:label="confirmation_fragment"
+        tools:layout="@layout/confirmation_fragment" />
+
 
 </navigation>

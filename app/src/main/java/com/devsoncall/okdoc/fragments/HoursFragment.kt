@@ -64,8 +64,8 @@ class HoursFragment : Fragment(R.layout.hours_fragment), HoursAdapter.OnItemClic
     }
 
     override fun onItemClick(hour: String, view: View) {
-        saveHourClickedInPrefs(hour)   //TODO FIX
-       // view.findNavController().navigate(R.id.navigation_confirm) //TODO FIX
+        saveHourClickedInPrefs(hour)
+        view.findNavController().navigate(R.id.navigation_confirmation)
     }
 
     private fun availableHours(bookedHours: DoctorAppointment): List<String> {
