@@ -10,6 +10,8 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.devsoncall.okdoc.R
 import com.devsoncall.okdoc.models.Prescription
+import com.devsoncall.okdoc.utils.formatDateString
+import com.devsoncall.okdoc.utils.getDayOfWeek
 import kotlinx.android.synthetic.main.item_prescription.view.*
 
 class PrescriptionsAdapter(
@@ -29,7 +31,10 @@ class PrescriptionsAdapter(
         holder.itemView.apply {
 //            we need to parse this date and get only YY-MM-DD
 //            val date: Date = Date.from(Instant.parse(prescriptions[position].date))
-            tvDate.text = prescriptions[position].date
+            val date = prescriptions[position].date.take(10)
+            val dayOfWeek = getDayOfWeek(date).toString()
+            tvDate.text = formatDateString(date, dayOfWeek)
+
 
             val doctorName = prescriptions[position].doctor.name
             val doctorLastName = prescriptions[position].doctor.lastName
