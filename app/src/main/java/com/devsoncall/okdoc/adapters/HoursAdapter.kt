@@ -8,12 +8,11 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.devsoncall.okdoc.R
-import com.devsoncall.okdoc.models.BookedHours
 import kotlinx.android.synthetic.main.item_hour.view.*
 
 
 class HoursAdapter(
-    private val hours: List<BookedHours>,
+    private val hours: List<String>,
     private val listener: OnItemClickListener
 ) : RecyclerView.Adapter<HoursAdapter.HoursViewHolder>() {
 
@@ -30,7 +29,10 @@ class HoursAdapter(
 //            we need to parse this date and get only YY-MM-DD
 //            val date: Date = Date.from(Instant.parse(prescriptions[position].date))
             //tvHospital.text = appointments[position].hospital.name
-            tvHours.text = hours[position].booked_hours[0]  //TODO TO TEST THE FIRST, CHANGE WITH HOURS i
+            //tvHours.text = hours[position].booked_hours[0]  //TODO TO TEST THE FIRST, CHANGE WITH HOURS i
+
+            tvHours.text = hours[position]
+
 
 //            val doctorName = appointments[position].doctor.name
 //            val doctorLastName = appointments[position].doctor.lastName
@@ -51,13 +53,13 @@ class HoursAdapter(
             val position = bindingAdapterPosition
             if (position != RecyclerView.NO_POSITION) {
                 if (v != null) {
-                    listener.onItemClick(position, v)
+                    listener.onItemClick(hours[position], v)
                 }
             }
         }
     }
 
     interface OnItemClickListener {
-        fun onItemClick(position: Int, view: View)
+        fun onItemClick(hour: String, view: View)
     }
 }

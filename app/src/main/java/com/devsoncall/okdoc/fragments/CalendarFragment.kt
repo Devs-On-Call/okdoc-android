@@ -86,7 +86,7 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment) {
             val selectedDateBookedHours = appointments?.firstOrNull { it._id == date }
 
             saveSelectedDateHoursInPrefs(selectedDateBookedHours, date)
-//            view.findNavController().navigate(R.id.navigation_hours)
+            view.findNavController().navigate(R.id.navigation_hours)
             Toast.makeText(this.context, date, Toast.LENGTH_SHORT).show()
         }
 
