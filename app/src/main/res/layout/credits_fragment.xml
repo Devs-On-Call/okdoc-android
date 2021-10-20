@@ -9,22 +9,21 @@
 
     <View
         android:id="@+id/view"
-        android:layout_width="411dp"
-        android:layout_height="658dp"
+        android:layout_width="403dp"
+        android:layout_height="680dp"
         android:background="@drawable/ic_rectangles_profile"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="230dp"
-        android:layout_height="230dp"
-        android:layout_marginTop="80dp"
+        android:layout_width="193dp"
+        android:layout_height="183dp"
+        android:layout_marginTop="68dp"
         android:src="@drawable/ic_team_logo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view" />
 
@@ -35,7 +34,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="132dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="36dp"
         android:fontFamily="@font/poppins"
         android:gravity="center_vertical"
         android:text="@string/developed_by"
@@ -46,17 +45,17 @@
 
     <TextView
         android:id="@+id/tv_team_members"
-        android:layout_width="365dp"
-        android:layout_height="326dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="324dp"
+        android:layout_marginTop="248dp"
         android:fontFamily="@font/poppins"
         android:textAlignment="center"
         android:textColor="@color/rich_black_80"
-        android:textSize="17dp"
+        android:textSize="19dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view" />
 
