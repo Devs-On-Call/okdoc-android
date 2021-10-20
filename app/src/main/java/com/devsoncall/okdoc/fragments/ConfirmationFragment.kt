@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
@@ -59,10 +60,12 @@ class ConfirmationFragment : Fragment(R.layout.confirmation_fragment) {
         }
 
         buttonConfirmAppointment.setOnClickListener { view ->
+            view.findNavController().navigate(R.id.navigation_confirmed)
             // TODO
-            // navigate to confirmed fragment or error fragment
+            // navigate to confirmed error fragment in case of error
             // post the scheduled appointment
-//            view.findNavController().navigate(R.id.navigation_confirmed)
+//            Toast.makeText(this.context, "Confirm", Toast.LENGTH_SHORT).show()
+
         }
     }
 
