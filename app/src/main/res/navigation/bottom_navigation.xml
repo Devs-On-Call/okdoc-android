@@ -65,12 +65,6 @@
         android:label="Diagnoses List"
         tools:layout="@layout/diagnoses_list_fragment" />
 
-    <!--    <fragment-->
-    <!--        android:id="@+id/navigation_diagnosis"-->
-    <!--        android:name="com.devsoncall.okdoc.fragments.DiagnosisFragment"-->
-    <!--        android:label="Diagnosis"-->
-    <!--        tools:layout="@layout/diagnosis_fragment" />-->
-
     <fragment
         app:popEnterAnim="@anim/key_anim_in"
         app:popExitAnim="@anim/key_anim_out"
@@ -119,6 +113,18 @@
         android:name="com.devsoncall.okdoc.fragments.ConfirmationFragment"
         android:label="confirmation_fragment"
         tools:layout="@layout/confirmation_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_confirmed"
+        android:name="com.devsoncall.okdoc.fragments.ConfirmedFragment"
+        android:label="confirmed_fragment"
+        tools:layout="@layout/confirmed_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_error"
+        android:name="com.devsoncall.okdoc.fragments.ErrorFragment"
+        android:label="error_fragment"
+        tools:layout="@layout/error_fragment" />
 
 
 </navigation>

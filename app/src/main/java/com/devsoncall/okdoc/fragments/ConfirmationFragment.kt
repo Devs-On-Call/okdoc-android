@@ -1,18 +1,19 @@
 package com.devsoncall.okdoc.fragments
 
 import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import com.devsoncall.okdoc.R
 import com.devsoncall.okdoc.activities.MainMenuActivity
+import com.devsoncall.okdoc.utils.formatDateString
 import kotlinx.android.synthetic.main.confirmation_fragment.*
-
 
 class ConfirmationFragment : Fragment(R.layout.confirmation_fragment) {
 
@@ -28,8 +29,26 @@ class ConfirmationFragment : Fragment(R.layout.confirmation_fragment) {
         return inflater.inflate(R.layout.confirmation_fragment, container, false)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val doctorName = sharedPreferences?.getString(getString(R.string.doctor_name), null)
+        val doctorSpecialty = sharedPreferences?.getString(getString(R.string.profession_name_clicked), null)
+        val hospitalName = sharedPreferences?.getString(getString(R.string.hospital_name), null)
+        val hospitalLocation = sharedPreferences?.getString(getString(R.string.hospital_location), null)
+        val date = sharedPreferences?.getString(getString(R.string.date_clicked), null)
+        val dayOfWeek = sharedPreferences?.getString(getString(R.string.day_of_week_clicked), null)
+        val time = sharedPreferences?.getString(getString(R.string.hour_clicked), null)
+
+        val dateString = formatDateString(date, dayOfWeek)
+
+        textViewDoctorName.text = doctorName
+        textViewDoctorSpecialty.text = doctorSpecialty
+        textViewHospitalName.text = "@ $hospitalName"
+        textViewHospitalLocation.text = hospitalLocation
+        textViewDate.text = dateString
+        textViewTime.text = time
 
         buttonBack.setOnClickListener { view ->
             view.findNavController().navigate(R.id.navigation_hours)
@@ -40,10 +59,12 @@ class ConfirmationFragment : Fragment(R.layout.confirmation_fragment) {
         }
 
         buttonConfirmAppointment.setOnClickListener { view ->
+            view.findNavController().navigate(R.id.navigation_confirmed)
             // TODO
-            // navigate to confirmed fragment or error fragment
-//            view.findNavController().navigate(R.id.navigation_confirmed)
+            // navigate to confirmed error fragment in case of error
+            // post the scheduled appointment
 //            Toast.makeText(this.context, "Confirm", Toast.LENGTH_SHORT).show()
+
         }
     }
 }

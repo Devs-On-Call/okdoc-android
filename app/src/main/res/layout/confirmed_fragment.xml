@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.ConfirmedFragment">
+
+        <Button
+            android:id="@+id/buttonConfirmed"
+            android:layout_width="310dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="22dp"
+            android:background="@drawable/mandarin_border_12dp"
+            android:drawableEnd="@drawable/ic_hospital"
+            android:paddingStart="40dp"
+            android:paddingEnd="30dp"
+            android:text="@string/confirmed"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="@color/rich_black_80"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/buttonBack"
+            android:layout_width="43dp"
+            android:layout_height="81dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="55dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/mandarin_border_12dp"
+            android:drawableStart="@drawable/ic_back_arrow"
+            android:paddingHorizontal="13dp"
+            app:layout_constraintEnd_toStartOf="@+id/buttonConfirmed"
+            app:layout_constraintHorizontal_bias="0.595"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/viewCalendarBackground"
+            android:layout_width="358dp"
+            android:layout_height="420dp"
+            android:layout_marginVertical="20dp"
+            android:background="@drawable/light_gray_border"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonConfirmed" />
+
+        <View
+            android:id="@+id/viewBorders"
+            android:layout_width="320dp"
+            android:layout_height="280dp"
+            android:layout_margin="16dp"
+            android:background="@drawable/white_border"
+            app:layout_constraintEnd_toEndOf="@+id/viewCalendarBackground"
+            app:layout_constraintStart_toStartOf="@+id/viewCalendarBackground"
+            app:layout_constraintTop_toTopOf="@+id/viewCalendarBackground" />
+
+        <ImageView
+            android:id="@+id/imageViewSuccess"
+            android:layout_width="180dp"
+            android:layout_height="136dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/ic_success"
+            app:layout_constraintBottom_toTopOf="@+id/textViewDoctorName"
+            app:layout_constraintEnd_toEndOf="@+id/viewBorders"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/viewBorders"
+            app:layout_constraintTop_toBottomOf="@+id/viewBorders" />
+
+        <TextView
+            android:id="@+id/textViewDoctorName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingHorizontal="18dp"
+            android:paddingTop="10dp"
+            android:text="@string/appointment_scheduled"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/rich_black_80"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/viewBorders"
+            app:layout_constraintEnd_toEndOf="@+id/viewBorders"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/viewBorders"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewSuccess" />
+
+        <Button
+            android:id="@+id/buttonConfirmedOk"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/mandarin_border_12dp"
+            android:text="@string/ok"
+            android:textAllCaps="true"
+            android:textColor="@color/rich_black_80"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="@+id/viewCalendarBackground"
+            app:layout_constraintEnd_toEndOf="@+id/viewBorders"
+            app:layout_constraintStart_toStartOf="@+id/viewBorders"
+            app:layout_constraintTop_toBottomOf="@+id/viewBorders" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

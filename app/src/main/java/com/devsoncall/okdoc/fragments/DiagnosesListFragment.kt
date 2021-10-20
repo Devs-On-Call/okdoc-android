@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.devsoncall.okdoc.R
 import com.devsoncall.okdoc.activities.MainMenuActivity
 import com.devsoncall.okdoc.adapters.DiagnosesAdapter
@@ -29,11 +30,12 @@ import org.json.JSONObject
 import retrofit2.Response
 import java.lang.reflect.Type
 
-class DiagnosesListFragment : Fragment(R.layout.diagnoses_list_fragment), DiagnosesAdapter.OnItemClickListener {
+class DiagnosesListFragment : Fragment(R.layout.diagnoses_list_fragment), DiagnosesAdapter.OnItemClickListener, SwipeRefreshLayout.OnRefreshListener {
 
     private var sharedPreferences: SharedPreferences? = null
     private var adapter: DiagnosesAdapter? = null
     private var mainMenuActivity: MainMenuActivity? = null
+    private var mSwipeRefreshLayout: SwipeRefreshLayout? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,6 +51,14 @@ class DiagnosesListFragment : Fragment(R.layout.diagnoses_list_fragment), Diagno
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        mSwipeRefreshLayout = view.findViewById(R.id.swipe_diagnoses_container)
+        mSwipeRefreshLayout!!.setOnRefreshListener(this)
+        mSwipeRefreshLayout!!.setColorSchemeResources(
+            android.R.color.holo_green_dark,
+            android.R.color.holo_orange_dark,
+            android.R.color.holo_blue_dark
+        )
 
         val serializedDiagnoses = sharedPreferences?.getString(getString(R.string.serialized_diagnoses), null)
         val diagnoses: List<Diagnosis>
@@ -78,6 +88,20 @@ class DiagnosesListFragment : Fragment(R.layout.diagnoses_list_fragment), Diagno
         view.findNavController().navigate(R.id.navigation_diagnosis)
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
+    override fun onRefresh() {
+        val authToken = sharedPreferences?.getString(getString(R.string.auth_token), "")
+        val patientId = sharedPreferences?.getString(getString(R.string.patient_id), "")
+        if(authToken != "" && patientId != "" && authToken != null && patientId != null)
+            if(ApiUtils().isOnline(this.requireContext())) {
+                mSwipeRefreshLayout!!.isRefreshing = true
+                getDiagnoses(authToken, patientId)
+            } else {
+                Toast.makeText(this.context, "Check your internet connection", Toast.LENGTH_SHORT)
+                    .show()
+            }
+    }
+
     private fun getDiagnoses(authToken: String = "", patientId: String = "") {
         mainMenuActivity?.loadingOverlay?.show()
         val apiGetDiagnoses = ApiGetDiagnoses()
@@ -98,10 +122,12 @@ class DiagnosesListFragment : Fragment(R.layout.diagnoses_list_fragment), Diagno
                         e.printStackTrace()
                     }
                 }
+                mSwipeRefreshLayout!!.isRefreshing = false
                 mainMenuActivity?.loadingOverlay?.dismiss()
             }
 
             override fun failureData(t: Throwable) {
+                mSwipeRefreshLayout!!.isRefreshing = false
                 mainMenuActivity?.loadingOverlay?.dismiss()
                 Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
             }

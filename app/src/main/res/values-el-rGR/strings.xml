@@ -25,5 +25,11 @@
     <string name="confirmation">Επιβεβαίωση</string>
     <string name="confirmation_text">Πρόκειται να επιβεβαιώσετε το παρακάτω ραντεβού:</string>
     <string name="cancel">Άκυρο</string>
+    <string name="confirmed">Επιτυχία</string>
+    <string name="appointment_scheduled">Το ραντεβού έκλεισε\nμε επιτυχία</string>
+    <string name="something_went_wrong">Κάτι πήγε στραβά :(\nΠαρακαλώ προσπαθήστε ξανά</string>
+
+
+
 
 </resources>

@@ -17,7 +17,7 @@
         android:background="@drawable/mandarin_border_12dp"
         android:paddingStart="40dp"
         android:paddingEnd="30dp"
-        android:drawableEnd="@drawable/ic_prescription"
+        android:drawableEnd="@drawable/ic_hospital"
         android:text="@string/hospitals"
         android:textAlignment="viewStart"
         android:textAllCaps="false"

@@ -26,17 +26,7 @@ class HoursAdapter(
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: HoursViewHolder, position: Int) {
         holder.itemView.apply {
-//            we need to parse this date and get only YY-MM-DD
-//            val date: Date = Date.from(Instant.parse(prescriptions[position].date))
-            //tvHospital.text = appointments[position].hospital.name
-            //tvHours.text = hours[position].booked_hours[0]  //TODO TO TEST THE FIRST, CHANGE WITH HOURS i
-
             tvHours.text = hours[position]
-
-
-//            val doctorName = appointments[position].doctor.name
-//            val doctorLastName = appointments[position].doctor.lastName
-//            tvDoctorDetails.text = "Dr. $doctorName $doctorLastName"
         }
     }
 

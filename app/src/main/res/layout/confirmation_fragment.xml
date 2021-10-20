@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/ic_background_group"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.ConfirmationFragment">
@@ -22,8 +21,7 @@
         android:textAlignment="viewStart"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
-        android:textSize="20dp"
-        android:clickable="false"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -55,7 +53,7 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonConfirmation" />
 
     <TextView
-        android:id="@+id/textViewDoctor"
+        android:id="@+id/textViewHint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -63,20 +61,20 @@
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
-        android:textSize="16dp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/viewCalendarBackground"
         app:layout_constraintStart_toStartOf="@+id/viewCalendarBackground"
         app:layout_constraintTop_toTopOf="@+id/viewCalendarBackground" />
 
     <View
-        android:id="@+id/viewCalendarBorders"
+        android:id="@+id/viewBorders"
         android:layout_width="320dp"
         android:layout_height="280dp"
         android:layout_margin="16dp"
         android:background="@drawable/white_border"
         app:layout_constraintEnd_toEndOf="@+id/viewCalendarBackground"
         app:layout_constraintStart_toStartOf="@+id/viewCalendarBackground"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDoctor" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewHint" />
 
     <TextView
         android:id="@+id/textViewDoctorName"
@@ -91,8 +89,8 @@
         android:textColor="@color/rich_black_80"
         android:textSize="18dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/viewCalendarBorders"
-        app:layout_constraintTop_toTopOf="@+id/viewCalendarBorders"
+        app:layout_constraintStart_toStartOf="@+id/viewBorders"
+        app:layout_constraintTop_toTopOf="@+id/viewBorders"
         tools:text="@string/doctor_name" />
 
     <TextView
@@ -104,8 +102,8 @@
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
-        android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="@+id/viewCalendarBorders"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/viewBorders"
         app:layout_constraintTop_toBottomOf="@+id/textViewDoctorName" />
 
     <TextView
@@ -121,7 +119,7 @@
         android:textColor="@color/rich_black_80"
         android:textSize="18dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/viewCalendarBorders"
+        app:layout_constraintStart_toStartOf="@+id/viewBorders"
         app:layout_constraintTop_toBottomOf="@+id/textViewDoctorSpecialty" />
 
     <TextView
@@ -133,8 +131,8 @@
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
-        android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="@+id/viewCalendarBorders"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/viewBorders"
         app:layout_constraintTop_toBottomOf="@+id/textViewHospitalName" />
 
     <TextView
@@ -150,7 +148,7 @@
         android:textColor="@color/rich_black_80"
         android:textSize="18dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/viewCalendarBorders"
+        app:layout_constraintStart_toStartOf="@+id/viewBorders"
         app:layout_constraintTop_toBottomOf="@+id/textViewHospitalLocation" />
 
     <TextView
@@ -162,8 +160,8 @@
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
-        android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="@+id/viewCalendarBorders"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/viewBorders"
         app:layout_constraintTop_toBottomOf="@+id/textViewDate" />
 
     <Button
@@ -171,16 +169,15 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:background="@drawable/mandarin_border_12dp"
-        android:enabled="false"
         android:text="@string/confirm"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
-        android:textSize="17dp"
+        android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="@+id/viewCalendarBackground"
-        app:layout_constraintEnd_toEndOf="@+id/viewCalendarBorders"
+        app:layout_constraintEnd_toEndOf="@+id/viewBorders"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/buttonCancel"
-        app:layout_constraintTop_toBottomOf="@+id/viewCalendarBorders" />
+        app:layout_constraintTop_toBottomOf="@+id/viewBorders" />
 
     <Button
         android:id="@+id/buttonCancel"
@@ -190,11 +187,11 @@
         android:text="@string/cancel"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
-        android:textSize="17dp"
+        android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="@+id/viewCalendarBackground"
         app:layout_constraintEnd_toStartOf="@+id/buttonConfirmAppointment"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/viewCalendarBorders"
-        app:layout_constraintTop_toBottomOf="@+id/viewCalendarBorders" />
+        app:layout_constraintStart_toStartOf="@+id/viewBorders"
+        app:layout_constraintTop_toBottomOf="@+id/viewBorders" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
