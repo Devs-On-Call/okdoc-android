@@ -64,7 +64,7 @@ class DoctorsFragment : Fragment(R.layout.doctors_fragment), DoctorsAdapter.OnIt
 
     override fun onItemClick(doctor: Doctor, view: View) {
         view.findNavController().navigate(R.id.navigation_calendar) //navigation_calendar
-        saveDoctorIdClickedInPrefs(doctor._id)
+        saveDoctorClickedInPrefs(doctor._id, doctor.name + " " + doctor.lastName)
     }
 
     private fun getDoctors(authToken: String = "", professionId: String = "", hospitalId: String = "") {
@@ -97,9 +97,10 @@ class DoctorsFragment : Fragment(R.layout.doctors_fragment), DoctorsAdapter.OnIt
         apiGetDoctors.getDoctors(authToken, professionId, hospitalId)
     }
 
-    private fun saveDoctorIdClickedInPrefs(doctorIdClicked: String) {
+    private fun saveDoctorClickedInPrefs(doctorIdClicked: String, doctorNameClicked: String) {
         val editor: SharedPreferences.Editor? = sharedPreferences?.edit()
         editor?.putString(getString(R.string.doctor_id_clicked), doctorIdClicked)
+        editor?.putString(getString(R.string.doctor_name), doctorNameClicked)
         editor?.apply()
     }
 

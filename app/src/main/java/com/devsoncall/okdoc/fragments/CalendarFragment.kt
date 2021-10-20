@@ -25,6 +25,7 @@ import org.json.JSONException
 import org.json.JSONObject
 import retrofit2.Response
 import java.lang.reflect.Type
+import java.time.DayOfWeek
 import java.util.*
 import java.util.ArrayList
 
@@ -84,8 +85,9 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment) {
                     String.format("%02d", clickedDayCalendar.get(Calendar.MONTH) + 1) + "-" +
                     String.format("%02d", clickedDayCalendar.get(Calendar.DAY_OF_MONTH))
             val selectedDateBookedHours = appointments?.firstOrNull { it._id == date }
+            val dayOfWeek = clickedDayCalendar.get(Calendar.DAY_OF_WEEK)
 
-            saveSelectedDateHoursInPrefs(selectedDateBookedHours, date)
+            saveSelectedDateHoursInPrefs(selectedDateBookedHours, date, dayOfWeek.toString())
             view.findNavController().navigate(R.id.navigation_hours)
             Toast.makeText(this.context, date, Toast.LENGTH_SHORT).show()
         }
@@ -159,7 +161,7 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment) {
         editor?.apply()
     }
 
-    private fun saveSelectedDateHoursInPrefs(bookedTimes: DoctorAppointment?, date:String) {
+    private fun saveSelectedDateHoursInPrefs(bookedTimes: DoctorAppointment?, date: String, dayOfWeek: String) {
         val editor: SharedPreferences.Editor? = sharedPreferences?.edit()
         if(bookedTimes != null) {
             val gson = Gson()
@@ -169,6 +171,7 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment) {
             editor?.remove(getString(R.string.serialized_booked_times))
         }
         editor?.putString(getString(R.string.date_clicked), date)
+        editor?.putString(getString(R.string.day_of_week_clicked), dayOfWeek)
         editor?.apply()
     }
 }
