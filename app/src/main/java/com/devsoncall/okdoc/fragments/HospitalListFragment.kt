@@ -18,7 +18,6 @@ import com.devsoncall.okdoc.R
 import com.devsoncall.okdoc.activities.MainMenuActivity
 import com.devsoncall.okdoc.adapters.HospitalsAdapter
 import com.devsoncall.okdoc.api.ApiUtils
-import com.devsoncall.okdoc.api.calls.ApiGetDoctors
 import com.devsoncall.okdoc.api.calls.ApiGetHospitals
 import com.devsoncall.okdoc.models.DataListResponse
 import com.devsoncall.okdoc.models.Hospital
@@ -63,7 +62,8 @@ class HospitalListFragment : Fragment(R.layout.hospital_list_fragment), Hospital
 
     override fun onItemClick(hospital: Hospital, view: View) {
         view.findNavController().navigate(R.id.navigation_doctors)
-        saveHospitalIdClickedInPrefs(hospital._id)
+        saveHospitalIdClickedInPrefs(hospital._id, hospital.name, hospital.address)
+
     }
 
     private fun getHospitals(authToken: String = "", professionId: String = "") {
@@ -96,9 +96,14 @@ class HospitalListFragment : Fragment(R.layout.hospital_list_fragment), Hospital
         apiGetHospitals.getHospitals(authToken, professionId)
     }
 
-    private fun saveHospitalIdClickedInPrefs(hospitalIdClicked: String) {
+    private fun saveHospitalIdClickedInPrefs(
+        hospitalIdClicked: String, hospitalNameClicked: String,
+        hospitalLocationClicked: String?
+    ) {
         val editor: SharedPreferences.Editor? = sharedPreferences?.edit()
         editor?.putString(getString(R.string.hospital_id_clicked), hospitalIdClicked)
+        editor?.putString(getString(R.string.hospital_name), hospitalNameClicked)
+        editor?.putString(getString(R.string.hospital_location), hospitalLocationClicked)
         editor?.apply()
     }
 

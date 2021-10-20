@@ -73,7 +73,7 @@ class ProfessionsFragment : Fragment(R.layout.professions_fragment), Professions
     }
 
     override fun onItemClick(profession: Profession, view: View) {
-        saveProfessionIdClickedInPrefs(profession._id)
+        saveProfessionClickedInPrefs(profession._id, profession.name)
         view.findNavController().navigate(R.id.navigation_hospital_list)
     }
 
@@ -116,9 +116,10 @@ class ProfessionsFragment : Fragment(R.layout.professions_fragment), Professions
         editor?.apply()
     }
 
-    private fun saveProfessionIdClickedInPrefs(professionIdClicked: String) {
+    private fun saveProfessionClickedInPrefs(professionIdClicked: String, professionNameClicked: String) {
         val editor: SharedPreferences.Editor? = sharedPreferences?.edit()
         editor?.putString(getString(R.string.profession_id_clicked), professionIdClicked)
+        editor?.putString(getString(R.string.profession_name_clicked), professionNameClicked)
         editor?.apply()
     }
 

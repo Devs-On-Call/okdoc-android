@@ -17,6 +17,9 @@
     <string name="doctor_id_clicked" lang="en" translatable="false">doctor_id_clicked</string>
     <string name="date_clicked" lang="en" translatable="false">date_clicked</string>
     <string name="hour_clicked" lang = "en" translatable="false">hour_clicked</string>
+    <string name="profession_name_clicked" translatable="false">profession_name_clicked</string>
+    <string name="day_of_week_clicked" translatable="false">day_of_week_clicked</string>
+
 
     <!--  Welcome screen UI strings  -->
     <string name="app_name" translatable="false">OkDoc</string>
