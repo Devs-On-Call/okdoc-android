@@ -2,6 +2,7 @@ package com.devsoncall.okdoc.fragments
 
 
 import android.annotation.SuppressLint
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,10 +10,13 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import com.devsoncall.okdoc.R
+import com.devsoncall.okdoc.utils.setAvatar
+import kotlinx.android.synthetic.main.home_fragment.*
 
 
 class HomeFragment : Fragment(R.layout.home_fragment) {
@@ -35,6 +39,9 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
 
         val hiField: TextView = view.findViewById<EditText>(R.id.textViewHi)
         hiField.text = getString(R.string.default_home_greeting) + " " + patientName + "!"
+
+        val amka = sharedPreferences.getString(getString(R.string.patient_amka), "")
+        setAvatar(amka, imageViewAvatar)
 
         val buttonPrescriptions = view.findViewById<Button>(R.id.buttonPrescriptions)
         buttonPrescriptions.setOnClickListener { view ->

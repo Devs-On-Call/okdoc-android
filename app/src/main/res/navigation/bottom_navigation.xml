@@ -100,5 +100,11 @@
         android:label="confirmed_fragment"
         tools:layout="@layout/confirmed_fragment" />
 
+    <fragment
+        android:id="@+id/navigation_error"
+        android:name="com.devsoncall.okdoc.fragments.ErrorFragment"
+        android:label="error_fragment"
+        tools:layout="@layout/error_fragment" />
+
 
 </navigation>
