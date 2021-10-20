@@ -10,6 +10,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
 import com.devsoncall.okdoc.R
+import com.devsoncall.okdoc.utils.setAvatar
+import kotlinx.android.synthetic.main.home_fragment.*
 
 
 class ProfileFragment : Fragment(R.layout.profile_fragment) {
@@ -28,6 +30,9 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
 
         val sharedPreferences: SharedPreferences =
             PreferenceManager.getDefaultSharedPreferences(this.context)
+
+        val amkaString = sharedPreferences.getString(getString(R.string.patient_amka), "")
+        setAvatar(amkaString, imageViewAvatar)
 
         val fullName: TextView = view.findViewById(R.id.fullName)
         val amka: TextView = view.findViewById(R.id.amka)

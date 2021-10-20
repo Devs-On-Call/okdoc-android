@@ -95,6 +95,9 @@
     <string name="ok" translatable="false">OK</string>
     <string name="appointment_scheduled">Appointment scheduled\nsuccessfully!</string>
 
+    <!--  Error screen UI strings-->
+    <string name="something_went_wrong">Something went wrong :(\nPlease try again</string>
+    <string name="oops" translatable="false">Oops!</string>
 
     <!-- Placeholder text -->
     <string name="date" lang="en" translatable="false">DD/MM/YYYY</string>

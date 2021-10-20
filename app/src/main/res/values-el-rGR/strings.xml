@@ -27,6 +27,8 @@
     <string name="cancel">Άκυρο</string>
     <string name="confirmed">Επιτυχία</string>
     <string name="appointment_scheduled">Το ραντεβού έκλεισε\nμε επιτυχία</string>
+    <string name="something_went_wrong">Κάτι πήγε στραβά :(\nΠαρακαλώ προσπαθήστε ξανά</string>
+
 
 
 
