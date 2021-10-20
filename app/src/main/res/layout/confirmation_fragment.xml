@@ -22,7 +22,8 @@
         android:textAlignment="viewStart"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
-        android:textSize="20sp"
+        android:textSize="20dp"
+        android:clickable="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -62,7 +63,7 @@
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
-        android:textSize="16sp"
+        android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="@+id/viewCalendarBackground"
         app:layout_constraintStart_toStartOf="@+id/viewCalendarBackground"
         app:layout_constraintTop_toTopOf="@+id/viewCalendarBackground" />
@@ -103,7 +104,7 @@
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
-        android:textSize="16sp"
+        android:textSize="16dp"
         app:layout_constraintStart_toStartOf="@+id/viewCalendarBorders"
         app:layout_constraintTop_toBottomOf="@+id/textViewDoctorName" />
 
@@ -132,7 +133,7 @@
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
-        android:textSize="16sp"
+        android:textSize="16dp"
         app:layout_constraintStart_toStartOf="@+id/viewCalendarBorders"
         app:layout_constraintTop_toBottomOf="@+id/textViewHospitalName" />
 
@@ -161,7 +162,7 @@
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
-        android:textSize="16sp"
+        android:textSize="16dp"
         app:layout_constraintStart_toStartOf="@+id/viewCalendarBorders"
         app:layout_constraintTop_toBottomOf="@+id/textViewDate" />
 
@@ -174,7 +175,7 @@
         android:text="@string/confirm"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
-        android:textSize="17sp"
+        android:textSize="17dp"
         app:layout_constraintBottom_toBottomOf="@+id/viewCalendarBackground"
         app:layout_constraintEnd_toEndOf="@+id/viewCalendarBorders"
         app:layout_constraintHorizontal_bias="0.5"
@@ -189,7 +190,7 @@
         android:text="@string/cancel"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
-        android:textSize="17sp"
+        android:textSize="17dp"
         app:layout_constraintBottom_toBottomOf="@+id/viewCalendarBackground"
         app:layout_constraintEnd_toStartOf="@+id/buttonConfirmAppointment"
         app:layout_constraintHorizontal_bias="0.5"

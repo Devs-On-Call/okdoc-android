@@ -22,7 +22,8 @@
         android:textAlignment="viewStart"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
-        android:textSize="20sp"
+        android:textSize="20dp"
+        android:clickable="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -68,7 +69,7 @@
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
-        android:textSize="20sp"
+        android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/LinearLayoutPrescription"
         app:layout_constraintTop_toTopOf="@+id/LinearLayoutPrescription"
@@ -84,7 +85,7 @@
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
-        android:textSize="18sp"
+        android:textSize="18dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/LinearLayoutPrescription"
         app:layout_constraintTop_toBottomOf="@+id/fullNameDescription" />
@@ -112,7 +113,7 @@
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
-        android:textSize="16sp"
+        android:textSize="16dp"
         app:layout_constraintStart_toStartOf="@+id/LinearLayoutPrescription"
         app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
 
@@ -125,7 +126,7 @@
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
-        android:textSize="16sp"
+        android:textSize="16dp"
         app:layout_constraintStart_toStartOf="@+id/LinearLayoutPrescription"
         app:layout_constraintTop_toBottomOf="@+id/textViewDoctor" />
 
@@ -148,7 +149,7 @@
         android:text="@string/diagnosis"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
-        android:textSize="14sp"
+        android:textSize="14dp"
         app:layout_constraintEnd_toEndOf="@+id/LinearLayoutPrescription"
         app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
 

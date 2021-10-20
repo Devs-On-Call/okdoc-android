@@ -36,7 +36,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textViewHi"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.484" />
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -67,7 +68,7 @@
                 android:padding="20dp"
                 android:text="@string/past_diagnoses_button"
                 android:textColor="@color/rich_black_80"
-                android:textSize="20sp"
+                android:textSize="20dp"
                 android:textAlignment="viewStart"
                 android:textAllCaps="false" >
             </Button>
@@ -83,7 +84,7 @@
                 android:padding="20dp"
                 android:text="@string/prescriptions_button"
                 android:textColor="@color/rich_black_80"
-                android:textSize="20sp"
+                android:textSize="20dp"
                 android:textAlignment="viewStart"
                 android:textAllCaps="false" >
             </Button>
@@ -99,7 +100,7 @@
                 android:padding="20dp"
                 android:text="@string/view_appointments_button"
                 android:textColor="@color/rich_black_80"
-                android:textSize="20sp"
+                android:textSize="20dp"
                 android:textAlignment="viewStart"
                 android:textAllCaps="false" >
             </Button>
@@ -115,16 +116,13 @@
                 android:padding="20dp"
                 android:text="@string/schedule_appointment_button"
                 android:textColor="@color/rich_black_80"
-                android:textSize="20sp"
+                android:textSize="20dp"
                 android:textAlignment="viewStart"
                 android:textAllCaps="false" >
             </Button>
 
 
         </LinearLayout>
-
-
-
 
 
     </ScrollView>
@@ -153,8 +151,8 @@
         android:layout_height="wrap_content"
         android:paddingLeft="20dp"
         android:text="@string/default_home_greeting"
-        android:textSize="28sp"
-
+        android:textSize="28dp"
+        android:textColor="@color/rich_black_90"
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintStart_toStartOf="@+id/view"
         app:layout_constraintTop_toTopOf="parent" />
@@ -165,6 +163,7 @@
         android:src="@drawable/ic_female_avatar"
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.844"
         app:layout_constraintStart_toEndOf="@+id/textViewHi"
         app:layout_constraintTop_toTopOf="parent" />
 
