@@ -63,8 +63,11 @@ class DoctorsFragment : Fragment(R.layout.doctors_fragment), DoctorsAdapter.OnIt
     }
 
     override fun onItemClick(doctor: Doctor, view: View) {
-        view.findNavController().navigate(R.id.navigation_calendar) //navigation_calendar
+        val pastDoctorId = sharedPreferences?.getString(getString(R.string.doctor_id_clicked), "")
+        if (pastDoctorId!= "" && pastDoctorId != doctor._id)
+            clearDoctorAppointmentsFromSharedPrefs()
         saveDoctorClickedInPrefs(doctor._id, doctor.name + " " + doctor.lastName)
+        view.findNavController().navigate(R.id.navigation_calendar)
     }
 
     private fun getDoctors(authToken: String = "", professionId: String = "", hospitalId: String = "") {
@@ -110,6 +113,12 @@ class DoctorsFragment : Fragment(R.layout.doctors_fragment), DoctorsAdapter.OnIt
         adapter = DoctorsAdapter(doctors, this)
         rvDoctors.adapter = adapter
         rvDoctors.layoutManager = LinearLayoutManager(this.context)
+    }
+
+    private fun clearDoctorAppointmentsFromSharedPrefs() {
+        val editor: SharedPreferences.Editor? = sharedPreferences?.edit()
+        editor?.remove(getString(R.string.serialized_doctor_appointments))
+        editor?.apply()
     }
 
 }
