@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="120dp">
+    android:layout_height="220dp">
 
 
     <LinearLayout
         android:id="@+id/item_layout"
-        android:layout_width="307dp"
-        android:layout_height="100dp"
+        android:layout_width="320dp"
+        android:layout_height="200dp"
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="10dp"
         android:background="@drawable/white_border"
@@ -24,38 +24,94 @@
         app:layout_constraintVertical_bias="0.024">
 
         <TextView
-            android:id="@+id/tvHospital"
-            style="@style/doctor"
+            android:id="@+id/textViewDoctorName"
+            style="@style/prescription_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/white_border"
             android:paddingHorizontal="18dp"
-            android:paddingTop="5dp"
-            android:textAlignment="center"
-            tools:text="@string/hospital_name" />
-
-        <TextView
-            android:id="@+id/tvDoctorDetails"
-            style="@style/doctor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/white_border"
-            android:paddingHorizontal="18dp"
+            android:paddingTop="10dp"
             android:text="@string/doctor"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/rich_black_80"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/viewBorders"
+            app:layout_constraintTop_toTopOf="@+id/viewBorders"
+            tools:text="@string/doctor_name" />
 
         <TextView
-            android:id="@+id/tvDate"
-            style="@style/doctor"
+            android:id="@+id/textViewDoctorSpecialty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/white_border"
+            android:layout_marginBottom="5dp"
             android:paddingHorizontal="18dp"
+            android:text="@string/doctor_specialty"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/rich_black_80"
+            android:textSize="16dp"
+            app:layout_constraintStart_toStartOf="@+id/viewBorders"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDoctorName" />
+
+        <TextView
+            android:id="@+id/textViewHospitalName"
+            style="@style/prescription_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="18dp"
+            android:paddingTop="10dp"
+            android:text="@string/hospital_name"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/rich_black_80"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/viewBorders"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDoctorSpecialty" />
+
+        <TextView
+            android:id="@+id/textViewHospitalLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:paddingHorizontal="18dp"
+            android:text="@string/hospital_location"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/rich_black_80"
+            android:textSize="16dp"
+            app:layout_constraintStart_toStartOf="@+id/viewBorders"
+            app:layout_constraintTop_toBottomOf="@+id/textViewHospitalName" />
+
+        <TextView
+            android:id="@+id/textViewDate"
+            style="@style/prescription_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="18dp"
+            android:paddingTop="10dp"
             android:text="@string/date"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/rich_black_80"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/viewBorders"
+            app:layout_constraintTop_toBottomOf="@+id/textViewHospitalLocation" />
+
+        <TextView
+            android:id="@+id/textViewTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="18dp"
+            android:text="@string/time"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/rich_black_80"
+            android:textSize="16dp"
+            app:layout_constraintStart_toStartOf="@+id/viewBorders"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDate" />
 
     </LinearLayout>
 
