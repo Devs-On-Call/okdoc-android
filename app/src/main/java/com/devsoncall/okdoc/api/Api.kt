@@ -61,11 +61,16 @@ interface Api {
         @Header("Authorization") token: String
     ): Call<DataListResponse<DoctorAppointment>>
 
-//    @GET("/api/appointments")
-//    fun getHours(
-//        @Query("doctorId") doctorId: String,
-//        @Header("Authorization") token: String
-//    ): Call<DataListResponse<BookedHours>>
+    @FormUrlEncoded
+    @POST("/api/appointments")
+    fun createAppointment(
+        @Field("patient") patient: String,
+        @Field("reason") reason: String,
+        @Field("doctor") doctor: String,
+        @Field("hospital") hospital: String,
+        @Field("date") date: String,
+        @Header("Authorization") token: String
+    ): Call<BasicResponse>
 
 
 }

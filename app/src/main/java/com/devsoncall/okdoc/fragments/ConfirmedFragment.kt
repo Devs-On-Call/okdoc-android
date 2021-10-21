@@ -28,9 +28,7 @@ class ConfirmedFragment : Fragment(R.layout.confirmed_fragment) {
         }
 
         buttonConfirmedOk.setOnClickListener { view ->
-            // TODO
-            // navigate to home when error fragment is used
-            view.findNavController().navigate(R.id.navigation_error)
+            view.findNavController().navigate(R.id.navigation_home)
         }
     }
 }

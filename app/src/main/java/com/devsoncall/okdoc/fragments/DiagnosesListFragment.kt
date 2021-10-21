@@ -121,6 +121,8 @@ class DiagnosesListFragment : Fragment(R.layout.diagnoses_list_fragment), Diagno
                     } catch (e: JSONException) {
                         e.printStackTrace()
                     }
+                    mainMenuActivity?.loadingOverlay?.dismiss()
+                    view?.findNavController()?.navigate(R.id.navigation_error)
                 }
                 mSwipeRefreshLayout!!.isRefreshing = false
                 mainMenuActivity?.loadingOverlay?.dismiss()
@@ -129,7 +131,7 @@ class DiagnosesListFragment : Fragment(R.layout.diagnoses_list_fragment), Diagno
             override fun failureData(t: Throwable) {
                 mSwipeRefreshLayout!!.isRefreshing = false
                 mainMenuActivity?.loadingOverlay?.dismiss()
-                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
+                view?.findNavController()?.navigate(R.id.navigation_error)
             }
         })
         apiGetDiagnoses.getDiagnoses(authToken, patientId)

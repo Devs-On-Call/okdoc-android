@@ -122,6 +122,8 @@ class PrescriptionListFragment : Fragment(R.layout.prescriptions_list_fragment),
                     } catch (e: JSONException) {
                         e.printStackTrace()
                     }
+                    mainMenuActivity?.loadingOverlay?.dismiss()
+                    view?.findNavController()?.navigate(R.id.navigation_error)
                 }
                 mSwipeRefreshLayout!!.isRefreshing = false
                 mainMenuActivity?.loadingOverlay?.dismiss()
@@ -130,7 +132,7 @@ class PrescriptionListFragment : Fragment(R.layout.prescriptions_list_fragment),
             override fun failureData(t: Throwable) {
                 mSwipeRefreshLayout!!.isRefreshing = false
                 mainMenuActivity?.loadingOverlay?.dismiss()
-                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
+                view?.findNavController()?.navigate(R.id.navigation_error)
             }
         })
         apiGetPrescriptions.getPrescriptions(authToken, patientId)

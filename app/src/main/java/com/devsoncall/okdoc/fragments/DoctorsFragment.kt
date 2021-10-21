@@ -85,13 +85,15 @@ class DoctorsFragment : Fragment(R.layout.doctors_fragment), DoctorsAdapter.OnIt
                     } catch (e: JSONException) {
                         e.printStackTrace()
                     }
+                    mainMenuActivity?.loadingOverlay?.dismiss()
+                    view?.findNavController()?.navigate(R.id.navigation_error)
                 }
                 mainMenuActivity?.loadingOverlay?.dismiss()
             }
 
             override fun failureData(t: Throwable) {
                 mainMenuActivity?.loadingOverlay?.dismiss()
-                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
+                view?.findNavController()?.navigate(R.id.navigation_error)
             }
         })
         apiGetDoctors.getDoctors(authToken, professionId, hospitalId)

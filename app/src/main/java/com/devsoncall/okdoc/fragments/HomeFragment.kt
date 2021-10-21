@@ -21,11 +21,14 @@ import kotlinx.android.synthetic.main.home_fragment.*
 
 class HomeFragment : Fragment(R.layout.home_fragment) {
 
+    private var sharedPreferences: SharedPreferences? = null
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.context)
         return inflater.inflate(R.layout.home_fragment, container, false)
     }
 
@@ -33,14 +36,13 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val sharedPreferences =
-            PreferenceManager.getDefaultSharedPreferences(this.context)
-        val patientName = sharedPreferences.getString(getString(R.string.patient_name), "")
+        clearSharedPrefsFromAppointmentCreation()
 
+        val patientName = sharedPreferences?.getString(getString(R.string.patient_name), "")
         val hiField: TextView = view.findViewById<EditText>(R.id.textViewHi)
         hiField.text = getString(R.string.default_home_greeting) + " " + patientName + "!"
 
-        val amka = sharedPreferences.getString(getString(R.string.patient_amka), "")
+        val amka = sharedPreferences?.getString(getString(R.string.patient_amka), "")
         setAvatar(amka, imageViewAvatar)
 
         val buttonPrescriptions = view.findViewById<Button>(R.id.buttonPrescriptions)
@@ -62,5 +64,17 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
         buttonScheduleAppointment.setOnClickListener { view ->
             view.findNavController().navigate(R.id.navigation_professions)
         }
+    }
+
+    private fun clearSharedPrefsFromAppointmentCreation() {
+        val editor: SharedPreferences.Editor? = sharedPreferences?.edit()
+        editor?.remove(getString(R.string.serialized_booked_times))
+        editor?.remove(getString(R.string.serialized_doctor_appointments))
+        editor?.remove(getString(R.string.hospital_id_clicked))
+        editor?.remove(getString(R.string.doctor_id_clicked))
+        editor?.remove(getString(R.string.date_clicked))
+        editor?.remove(getString(R.string.hour_clicked))
+        editor?.remove(getString(R.string.day_of_week_clicked))
+        editor?.apply()
     }
 }
