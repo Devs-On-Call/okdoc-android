@@ -89,7 +89,7 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment) {
 
             saveSelectedDateHoursInPrefs(selectedDateBookedHours, date, dayOfWeek.toString())
             view.findNavController().navigate(R.id.navigation_hours)
-            Toast.makeText(this.context, date, Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this.context, date, Toast.LENGTH_SHORT).show()
         }
 
     }
