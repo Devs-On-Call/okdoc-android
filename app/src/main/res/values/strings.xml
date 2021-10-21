@@ -8,7 +8,6 @@
     <string name="serialized_patient_appointments" lang="en" translatable="false">serialized_patient_appointments</string>
     <string name="serialized_doctor_appointments" lang="en" translatable="false">serialized_doctor_appointments</string>
     <string name="serialized_professions" lang="en" translatable="false">serialized_professions</string>
-    <string name="serialized_hospitals" lang="en" translatable="false">serialized_hospitals</string>
     <string name="serialized_booked_times" translatable="false">serialized_booked_times</string>
     <string name="prescription_id_clicked" lang="en" translatable="false">prescription_id_clicked</string>
     <string name="diagnosis_id_clicked" lang="en" translatable="false">diagnosis_id_clicked</string>
@@ -88,6 +87,7 @@
     <!--  Confirmation screen UI string  -->
     <string name="confirmation">Confrimation</string>
     <string name="confirmation_text">You are about to schedule an appointment:</string>
+    <string name="reason_field_message" lang="en">Reason (Optional)</string>
     <string name="cancel">Cancel</string>
 
     <!--  Confirmed screen UI strings-->

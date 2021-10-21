@@ -1,5 +1,6 @@
 package com.devsoncall.okdoc.fragments
 
+import android.annotation.SuppressLint
 import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
@@ -7,13 +8,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import com.devsoncall.okdoc.R
 import com.devsoncall.okdoc.activities.MainMenuActivity
+import com.devsoncall.okdoc.api.ApiUtils
+import com.devsoncall.okdoc.api.calls.ApiCreateAppointment
+import com.devsoncall.okdoc.models.BasicResponse
 import com.devsoncall.okdoc.utils.formatDateString
 import kotlinx.android.synthetic.main.confirmation_fragment.*
+import org.json.JSONException
+import org.json.JSONObject
+import retrofit2.Response
 
 class ConfirmationFragment : Fragment(R.layout.confirmation_fragment) {
 
@@ -29,6 +38,7 @@ class ConfirmationFragment : Fragment(R.layout.confirmation_fragment) {
         return inflater.inflate(R.layout.confirmation_fragment, container, false)
     }
 
+    @SuppressLint("SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -50,21 +60,63 @@ class ConfirmationFragment : Fragment(R.layout.confirmation_fragment) {
         textViewDate.text = dateString
         textViewTime.text = time
 
-        buttonBack.setOnClickListener { view ->
+        buttonBack.setOnClickListener {
             view.findNavController().navigate(R.id.navigation_hours)
         }
 
-        buttonCancel.setOnClickListener { view ->
+        buttonCancel.setOnClickListener {
             view.findNavController().navigate(R.id.navigation_home)
         }
 
-        buttonConfirmAppointment.setOnClickListener { view ->
-            view.findNavController().navigate(R.id.navigation_confirmed)
-            // TODO
-            // navigate to confirmed error fragment in case of error
-            // post the scheduled appointment
-//            Toast.makeText(this.context, "Confirm", Toast.LENGTH_SHORT).show()
-
+        buttonConfirmAppointment.setOnClickListener {
+            val authToken = sharedPreferences?.getString(getString(R.string.auth_token), "")
+            val patientId = sharedPreferences?.getString(getString(R.string.patient_id), "")
+            val doctor = sharedPreferences?.getString(getString(R.string.doctor_id_clicked), null)
+            val hospital = sharedPreferences?.getString(getString(R.string.hospital_id_clicked), null)
+            if(authToken != "" && patientId != "" && authToken != null && patientId != null
+                && date != "" && time != "" && date != null && time != null
+                && doctor != "" && hospital != "" && doctor != null && hospital != null)
+                if(ApiUtils().isOnline(this.requireContext()))
+                    createAppointment(authToken, patientId, date, time, doctor, hospital)
+                else
+                    Toast.makeText(this.context, "Check your internet connection", Toast.LENGTH_SHORT).show()
         }
     }
+
+    private fun createAppointment(authToken: String, patientId: String, date: String,
+                                  time: String, doctor: String, hospital: String) {
+        var reason = view?.findViewById<EditText>(R.id.editTextReason)?.text.toString()
+        if (reason.isEmpty()){
+            reason = "-"
+        }
+
+        mainMenuActivity?.loadingOverlay?.show()
+        val apiCreateAppointment = ApiCreateAppointment()
+        apiCreateAppointment.setOnDataListener(object : ApiCreateAppointment.DataInterface {
+            override fun responseData(createAppointmentResponse: Response<BasicResponse>) {
+                if (createAppointmentResponse.code() == 200) {
+                    view?.findNavController()?.navigate(R.id.navigation_confirmed)
+                } else if (createAppointmentResponse.code() == 400) {
+                    try {
+                        val jsonObject = JSONObject(createAppointmentResponse.errorBody()?.string())
+                        val errorMessage: String = jsonObject.getString("message")
+                        println(errorMessage)
+                    } catch (e: JSONException) {
+                        e.printStackTrace()
+                    }
+                    mainMenuActivity?.loadingOverlay?.dismiss()
+                    view?.findNavController()?.navigate(R.id.navigation_error)
+                }
+                mainMenuActivity?.loadingOverlay?.dismiss()
+            }
+
+            override fun failureData(t: Throwable) {
+                mainMenuActivity?.loadingOverlay?.dismiss()
+                view?.findNavController()?.navigate(R.id.navigation_error)
+            }
+        })
+        apiCreateAppointment.createAppointment(patientId, reason, doctor, hospital,
+            date+"T"+time, authToken)
+    }
+
 }

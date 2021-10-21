@@ -69,7 +69,7 @@
     <View
         android:id="@+id/viewBorders"
         android:layout_width="320dp"
-        android:layout_height="280dp"
+        android:layout_height="200dp"
         android:layout_margin="16dp"
         android:background="@drawable/white_border"
         app:layout_constraintEnd_toEndOf="@+id/viewCalendarBackground"
@@ -112,7 +112,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingHorizontal="18dp"
-        android:paddingTop="28dp"
+        android:paddingTop="10dp"
         android:text="@string/hospital_name"
         android:textAlignment="center"
         android:textAllCaps="false"
@@ -141,7 +141,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingHorizontal="18dp"
-        android:paddingTop="28dp"
+        android:paddingTop="10dp"
         android:text="@string/date"
         android:textAlignment="center"
         android:textAllCaps="false"
@@ -164,6 +164,25 @@
         app:layout_constraintStart_toStartOf="@+id/viewBorders"
         app:layout_constraintTop_toBottomOf="@+id/textViewDate" />
 
+    <EditText
+        android:id="@+id/editTextReason"
+        style="@style/amka_field"
+        android:layout_width="310dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/white_border"
+        android:ems="10"
+        android:focusable="auto"
+        android:hint="@string/reason_field_message"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:textAppearance="@style/amka_field"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewBorders" />
+
     <Button
         android:id="@+id/buttonConfirmAppointment"
         android:layout_width="100dp"
@@ -177,7 +196,7 @@
         app:layout_constraintEnd_toEndOf="@+id/viewBorders"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/buttonCancel"
-        app:layout_constraintTop_toBottomOf="@+id/viewBorders" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextReason" />
 
     <Button
         android:id="@+id/buttonCancel"
@@ -192,6 +211,6 @@
         app:layout_constraintEnd_toStartOf="@+id/buttonConfirmAppointment"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/viewBorders"
-        app:layout_constraintTop_toBottomOf="@+id/viewBorders" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextReason" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

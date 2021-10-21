@@ -84,13 +84,15 @@ class HospitalListFragment : Fragment(R.layout.hospital_list_fragment), Hospital
                     } catch (e: JSONException) {
                         e.printStackTrace()
                     }
+                    mainMenuActivity?.loadingOverlay?.dismiss()
+                    view?.findNavController()?.navigate(R.id.navigation_error)
                 }
                 mainMenuActivity?.loadingOverlay?.dismiss()
             }
 
             override fun failureData(t: Throwable) {
                 mainMenuActivity?.loadingOverlay?.dismiss()
-                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
+                view?.findNavController()?.navigate(R.id.navigation_error)
             }
         })
         apiGetHospitals.getHospitals(authToken, professionId)
