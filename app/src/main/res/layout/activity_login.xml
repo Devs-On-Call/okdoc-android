@@ -54,19 +54,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.803" />
 
-    <View
-        android:id="@+id/doctors_image"
+    <ImageView
+        android:id="@+id/imageViewDoctors"
         android:layout_width="301dp"
         android:layout_height="217dp"
         android:layout_marginBottom="80dp"
-        android:background="@drawable/ic_login"
+        android:src="@drawable/ic_login"
         app:layout_constraintBottom_toTopOf="@+id/editTextAmka"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/welcome_message_first_line"
+        android:id="@+id/textViewWelcomeTo"
         style="@style/welcome_message_first_line"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -75,13 +74,13 @@
         android:textColor="@color/rich_black_80"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/welcome_message_second_line"
+        app:layout_constraintBottom_toTopOf="@+id/textViewOkDoc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/welcome_message_second_line"
+        android:id="@+id/textViewOkDoc"
         style="@style/welcome_message_second_line"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -92,13 +91,13 @@
         android:textColor="@color/rich_black_80"
         android:textStyle="bold"
         android:typeface="normal"
-        app:layout_constraintBottom_toTopOf="@+id/doctors_image"
+        app:layout_constraintBottom_toTopOf="@+id/imageViewDoctors"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/getStartedButton"
+        android:id="@+id/buttonGetStarted"
         style="@style/get_started"
         android:layout_width="206dp"
         android:layout_height="62dp"
@@ -130,7 +129,7 @@
         android:importantForAutofill="no"
         android:inputType="number"
         android:textAppearance="@style/amka_field"
-        app:layout_constraintBottom_toTopOf="@+id/getStartedButton"
+        app:layout_constraintBottom_toTopOf="@+id/buttonGetStarted"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />

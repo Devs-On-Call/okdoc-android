@@ -21,9 +21,19 @@ import com.devsoncall.okdoc.models.GetPatientResponse
 import com.devsoncall.okdoc.models.Patient
 import com.mohamedabulgasem.loadingoverlay.LoadingAnimation
 import com.mohamedabulgasem.loadingoverlay.LoadingOverlay
+import kotlinx.android.synthetic.main.activity_login.*
 import org.json.JSONException
 import org.json.JSONObject
 import retrofit2.*
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent.setEventListener
+import android.view.View
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
+import com.devsoncall.okdoc.utils.dpToPx
+
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 
 
 class LoginActivity : AppCompatActivity() {
@@ -46,12 +56,91 @@ class LoginActivity : AppCompatActivity() {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this@LoginActivity)
         sharedPreferences?.edit()?.clear()?.apply()
 
-        findViewById<Button>(R.id.getStartedButton).setOnClickListener{
+        findViewById<Button>(R.id.buttonGetStarted).setOnClickListener{
             if(ApiUtils().isOnline(this@LoginActivity))
                 login()
             else
                 Toast.makeText(applicationContext, "Check your internet connection", Toast.LENGTH_LONG).show()
         }
+
+        setEventListener(
+            this,
+            KeyboardVisibilityEventListener {
+                // Soft Keyboard Active
+                if (it) {
+                    imageViewDoctors.visibility = View.INVISIBLE
+
+                    // adjust constraints
+                    val constraintLayout = findViewById<ConstraintLayout>(R.id.activity_root)
+                    val constraintSet = ConstraintSet()
+                    constraintSet.clear(R.id.imageViewDoctors)
+                    constraintSet.clone(constraintLayout)
+                    constraintSet.connect(
+                        R.id.textViewOkDoc,
+                        ConstraintSet.BOTTOM,
+                        R.id.editTextAmka,
+                        ConstraintSet.TOP,
+                        300
+                    )
+                    constraintSet.connect(
+                        R.id.buttonGetStarted,
+                        ConstraintSet.BOTTOM,
+                        R.id.activity_root,
+                        ConstraintSet.BOTTOM,
+                        800
+                    )
+                    constraintSet.applyTo(constraintLayout)
+
+                // Soft Keyboard Inactive
+                } else {
+                    // Fade in animation
+                    val fadeInAnimation: Animation =
+                        AnimationUtils.loadAnimation(this, R.anim.fade_in)
+                    imageViewDoctors.startAnimation(fadeInAnimation)
+                    imageViewDoctors.visibility = View.VISIBLE
+
+                    // adjust constraints
+                    val constraintLayout = findViewById<ConstraintLayout>(R.id.activity_root)
+                    val constraintSet = ConstraintSet()
+                    constraintSet.clone(constraintLayout)
+                    constraintSet.connect(
+                        R.id.buttonGetStarted,
+                        ConstraintSet.BOTTOM,
+                        R.id.activity_root,
+                        ConstraintSet.BOTTOM,
+                        dpToPx(120, this)
+                    )
+                    constraintSet.connect(
+                        R.id.imageViewDoctors,
+                        ConstraintSet.BOTTOM,
+                        R.id.editTextAmka,
+                        ConstraintSet.TOP,
+                        dpToPx(80, this)
+                    )
+                    constraintSet.connect(
+                        R.id.imageViewDoctors,
+                        ConstraintSet.START,
+                        R.id.activity_root,
+                        ConstraintSet.START,
+                        0
+                    )
+                    constraintSet.connect(
+                        R.id.imageViewDoctors,
+                        ConstraintSet.END,
+                        R.id.activity_root,
+                        ConstraintSet.END,
+                        0
+                    )
+                    constraintSet.connect(
+                        R.id.textViewOkDoc,
+                        ConstraintSet.BOTTOM,
+                        R.id.imageViewDoctors,
+                        ConstraintSet.TOP,
+                        dpToPx(20, this)
+                    )
+                    constraintSet.applyTo(constraintLayout)
+                }
+            })
     }
 
     private fun login() {
