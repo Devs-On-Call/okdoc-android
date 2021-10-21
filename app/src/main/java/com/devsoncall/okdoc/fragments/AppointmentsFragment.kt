@@ -120,6 +120,8 @@ class AppointmentsFragment : Fragment(R.layout.appointments_fragment), Appointme
                     } catch (e: JSONException) {
                         e.printStackTrace()
                     }
+                    mainMenuActivity?.loadingOverlay?.dismiss()
+                    view?.findNavController()?.navigate(R.id.navigation_error)
                 }
                 mSwipeRefreshLayout!!.isRefreshing = false
                 mainMenuActivity?.loadingOverlay?.dismiss()
@@ -128,7 +130,7 @@ class AppointmentsFragment : Fragment(R.layout.appointments_fragment), Appointme
             override fun failureData(t: Throwable) {
                 mSwipeRefreshLayout!!.isRefreshing = false
                 mainMenuActivity?.loadingOverlay?.dismiss()
-                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
+                view?.findNavController()?.navigate(R.id.navigation_error)
             }
         })
         apiGetAppointments.getAppointments(authToken, patientId)

@@ -20,8 +20,11 @@ import com.devsoncall.okdoc.api.ApiUtils
 import com.devsoncall.okdoc.api.calls.ApiGetPrescriptions
 import com.devsoncall.okdoc.models.DataListResponse
 import com.devsoncall.okdoc.models.Prescription
+import com.devsoncall.okdoc.utils.formatDateString
+import com.devsoncall.okdoc.utils.getDayOfWeek
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import kotlinx.android.synthetic.main.item_diagnosis.view.*
 import kotlinx.android.synthetic.main.prescription_fragment.*
 import org.json.JSONException
 import org.json.JSONObject
@@ -109,13 +112,15 @@ class PrescriptionFragment : Fragment(R.layout.prescription_fragment) {
                     } catch (e: JSONException) {
                         e.printStackTrace()
                     }
+                    mainMenuActivity?.loadingOverlay?.dismiss()
+                    view?.findNavController()?.navigate(R.id.navigation_error)
                 }
                 mainMenuActivity?.loadingOverlay?.dismiss()
             }
 
             override fun failureData(t: Throwable) {
                 mainMenuActivity?.loadingOverlay?.dismiss()
-                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
+                view?.findNavController()?.navigate(R.id.navigation_error)
             }
         })
         apiGetPrescriptions.getPrescriptions(authToken, patientId)
@@ -137,7 +142,9 @@ class PrescriptionFragment : Fragment(R.layout.prescription_fragment) {
 
     @SuppressLint("SetTextI18n")
     private fun setUIElements(prescription: Prescription) {
-        buttonPastDiagnoses.text = prescription.date
+        val date = prescription.date.take(10)
+        val dayOfWeek = getDayOfWeek(date).toString()
+        buttonPastDiagnoses.text = formatDateString(date, dayOfWeek).replace(", ", ",\n")
         textViewTitle.text = prescription.diagnosis.diagnosis
         textViewDoctor.text = "${prescription.doctor.name} ${prescription.doctor.lastName}"
         fullNameDescription.text = prescription.doctor.profession.name
