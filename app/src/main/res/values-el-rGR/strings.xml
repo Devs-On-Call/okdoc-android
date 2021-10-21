@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="welcome_message_first_line">Καλώς ορίσατε στο</string>
-    <string name="amka_field_message">Πληκτρολογήστε τον ΑΜΚΑ σας για να προχωρήσετε</string>
+    <string name="amka_field_message">Πληκτρολογήστε τον ΑΜΚΑ σας</string>
     <string name="get_started_button">Ξεκινήστε</string>
     <string name="profile_full_name">Ονοματεπώνυμο</string>
-    <string name="profile_blood_type">Ομάδα αίματος</string>
-    <string name="profile_family_doctor">Οικογενειακός γιατρός</string>
-    <string name="default_home_greeting">👋🏻 Γεια σου,</string>
+    <string name="profile_blood_type">Ομάδα Αίματος</string>
+    <string name="profile_family_doctor">Οικογενειακός Γιατρός</string>
+    <string name="default_home_greeting">👋🏻 Γειά σου,</string>
     <string name="past_diagnoses_button">Διαγνώσεις</string>
     <string name="prescriptions_button">Συνταγές</string>
     <string name="view_appointments_button">Δες τα ραντεβού</string>
@@ -23,7 +23,7 @@
     <string name="confirm">Επόμενο</string>
     <string name="select_time">Διάλεξε Ώρα</string>
     <string name="confirmation">Επιβεβαίωση</string>
-    <string name="confirmation_text">Πρόκειται να κλείσεται το παρακάτω ραντεβού:</string>
+    <string name="confirmation_text">Πρόκειται να επιβεβαιώσετε το παρακάτω ραντεβού:</string>
     <string name="cancel">Άκυρο</string>
     <string name="confirmed">Επιτυχία</string>
     <string name="appointment_scheduled">Το ραντεβού έκλεισε\nμε επιτυχία</string>

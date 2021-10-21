@@ -6,18 +6,30 @@
     app:startDestination="@+id/navigation_home">
 
     <fragment
+        app:popEnterAnim="@anim/key_anim_in"
+        app:popExitAnim="@anim/key_anim_out"
+        app:enterAnim="@anim/key_anim_in"
+        app:exitAnim="@anim/key_anim_out"
         android:id="@+id/navigation_home"
         android:name="com.devsoncall.okdoc.fragments.HomeFragment"
         android:label="Home"
         tools:layout="@layout/home_fragment" />
 
     <fragment
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/push_down_out"
+        app:enterAnim="@anim/slide_in_left"
+        app:exitAnim="@anim/push_down_out"
         android:id="@+id/navigation_profile"
         android:name="com.devsoncall.okdoc.fragments.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/profile_fragment" />
 
     <fragment
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/push_down_out"
+        app:enterAnim="@anim/slide_in_left"
+        app:exitAnim="@anim/push_down_out"
         android:id="@+id/navigation_settings"
         android:name="com.devsoncall.okdoc.fragments.SettingsFragment"
         android:label="Settings"
@@ -54,12 +66,20 @@
         tools:layout="@layout/diagnoses_list_fragment" />
 
     <fragment
+        app:popEnterAnim="@anim/key_anim_in"
+        app:popExitAnim="@anim/key_anim_out"
+        app:enterAnim="@anim/key_anim_in"
+        app:exitAnim="@anim/key_anim_out"
         android:id="@+id/navigation_professions"
         android:name="com.devsoncall.okdoc.fragments.ProfessionsFragment"
         android:label="Professions"
         tools:layout="@layout/professions_fragment" />
 
     <fragment
+        app:popEnterAnim="@anim/key_anim_in"
+        app:popExitAnim="@anim/key_anim_out"
+        app:enterAnim="@anim/key_anim_in"
+        app:exitAnim="@anim/key_anim_out"
         android:id="@+id/navigation_hospital_list"
         android:name="com.devsoncall.okdoc.fragments.HospitalListFragment"
         android:label="Hospitals List"
