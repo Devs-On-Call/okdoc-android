@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
+import androidx.viewpager.widget.ViewPager
 import com.devsoncall.okdoc.R
 import kotlinx.android.synthetic.main.calendar_fragment.*
 import com.devsoncall.okdoc.activities.MainMenuActivity
@@ -102,8 +103,8 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment) {
                 if (getAppointmentsResponse.code() == 200) {
                     if (getAppointmentsResponse.body()?.data != null) {
                         appointments = getAppointmentsResponse.body()?.data!!
-                        setDisabledDays(appointments!!)
                         saveDoctorAppointmentsInPrefs(appointments!!)
+                        setDisabledDays(appointments!!)
                     }
                 } else if (getAppointmentsResponse.code() == 400) {
                     try {
@@ -153,6 +154,7 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment) {
             disabledDays.add(day)
         }
         calendarView.setDisabledDays(disabledDays)
+        invalidateRecursive(calendarView)
     }
 
     private fun saveDoctorAppointmentsInPrefs(appointments: List<DoctorAppointment>) {
@@ -175,5 +177,19 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment) {
         editor?.putString(getString(R.string.date_clicked), date)
         editor?.putString(getString(R.string.day_of_week_clicked), dayOfWeek)
         editor?.apply()
+    }
+
+    private fun invalidateRecursive(layout: ViewGroup) {
+        val count = layout.childCount
+        var child: View
+        for (i in 0 until count) {
+            child = layout.getChildAt(i)
+            if (child is ViewPager){
+                child.adapter!!.notifyDataSetChanged()
+            }
+            if (child is ViewGroup){
+                invalidateRecursive(child as ViewGroup)
+            }
+        }
     }
 }
