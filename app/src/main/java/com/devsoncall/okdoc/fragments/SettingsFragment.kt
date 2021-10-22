@@ -3,6 +3,7 @@ package com.devsoncall.okdoc.fragments
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -54,6 +55,7 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
         clearPrefs()
 
         val intent = Intent(activity, LoginActivity::class.java)
+        intent.flags = FLAG_ACTIVITY_CLEAR_TOP
         startActivity(intent)
     }
 
