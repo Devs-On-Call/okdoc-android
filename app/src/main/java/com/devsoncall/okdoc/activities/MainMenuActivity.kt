@@ -8,22 +8,51 @@ import androidx.navigation.ui.setupWithNavController
 import com.devsoncall.okdoc.R
 import com.mohamedabulgasem.loadingoverlay.LoadingAnimation
 import com.mohamedabulgasem.loadingoverlay.LoadingOverlay
+import android.app.Activity
+import android.app.PendingIntent.getActivity
+import android.content.res.Configuration
+import android.content.res.Resources
+import androidx.preference.PreferenceManager
+import java.util.*
 
 
 class MainMenuActivity : AppCompatActivity() {
+
     val loadingOverlay: LoadingOverlay by lazy {
         LoadingOverlay.with(
             context = this@MainMenuActivity,
             animation = LoadingAnimation.FADING_PROGRESS
         )
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTheme(R.style.Theme_OkDoc)
+
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this@MainMenuActivity)
+        val language = sharedPreferences?.getString(getString(R.string.language), null)
+        if(language != null) setLocale(language)
+
         setContentView(R.layout.activity_main_menu)
 
         val navView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
         val navController = findNavController(R.id.nav_host_fragment)
         navView.setupWithNavController(navController)
+    }
+
+    fun setLocale(languageCode: String) {
+        val currentLanguage = Locale.getDefault().language
+        if (languageCode == currentLanguage) return
+
+        // change language
+        val locale = Locale(languageCode)
+        Locale.setDefault(locale)
+        val resources: Resources = this.resources
+        val config: Configuration = resources.configuration
+        config.setLocale(locale)
+        resources.updateConfiguration(config, resources.displayMetrics)
+
+        // reload activity
+        this.recreate()
     }
 }

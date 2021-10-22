@@ -42,6 +42,12 @@
         tools:layout="@layout/credits_fragment" />
 
     <fragment
+        android:id="@+id/navigation_languages"
+        android:name="com.devsoncall.okdoc.fragments.LanguagesFragment"
+        android:label="Languages"
+        tools:layout="@layout/languages_fragment" />
+
+    <fragment
         android:id="@+id/navigation_appointments"
         android:name="com.devsoncall.okdoc.fragments.AppointmentsFragment"
         android:label="Appointments"

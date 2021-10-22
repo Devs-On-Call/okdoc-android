@@ -1,7 +1,10 @@
 package com.devsoncall.okdoc.activities
 
+import android.app.Activity
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.Configuration
+import android.content.res.Resources
 import android.os.Build
 import android.os.Bundle
 import android.widget.Button
@@ -34,6 +37,7 @@ import com.devsoncall.okdoc.utils.dpToPx
 
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import java.util.*
 
 
 class LoginActivity : AppCompatActivity() {
@@ -51,10 +55,13 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this@LoginActivity)
+        val language = sharedPreferences?.getString(getString(R.string.language), null)
+        if(language != null) setLocale(language)
+
         setContentView(R.layout.activity_login)
 
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this@LoginActivity)
-        sharedPreferences?.edit()?.clear()?.apply()
+        clearPrefs()
 
         findViewById<Button>(R.id.buttonGetStarted).setOnClickListener{
             if(ApiUtils().isOnline(this@LoginActivity))
@@ -141,6 +148,32 @@ class LoginActivity : AppCompatActivity() {
                     constraintSet.applyTo(constraintLayout)
                 }
             })
+    }
+
+    private fun clearPrefs(){
+        val language = sharedPreferences?.getString(getString(R.string.language), null)
+        sharedPreferences?.edit()?.clear()?.apply()
+        if (language != null) {
+            val editor: SharedPreferences.Editor? = sharedPreferences?.edit()
+            editor?.putString(getString(R.string.language), language)
+            editor?.apply()
+        }
+    }
+
+    private fun setLocale(languageCode: String) {
+        val currentLanguage = Locale.getDefault().language
+        if (languageCode == currentLanguage) return
+
+        // change language
+        val locale = Locale(languageCode)
+        Locale.setDefault(locale)
+        val resources: Resources = this.resources
+        val config: Configuration = resources.configuration
+        config.setLocale(locale)
+        resources.updateConfiguration(config, resources.displayMetrics)
+
+        // reload activity
+        this.recreate()
     }
 
     private fun login() {
