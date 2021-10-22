@@ -29,8 +29,7 @@ class DoctorsAdapter(
             val doctorName = doctors[position].name
             val doctorLastName = doctors[position].lastName
             tvDoctorFullName.text = "Dr. $doctorName $doctorLastName"
-            // should add in backend to return profession
-//            tvDoctorProfession.text = doctors[position].profession.name
+            tvDoctorProfession.text = doctors[position].profession?.name
         }
     }
 

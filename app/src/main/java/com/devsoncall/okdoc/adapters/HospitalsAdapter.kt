@@ -23,8 +23,7 @@ class HospitalsAdapter(
         println(hospitals[position])
         holder.itemView.apply {
             tvHospitalName.text = hospitals[position].name
-            // need to update back-end to return address
-//            tvHospitalLocation.text = hospitals[position].address
+            tvHospitalLocation.text = hospitals[position].address
         }
     }
 

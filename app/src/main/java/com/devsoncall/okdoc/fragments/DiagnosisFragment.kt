@@ -77,11 +77,11 @@ class DiagnosisFragment : Fragment(R.layout.diagnosis_fragment) {
         }
 
         buttonPrescription.setOnClickListener {
-//            val selectedPrescriptionId = selectedDiagnosis?.prescription?._id
-//            if (selectedPrescriptionId != null)
-//                savePrescriptionIdClickedInPrefs(selectedPrescriptionId)
-//
-//            view.findNavController().navigate(R.id.navigation_diagnosis)
+            val selectedPrescriptionId = selectedDiagnosis?.prescription
+            if (selectedPrescriptionId != null)
+                savePrescriptionIdClickedInPrefs(selectedPrescriptionId)
+
+            view.findNavController().navigate(R.id.navigation_prescription)
         }
 
         imageButtonShareDiagnosis.setOnClickListener {

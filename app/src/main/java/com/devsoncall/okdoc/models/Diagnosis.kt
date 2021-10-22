@@ -4,5 +4,6 @@ data class Diagnosis(
     val _id: String,
     val date: String,
     val diagnosis: String,
-    val doctor: Doctor
+    val doctor: Doctor,
+    val prescription: String
 )
