@@ -10,11 +10,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import com.devsoncall.okdoc.R
+import com.devsoncall.okdoc.utils.animKeyIn
+import com.devsoncall.okdoc.utils.animPushUpIn
 import com.devsoncall.okdoc.utils.setAvatar
 import kotlinx.android.synthetic.main.home_fragment.*
 
@@ -35,6 +36,10 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        activity?.applicationContext?.let { animPushUpIn(scrollViewHome, it) }
+        activity?.applicationContext?.let { animKeyIn(textViewHi, it) }
+        activity?.applicationContext?.let { animKeyIn(imageViewAvatar, it) }
 
         clearSharedPrefsFromAppointmentCreation()
 

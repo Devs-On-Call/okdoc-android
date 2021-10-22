@@ -18,8 +18,11 @@ import com.devsoncall.okdoc.activities.MainMenuActivity
 import com.devsoncall.okdoc.api.ApiUtils
 import com.devsoncall.okdoc.api.calls.ApiCreateAppointment
 import com.devsoncall.okdoc.models.BasicResponse
+import com.devsoncall.okdoc.utils.animFadeIn
+import com.devsoncall.okdoc.utils.animPushRightIn
 import com.devsoncall.okdoc.utils.formatDateString
 import kotlinx.android.synthetic.main.confirmation_fragment.*
+import kotlinx.android.synthetic.main.confirmation_fragment.buttonBack
 import org.json.JSONException
 import org.json.JSONObject
 import retrofit2.Response
@@ -42,6 +45,18 @@ class ConfirmationFragment : Fragment(R.layout.confirmation_fragment) {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        activity?.applicationContext?.let { animPushRightIn(viewConfirmationBackground, it) }
+        activity?.applicationContext?.let { animFadeIn(textViewHint, it) }
+        activity?.applicationContext?.let { animFadeIn(textViewDoctorName, it) }
+        activity?.applicationContext?.let { animFadeIn(textViewDoctorSpecialty, it) }
+        activity?.applicationContext?.let { animFadeIn(textViewHospitalName, it) }
+        activity?.applicationContext?.let { animFadeIn(textViewHospitalLocation, it) }
+        activity?.applicationContext?.let { animFadeIn(textViewDate, it) }
+        activity?.applicationContext?.let { animFadeIn(textViewTime, it) }
+        activity?.applicationContext?.let { animFadeIn(viewBorders, it) }
+        activity?.applicationContext?.let { animFadeIn(editTextReason, it) }
+
 
         val doctorName = sharedPreferences?.getString(getString(R.string.doctor_name), null)
         val doctorSpecialty = sharedPreferences?.getString(getString(R.string.profession_name_clicked), null)

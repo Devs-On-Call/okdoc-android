@@ -21,6 +21,7 @@ import com.devsoncall.okdoc.api.ApiUtils
 import com.devsoncall.okdoc.api.calls.ApiGetHospitals
 import com.devsoncall.okdoc.models.DataListResponse
 import com.devsoncall.okdoc.models.Hospital
+import com.devsoncall.okdoc.utils.animKeyIn
 import kotlinx.android.synthetic.main.hospital_list_fragment.*
 import org.json.JSONException
 import org.json.JSONObject
@@ -46,6 +47,8 @@ class HospitalListFragment : Fragment(R.layout.hospital_list_fragment), Hospital
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        activity?.applicationContext?.let { animKeyIn(rvHospitals, it) }
 
         val authToken = sharedPreferences?.getString(getString(R.string.auth_token), "")
         val professionId = sharedPreferences?.getString(getString(R.string.profession_id_clicked), "")

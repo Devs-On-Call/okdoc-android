@@ -18,15 +18,12 @@ import com.devsoncall.okdoc.api.ApiUtils
 import com.devsoncall.okdoc.api.calls.ApiGetDiagnoses
 import com.devsoncall.okdoc.models.DataListResponse
 import com.devsoncall.okdoc.models.Diagnosis
-import com.devsoncall.okdoc.models.Prescription
+import com.devsoncall.okdoc.utils.animFadeIn
 import com.devsoncall.okdoc.utils.formatDateString
 import com.devsoncall.okdoc.utils.getDayOfWeek
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.diagnosis_fragment.*
-import kotlinx.android.synthetic.main.home_fragment.*
-import kotlinx.android.synthetic.main.prescription_fragment.*
-import kotlinx.android.synthetic.main.prescription_fragment.buttonBack
 import org.json.JSONException
 import org.json.JSONObject
 import retrofit2.Response
@@ -50,6 +47,12 @@ class DiagnosisFragment : Fragment(R.layout.diagnosis_fragment) {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        activity?.applicationContext?.let { animFadeIn(textViewDiagnosisTitle, it) }
+        activity?.applicationContext?.let { animFadeIn(textViewDiagnosisDoctor, it) }
+        activity?.applicationContext?.let { animFadeIn(textViewDiagnosisDoctorProfession, it) }
+        activity?.applicationContext?.let { animFadeIn(textViewDiagnosisDetails, it) }
+        activity?.applicationContext?.let { animFadeIn(scrollViewMedicationsList, it) }
 
         val serializedDiagnoses = sharedPreferences?.getString(getString(R.string.serialized_diagnoses), null)
         val diagnosisIdClicked = sharedPreferences?.getString(getString(R.string.diagnosis_id_clicked), "")

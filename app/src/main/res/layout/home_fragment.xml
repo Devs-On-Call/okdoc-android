@@ -40,7 +40,7 @@
         app:layout_constraintVertical_bias="0.484" />
 
     <ScrollView
-        android:id="@+id/scrollView2"
+        android:id="@+id/scrollViewHome"
         android:layout_width="358dp"
         android:layout_height="0dp"
         android:layout_marginVertical="20dp"
@@ -52,6 +52,7 @@
         app:layout_constraintVertical_bias="0.1">
 
         <LinearLayout
+            android:id="@+id/linearLayoutMenu"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:orientation="vertical"

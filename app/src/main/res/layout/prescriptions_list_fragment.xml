@@ -10,47 +10,50 @@
 
     <Button
         android:id="@+id/btPrescriptions"
-        android:layout_width="310dp"
+        android:layout_width="295dp"
         android:layout_height="100dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="36dp"
-        android:layout_marginEnd="18dp"
+        android:layout_marginEnd="22dp"
         android:background="@drawable/mandarin_border_12dp"
-        android:paddingStart="40dp"
-        android:paddingEnd="30dp"
+        android:clickable="false"
         android:drawableEnd="@drawable/ic_prescriptions_list"
+        android:paddingStart="25dp"
+        android:paddingEnd="30dp"
         android:text="@string/prescriptions_button"
         android:textAlignment="viewStart"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
         android:textSize="20dp"
-        android:clickable="false"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btBack"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btBack"
         android:layout_width="43dp"
         android:layout_height="81dp"
-        android:layout_marginLeft="18dp"
+        android:layout_marginStart="22dp"
         android:layout_marginTop="55dp"
         android:background="@drawable/mandarin_border_12dp"
         android:drawableStart="@drawable/ic_back_arrow"
         android:paddingHorizontal="13dp"
         app:layout_constraintEnd_toStartOf="@+id/btPrescriptions"
-        app:layout_constraintHorizontal_bias="0.595"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_prescriptions_container"
         android:layout_width="358dp"
-        android:layout_height="462dp"
+        android:layout_height="520dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.765">
+        app:layout_constraintTop_toBottomOf="@+id/btPrescriptions">
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvPrescriptions"
             android:layout_width="match_parent"

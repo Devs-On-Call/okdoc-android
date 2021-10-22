@@ -21,6 +21,7 @@ import com.devsoncall.okdoc.api.ApiUtils
 import com.devsoncall.okdoc.api.calls.ApiGetDoctors
 import com.devsoncall.okdoc.models.DataListResponse
 import com.devsoncall.okdoc.models.Doctor
+import com.devsoncall.okdoc.utils.animKeyIn
 import kotlinx.android.synthetic.main.doctors_fragment.*
 import org.json.JSONException
 import org.json.JSONObject
@@ -45,6 +46,8 @@ class DoctorsFragment : Fragment(R.layout.doctors_fragment), DoctorsAdapter.OnIt
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        activity?.applicationContext?.let { animKeyIn(rvDoctors, it) }
 
         val authToken = sharedPreferences?.getString(getString(R.string.auth_token), "")
         val professionId = sharedPreferences?.getString(getString(R.string.profession_id_clicked), "")

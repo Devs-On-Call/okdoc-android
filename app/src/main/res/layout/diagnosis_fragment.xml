@@ -9,22 +9,24 @@
 
     <Button
         android:id="@+id/buttonDiagnosisDate"
-        android:layout_width="310dp"
+        android:layout_width="295dp"
         android:layout_height="100dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="22dp"
         android:background="@drawable/mandarin_border_12dp"
+        android:clickable="false"
         android:drawableEnd="@drawable/ic_diagnosis"
-        android:paddingStart="40dp"
-        android:paddingEnd="30dp"
         android:hint="@string/prescription_header"
+        android:paddingStart="25dp"
+        android:paddingEnd="30dp"
         android:textAlignment="viewStart"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
         android:textSize="20dp"
-        android:clickable="false"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/buttonBack"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -33,19 +35,18 @@
         android:layout_height="81dp"
         android:layout_marginStart="22dp"
         android:layout_marginTop="55dp"
-        android:layout_marginEnd="10dp"
         android:background="@drawable/mandarin_border_12dp"
         android:drawableStart="@drawable/ic_back_arrow"
         android:paddingHorizontal="13dp"
         app:layout_constraintEnd_toStartOf="@+id/buttonDiagnosisDate"
-        app:layout_constraintHorizontal_bias="0.595"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
 
     <View
-        android:id="@+id/LinearLayoutPrescription"
+        android:id="@+id/viewDiagnosisBackground"
         android:layout_width="358dp"
         android:layout_height="520dp"
         android:layout_marginVertical="20dp"
@@ -53,10 +54,9 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonDiagnosisDate"
-        app:layout_constraintVertical_bias="0.466" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonDiagnosisDate" />
 
     <TextView
         android:id="@+id/textViewDiagnosisTitle"
@@ -71,14 +71,14 @@
         android:textColor="@color/rich_black_80"
         android:textSize="20dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/LinearLayoutPrescription"
-        app:layout_constraintTop_toTopOf="@+id/LinearLayoutPrescription" />
+        app:layout_constraintStart_toStartOf="@+id/viewDiagnosisBackground"
+        app:layout_constraintTop_toTopOf="@+id/viewDiagnosisBackground" />
 
     <TextView
         android:id="@+id/textViewDiagnosisDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
+        android:layout_marginHorizontal="5dp"
         android:layout_marginTop="40dp"
         android:text="@string/diagnosis_details"
         android:textAlignment="center"
@@ -86,7 +86,7 @@
         android:textColor="@color/rich_black_80"
         android:textSize="18dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/LinearLayoutPrescription"
+        app:layout_constraintStart_toStartOf="@+id/scrollViewMedicationsList"
         app:layout_constraintTop_toBottomOf="@+id/textViewDiagnosisDoctorProfession" />
 
     <ScrollView
@@ -97,9 +97,9 @@
         android:layout_marginBottom="10dp"
 
         android:background="@drawable/white_border"
-        app:layout_constraintBottom_toBottomOf="@+id/LinearLayoutPrescription"
-        app:layout_constraintEnd_toEndOf="@+id/LinearLayoutPrescription"
-        app:layout_constraintStart_toStartOf="@+id/LinearLayoutPrescription"
+        app:layout_constraintBottom_toBottomOf="@+id/viewDiagnosisBackground"
+        app:layout_constraintEnd_toEndOf="@+id/viewDiagnosisBackground"
+        app:layout_constraintStart_toStartOf="@+id/viewDiagnosisBackground"
         app:layout_constraintTop_toBottomOf="@+id/textViewDiagnosisDetails">
 
         <TextView
@@ -111,7 +111,7 @@
             android:textAlignment="viewStart"
             android:textAllCaps="false"
             android:textColor="@color/rich_black_80"
-            android:textSize="16dp"/>
+            android:textSize="16dp" />
 
     </ScrollView>
 
@@ -119,26 +119,26 @@
         android:id="@+id/textViewDiagnosisDoctor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="18dp"
         android:hint="@string/doctor_name"
+        android:paddingHorizontal="18dp"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
         android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="@+id/LinearLayoutPrescription"
+        app:layout_constraintStart_toStartOf="@+id/viewDiagnosisBackground"
         app:layout_constraintTop_toBottomOf="@+id/textViewDiagnosisTitle" />
 
     <TextView
         android:id="@+id/textViewDiagnosisDoctorProfession"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="18dp"
         android:hint="@string/doctor_specialty"
+        android:paddingHorizontal="18dp"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
         android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="@+id/LinearLayoutPrescription"
+        app:layout_constraintStart_toStartOf="@+id/viewDiagnosisBackground"
         app:layout_constraintTop_toBottomOf="@+id/textViewDiagnosisDoctor" />
 
     <ImageButton
@@ -161,7 +161,7 @@
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
         android:textSize="14dp"
-        app:layout_constraintEnd_toEndOf="@+id/LinearLayoutPrescription"
+        app:layout_constraintEnd_toEndOf="@+id/viewDiagnosisBackground"
         app:layout_constraintTop_toBottomOf="@+id/textViewDiagnosisTitle" />
 
 

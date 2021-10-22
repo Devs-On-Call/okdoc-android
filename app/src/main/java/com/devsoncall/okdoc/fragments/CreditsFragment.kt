@@ -11,6 +11,9 @@ import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.devsoncall.okdoc.R
+import com.devsoncall.okdoc.utils.animFadeIn
+import com.devsoncall.okdoc.utils.animPushUpIn
+import kotlinx.android.synthetic.main.credits_fragment.*
 
 class CreditsFragment : Fragment(R.layout.credits_fragment) {
 
@@ -24,6 +27,10 @@ class CreditsFragment : Fragment(R.layout.credits_fragment) {
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        activity?.applicationContext?.let { animFadeIn(tv_developed_by, it) }
+        activity?.applicationContext?.let { animFadeIn(imageView, it) }
+        activity?.applicationContext?.let { animPushUpIn(tv_team_members, it) }
 
         view.findViewById<TextView>(R.id.tv_team_members).text = HtmlCompat.fromHtml(getString(R.string.team_members), HtmlCompat.FROM_HTML_MODE_LEGACY)
 

@@ -19,6 +19,7 @@ import com.devsoncall.okdoc.api.ApiUtils
 import com.devsoncall.okdoc.api.calls.ApiGetDoctorAppointments
 import com.devsoncall.okdoc.models.DataListResponse
 import com.devsoncall.okdoc.models.DoctorAppointment
+import com.devsoncall.okdoc.utils.animFadeIn
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.calendar_fragment.buttonBack
@@ -26,7 +27,6 @@ import org.json.JSONException
 import org.json.JSONObject
 import retrofit2.Response
 import java.lang.reflect.Type
-import java.time.DayOfWeek
 import java.util.*
 import java.util.ArrayList
 
@@ -48,6 +48,9 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment) {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+//        activity?.applicationContext?.let { animFadeIn(viewCalendarBackground, it) }
+        activity?.applicationContext?.let { animFadeIn(calendarView, it) }
 
         val serializedAppointments = sharedPreferences?.getString(getString(R.string.serialized_doctor_appointments), null)
         var clickedDayCalendar: Calendar = Calendar.getInstance()
