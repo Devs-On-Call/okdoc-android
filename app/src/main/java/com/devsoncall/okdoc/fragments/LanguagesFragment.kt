@@ -13,6 +13,7 @@ import androidx.preference.PreferenceManager
 import com.devsoncall.okdoc.R
 import com.devsoncall.okdoc.activities.MainMenuActivity
 import com.devsoncall.okdoc.utils.animFadeIn
+import com.devsoncall.okdoc.utils.animKeyIn
 import com.devsoncall.okdoc.utils.animPushUpIn
 import kotlinx.android.synthetic.main.languages_fragment.*
 
@@ -34,7 +35,7 @@ class LanguagesFragment : Fragment(R.layout.languages_fragment) {
         super.onViewCreated(view, savedInstanceState)
 
         activity?.applicationContext?.let { animFadeIn(imageViewLanguages, it) }
-        activity?.applicationContext?.let { animPushUpIn(scrollViewLanguages, it) }
+        activity?.applicationContext?.let { animKeyIn(scrollViewLanguages, it) }
 
         val buttonEnglish: Button = view.findViewById(R.id.buttonEnglish)
         buttonEnglish.setOnClickListener {

@@ -12,6 +12,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import com.devsoncall.okdoc.R
 import com.devsoncall.okdoc.utils.animKeyIn
@@ -37,7 +38,8 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        activity?.applicationContext?.let { animPushUpIn(scrollViewHome, it) }
+//        activity?.applicationContext?.let { animPushUpIn(scrollViewHome, it) }
+        activity?.applicationContext?.let { animKeyIn(scrollViewHome, it) }
         activity?.applicationContext?.let { animKeyIn(textViewHi, it) }
         activity?.applicationContext?.let { animKeyIn(imageViewAvatar, it) }
 
@@ -52,22 +54,24 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
 
         val buttonPrescriptions = view.findViewById<Button>(R.id.buttonPrescriptions)
         buttonPrescriptions.setOnClickListener { view ->
-            view.findNavController().navigate(R.id.navigation_prescription_list)
+            view.findNavController().navigate(R.id.action_navigation_home_to_prescription_list)
         }
 
         val buttonDiagnoses = view.findViewById<Button>(R.id.buttonPastDiagnoses)
         buttonDiagnoses.setOnClickListener { view ->
-            view.findNavController().navigate(R.id.navigation_diagnoses_list)
+            view.findNavController().navigate(R.id.action_navigation_home_to_diagnoses_list)
         }
 
         val buttonAppointments = view.findViewById<Button>(R.id.buttonViewAppointments)
         buttonAppointments.setOnClickListener { view ->
-            view.findNavController().navigate(R.id.navigation_appointments)
+            view.findNavController().navigate(R.id.action_navigation_home_to_appointments)
+
         }
 
         val buttonScheduleAppointment = view.findViewById<Button>(R.id.buttonScheduleAppointment)
         buttonScheduleAppointment.setOnClickListener { view ->
-            view.findNavController().navigate(R.id.navigation_professions)
+            view.findNavController().navigate(R.id.action_navigation_home_to_professions)
+
         }
     }
 

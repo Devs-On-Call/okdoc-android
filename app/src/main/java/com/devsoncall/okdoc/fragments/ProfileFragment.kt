@@ -30,7 +30,7 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        activity?.applicationContext?.let { animPushUpIn(scrollViewProfile, it) }
+        activity?.applicationContext?.let { animKeyIn(scrollViewProfile, it) }
         activity?.applicationContext?.let { animKeyIn(imageViewAvatar, it) }
 
         val sharedPreferences: SharedPreferences =
