@@ -20,11 +20,11 @@ import com.devsoncall.okdoc.api.ApiUtils
 import com.devsoncall.okdoc.api.calls.ApiGetPrescriptions
 import com.devsoncall.okdoc.models.DataListResponse
 import com.devsoncall.okdoc.models.Prescription
+import com.devsoncall.okdoc.utils.animFadeIn
 import com.devsoncall.okdoc.utils.formatDateString
 import com.devsoncall.okdoc.utils.getDayOfWeek
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import kotlinx.android.synthetic.main.item_diagnosis.view.*
 import kotlinx.android.synthetic.main.prescription_fragment.*
 import org.json.JSONException
 import org.json.JSONObject
@@ -51,6 +51,12 @@ class PrescriptionFragment : Fragment(R.layout.prescription_fragment) {
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        activity?.applicationContext?.let { animFadeIn(textViewTitle, it) }
+        activity?.applicationContext?.let { animFadeIn(textViewDoctor, it) }
+        activity?.applicationContext?.let { animFadeIn(fullNameDescription, it) }
+        activity?.applicationContext?.let { animFadeIn(textViewAssignedMedication, it) }
+        activity?.applicationContext?.let { animFadeIn(recyclerViewMedicationsList, it) }
 
         recyclerViewMedicationsList.layoutManager = LinearLayoutManager(this.context)
         val serializedPrescriptions = sharedPreferences?.getString(getString(R.string.serialized_prescriptions), null)

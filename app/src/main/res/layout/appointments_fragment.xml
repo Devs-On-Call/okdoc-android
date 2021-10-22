@@ -10,34 +10,37 @@
 
     <Button
         android:id="@+id/btAppointments"
-        android:layout_width="310dp"
+        android:layout_width="295dp"
         android:layout_height="100dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="36dp"
-        android:layout_marginEnd="18dp"
+        android:layout_marginEnd="22dp"
         android:background="@drawable/mandarin_border_12dp"
-        android:paddingStart="40dp"
-        android:paddingEnd="30dp"
+        android:clickable="false"
         android:drawableEnd="@drawable/ic_booking"
+        android:paddingStart="20dp"
+        android:paddingEnd="30dp"
         android:text="@string/view_appointments_button"
         android:textAlignment="viewStart"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
         android:textSize="20dp"
-        android:clickable="false"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btBack"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btBack"
         android:layout_width="43dp"
         android:layout_height="81dp"
-        android:layout_marginLeft="18dp"
+        android:layout_marginStart="22dp"
         android:layout_marginTop="55dp"
         android:background="@drawable/mandarin_border_12dp"
         android:drawableStart="@drawable/ic_back_arrow"
         android:paddingHorizontal="13dp"
         app:layout_constraintEnd_toStartOf="@+id/btAppointments"
-        app:layout_constraintHorizontal_bias="0.595"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -51,6 +54,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.765">
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvAppointments"
             android:layout_width="match_parent"

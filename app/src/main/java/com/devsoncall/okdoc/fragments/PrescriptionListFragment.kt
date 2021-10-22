@@ -22,6 +22,7 @@ import com.devsoncall.okdoc.api.ApiUtils
 import com.devsoncall.okdoc.api.calls.ApiGetPrescriptions
 import com.devsoncall.okdoc.models.DataListResponse
 import com.devsoncall.okdoc.models.Prescription
+import com.devsoncall.okdoc.utils.animKeyIn
 import com.google.gson.reflect.TypeToken
 
 import com.google.gson.Gson
@@ -52,6 +53,8 @@ class PrescriptionListFragment : Fragment(R.layout.prescriptions_list_fragment),
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        activity?.applicationContext?.let { animKeyIn(swipe_prescriptions_container, it) }
 
         mSwipeRefreshLayout = view.findViewById(R.id.swipe_prescriptions_container)
         mSwipeRefreshLayout!!.setOnRefreshListener(this)
@@ -97,6 +100,8 @@ class PrescriptionListFragment : Fragment(R.layout.prescriptions_list_fragment),
             if(ApiUtils().isOnline(this.requireContext())) {
                 mSwipeRefreshLayout!!.isRefreshing = true
                 getPrescriptions(authToken, patientId)
+                activity?.applicationContext?.let { animKeyIn(swipe_prescriptions_container, it) }
+
             } else {
                 Toast.makeText(this.context, "Check your internet connection", Toast.LENGTH_SHORT)
                     .show()

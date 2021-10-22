@@ -15,6 +15,9 @@ import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import com.devsoncall.okdoc.R
 import com.devsoncall.okdoc.activities.LoginActivity
+import com.devsoncall.okdoc.utils.animFadeIn
+import com.devsoncall.okdoc.utils.animPushUpIn
+import kotlinx.android.synthetic.main.settings_fragment.*
 
 
 class SettingsFragment : Fragment(R.layout.settings_fragment) {
@@ -33,6 +36,9 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        activity?.applicationContext?.let { animFadeIn(imageViewSettings, it) }
+        activity?.applicationContext?.let { animPushUpIn(scrollView2, it) }
 
         val logoutButton: Button = view.findViewById(R.id.logoutButton)
         logoutButton.setOnClickListener {

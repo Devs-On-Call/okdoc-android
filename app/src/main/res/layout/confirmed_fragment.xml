@@ -2,19 +2,20 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/ic_background_group"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ic_background_group"
     tools:context=".fragments.ConfirmedFragment">
 
         <Button
             android:id="@+id/buttonConfirmed"
-            android:layout_width="310dp"
+            android:layout_width="295dp"
             android:layout_height="100dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="36dp"
             android:layout_marginEnd="22dp"
             android:background="@drawable/mandarin_border_12dp"
+            android:clickable="false"
             android:drawableEnd="@drawable/ic_hospital"
             android:paddingStart="40dp"
             android:paddingEnd="30dp"
@@ -23,8 +24,9 @@
             android:textAllCaps="false"
             android:textColor="@color/rich_black_80"
             android:textSize="20dp"
-            android:clickable="false"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/buttonBack"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
@@ -33,17 +35,16 @@
             android:layout_height="81dp"
             android:layout_marginStart="22dp"
             android:layout_marginTop="55dp"
-            android:layout_marginEnd="10dp"
             android:background="@drawable/mandarin_border_12dp"
             android:drawableStart="@drawable/ic_back_arrow"
             android:paddingHorizontal="13dp"
             app:layout_constraintEnd_toStartOf="@+id/buttonConfirmed"
-            app:layout_constraintHorizontal_bias="0.595"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
-            android:id="@+id/viewCalendarBackground"
+            android:id="@+id/viewConfirmedBackground"
             android:layout_width="358dp"
             android:layout_height="420dp"
             android:layout_marginVertical="20dp"
@@ -54,14 +55,14 @@
             app:layout_constraintTop_toBottomOf="@+id/buttonConfirmed" />
 
         <View
-            android:id="@+id/viewBorders"
+            android:id="@+id/viewConfirmedBorders"
             android:layout_width="320dp"
             android:layout_height="280dp"
             android:layout_margin="16dp"
             android:background="@drawable/white_border"
-            app:layout_constraintEnd_toEndOf="@+id/viewCalendarBackground"
-            app:layout_constraintStart_toStartOf="@+id/viewCalendarBackground"
-            app:layout_constraintTop_toTopOf="@+id/viewCalendarBackground" />
+            app:layout_constraintEnd_toEndOf="@+id/viewConfirmedBackground"
+            app:layout_constraintStart_toStartOf="@+id/viewConfirmedBackground"
+            app:layout_constraintTop_toTopOf="@+id/viewConfirmedBackground" />
 
         <ImageView
             android:id="@+id/imageViewSuccess"
@@ -69,14 +70,14 @@
             android:layout_height="136dp"
             android:layout_marginBottom="20dp"
             android:src="@drawable/ic_success"
-            app:layout_constraintBottom_toTopOf="@+id/textViewDoctorName"
-            app:layout_constraintEnd_toEndOf="@+id/viewBorders"
+            app:layout_constraintBottom_toTopOf="@+id/textViewConfirmed"
+            app:layout_constraintEnd_toEndOf="@+id/viewConfirmedBorders"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/viewBorders"
-            app:layout_constraintTop_toBottomOf="@+id/viewBorders" />
+            app:layout_constraintStart_toStartOf="@+id/viewConfirmedBorders"
+            app:layout_constraintTop_toBottomOf="@+id/viewConfirmedBorders" />
 
         <TextView
-            android:id="@+id/textViewDoctorName"
+            android:id="@+id/textViewConfirmed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -88,10 +89,10 @@
             android:textColor="@color/rich_black_80"
             android:textSize="18dp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/viewBorders"
-            app:layout_constraintEnd_toEndOf="@+id/viewBorders"
+            app:layout_constraintBottom_toTopOf="@+id/viewConfirmedBorders"
+            app:layout_constraintEnd_toEndOf="@+id/viewConfirmedBorders"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/viewBorders"
+            app:layout_constraintStart_toStartOf="@+id/viewConfirmedBorders"
             app:layout_constraintTop_toBottomOf="@+id/imageViewSuccess" />
 
         <Button
@@ -103,9 +104,9 @@
             android:textAllCaps="true"
             android:textColor="@color/rich_black_80"
             android:textSize="17dp"
-            app:layout_constraintBottom_toBottomOf="@+id/viewCalendarBackground"
-            app:layout_constraintEnd_toEndOf="@+id/viewBorders"
-            app:layout_constraintStart_toStartOf="@+id/viewBorders"
-            app:layout_constraintTop_toBottomOf="@+id/viewBorders" />
+            app:layout_constraintBottom_toBottomOf="@+id/viewConfirmedBackground"
+            app:layout_constraintEnd_toEndOf="@+id/viewConfirmedBorders"
+            app:layout_constraintStart_toStartOf="@+id/viewConfirmedBorders"
+            app:layout_constraintTop_toBottomOf="@+id/viewConfirmedBorders" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

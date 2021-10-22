@@ -2,21 +2,21 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/ic_background_group"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ic_background_group"
     tools:context=".fragments.ErrorFragment">
 
     <Button
         android:id="@+id/buttonOops"
-        android:layout_width="310dp"
+        android:layout_width="295dp"
         android:layout_height="100dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="22dp"
         android:background="@drawable/mandarin_border_12dp"
         android:drawableEnd="@drawable/ic_question"
-        android:paddingStart="40dp"
+        android:paddingStart="30dp"
         android:paddingEnd="30dp"
         android:text="@string/oops"
         android:textAlignment="viewStart"
@@ -24,6 +24,8 @@
         android:textColor="@color/rich_black_80"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/buttonBack"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -32,12 +34,11 @@
         android:layout_height="81dp"
         android:layout_marginStart="22dp"
         android:layout_marginTop="55dp"
-        android:layout_marginEnd="10dp"
         android:background="@drawable/mandarin_border_12dp"
         android:drawableStart="@drawable/ic_back_arrow"
         android:paddingHorizontal="13dp"
         app:layout_constraintEnd_toStartOf="@+id/buttonOops"
-        app:layout_constraintHorizontal_bias="0.595"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -53,7 +54,7 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonOops" />
 
     <View
-        android:id="@+id/viewBorders"
+        android:id="@+id/viewErrorBorders"
         android:layout_width="320dp"
         android:layout_height="280dp"
         android:layout_margin="16dp"
@@ -63,19 +64,19 @@
         app:layout_constraintTop_toTopOf="@+id/viewBackground" />
 
     <ImageView
-        android:id="@+id/imageViewSuccess"
+        android:id="@+id/imageViewError"
         android:layout_width="180dp"
         android:layout_height="136dp"
-        android:src="@drawable/ic_oops"
         android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewDoctorName"
-        app:layout_constraintEnd_toEndOf="@+id/viewBorders"
+        android:src="@drawable/ic_oops"
+        app:layout_constraintBottom_toTopOf="@+id/textViewErrorMessage"
+        app:layout_constraintEnd_toEndOf="@+id/viewErrorBorders"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/viewBorders"
-        app:layout_constraintTop_toBottomOf="@+id/viewBorders" />
+        app:layout_constraintStart_toStartOf="@+id/viewErrorBorders"
+        app:layout_constraintTop_toBottomOf="@+id/viewErrorBorders" />
 
     <TextView
-        android:id="@+id/textViewDoctorName"
+        android:id="@+id/textViewErrorMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -87,11 +88,11 @@
         android:textColor="@color/rich_black_80"
         android:textSize="18dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/viewBorders"
-        app:layout_constraintEnd_toEndOf="@+id/viewBorders"
+        app:layout_constraintBottom_toTopOf="@+id/viewErrorBorders"
+        app:layout_constraintEnd_toEndOf="@+id/viewErrorBorders"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/viewBorders"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewSuccess" />
+        app:layout_constraintStart_toStartOf="@+id/viewErrorBorders"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewError" />
 
     <Button
         android:id="@+id/buttonErrorOk"
@@ -103,8 +104,8 @@
         android:textColor="@color/rich_black_80"
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="@+id/viewBackground"
-        app:layout_constraintEnd_toEndOf="@+id/viewBorders"
-        app:layout_constraintStart_toStartOf="@+id/viewBorders"
-        app:layout_constraintTop_toBottomOf="@+id/viewBorders" />
+        app:layout_constraintEnd_toEndOf="@+id/viewErrorBorders"
+        app:layout_constraintStart_toStartOf="@+id/viewErrorBorders"
+        app:layout_constraintTop_toBottomOf="@+id/viewErrorBorders" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

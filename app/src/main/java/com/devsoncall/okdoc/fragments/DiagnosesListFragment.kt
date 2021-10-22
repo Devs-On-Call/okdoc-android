@@ -22,6 +22,7 @@ import com.devsoncall.okdoc.api.ApiUtils
 import com.devsoncall.okdoc.api.calls.ApiGetDiagnoses
 import com.devsoncall.okdoc.models.DataListResponse
 import com.devsoncall.okdoc.models.Diagnosis
+import com.devsoncall.okdoc.utils.*
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.diagnoses_list_fragment.*
@@ -51,6 +52,10 @@ class DiagnosesListFragment : Fragment(R.layout.diagnoses_list_fragment), Diagno
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+//        activity?.applicationContext?.let { animKeyIn(btDiagnoses, it) }
+//        activity?.applicationContext?.let { animKeyIn(btBack, it) }
+        activity?.applicationContext?.let { animKeyIn(swipe_diagnoses_container, it) }
 
         mSwipeRefreshLayout = view.findViewById(R.id.swipe_diagnoses_container)
         mSwipeRefreshLayout!!.setOnRefreshListener(this)
@@ -96,6 +101,7 @@ class DiagnosesListFragment : Fragment(R.layout.diagnoses_list_fragment), Diagno
             if(ApiUtils().isOnline(this.requireContext())) {
                 mSwipeRefreshLayout!!.isRefreshing = true
                 getDiagnoses(authToken, patientId)
+                activity?.applicationContext?.let { animKeyIn(swipe_diagnoses_container, it) }
             } else {
                 Toast.makeText(this.context, "Check your internet connection", Toast.LENGTH_SHORT)
                     .show()
@@ -157,3 +163,4 @@ class DiagnosesListFragment : Fragment(R.layout.diagnoses_list_fragment), Diagno
         rvDiagnoses.layoutManager = LinearLayoutManager(this.context)
     }
 }
+

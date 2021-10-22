@@ -16,8 +16,11 @@ import com.devsoncall.okdoc.R
 import com.devsoncall.okdoc.activities.MainMenuActivity
 import com.devsoncall.okdoc.adapters.HoursAdapter
 import com.devsoncall.okdoc.models.DoctorAppointment
+import com.devsoncall.okdoc.utils.animFadeIn
+import com.devsoncall.okdoc.utils.animKeyIn
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import kotlinx.android.synthetic.main.calendar_fragment.*
 import kotlinx.android.synthetic.main.hours_fragment.*
 import java.lang.reflect.Type
 
@@ -41,6 +44,8 @@ class HoursFragment : Fragment(R.layout.hours_fragment), HoursAdapter.OnItemClic
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        activity?.applicationContext?.let { animKeyIn(rvHours, it) }
 
         val serializedHours = sharedPreferences?.getString(getString(R.string.serialized_booked_times), null)
         val dateClicked = sharedPreferences?.getString(getString(R.string.date_clicked), null)
