@@ -32,12 +32,7 @@ import retrofit2.Response
 import java.lang.reflect.Type
 import android.net.Uri
 import android.util.Log
-
-
-
-
-
-
+import androidx.core.os.bundleOf
 
 
 class DiagnosisFragment : Fragment(R.layout.diagnosis_fragment) {
@@ -98,7 +93,8 @@ class DiagnosisFragment : Fragment(R.layout.diagnosis_fragment) {
         }
 
         imageButtonShareDiagnosis.setOnClickListener {
-            view.findNavController().navigate(R.id.navigation_mail)
+            val bundle = bundleOf("type" to getString(R.string.diagnosis))
+            view.findNavController().navigate(R.id.navigation_mail, bundle)
         }
     }
 
@@ -157,7 +153,7 @@ class DiagnosisFragment : Fragment(R.layout.diagnosis_fragment) {
         val date = diagnosis.date.take(10)
         val dayOfWeek = getDayOfWeek(date).toString()
         buttonDiagnosisDate.text = formatDateString(date, dayOfWeek).replace(", ", ",\n")
-        diagnosisDetails.text = diagnosis.diagnosis
+        diagnosisDetails.text = diagnosis.details
         textViewDiagnosisDoctor.text = "Dr. ${diagnosis.doctor.name} ${diagnosis.doctor.lastName}"
         textViewDiagnosisDoctorProfession.text = diagnosis.doctor.profession.name
     }

@@ -10,6 +10,7 @@
     <string name="serialized_doctor_appointments" lang="en" translatable="false">serialized_doctor_appointments</string>
     <string name="serialized_professions" lang="en" translatable="false">serialized_professions</string>
     <string name="serialized_booked_times" translatable="false">serialized_booked_times</string>
+    <string name="serialized_all_hospitals" translatable="false">serialized_all_hospitals</string>
     <string name="prescription_id_clicked" lang="en" translatable="false">prescription_id_clicked</string>
     <string name="diagnosis_id_clicked" lang="en" translatable="false">diagnosis_id_clicked</string>
     <string name="profession_id_clicked" lang="en" translatable="false">profession_id_clicked</string>
@@ -71,6 +72,22 @@
     <!--  Languages UI strings  -->
     <string name="english" lang="en">English</string>
     <string name="greek" lang="en">Greek</string>
+
+    <!--  Share Template strings  -->
+    <string name="prescription_template" translatable="false">
+        Prescription: %1$s \n
+        Date: %2$s \n
+        Diagnosis: %3$s \n
+        Dose: %4$s \n
+        Duration: %5$s \n
+        Doctor: %6$s
+    </string>
+    <string name="diagnosis_template" translatable="false">
+        Diagnosis: %1$s \n
+        Date: %2$s \n
+        Details: %3$s \n
+        Doctor: %4$s
+    </string>
 
     <!--  Create appointment screens  -->
     <!--  Professions screen UI strings  -->

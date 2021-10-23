@@ -44,7 +44,7 @@ interface Api {
 
     @GET("/api/hospitals")
     fun getHospitals(
-        @Query("professionId") professionId: String,
+        @Query("professionId") professionId: String? = null,
         @Header("Authorization") token: String
     ): Call<DataListResponse<Hospital>>
 

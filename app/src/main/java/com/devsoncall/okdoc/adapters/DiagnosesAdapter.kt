@@ -33,7 +33,7 @@ class DiagnosesAdapter(
             val date = diagnoses[position].date.take(10)
             val dayOfWeek = getDayOfWeek(date).toString()
             tvDate.text = formatDateString(date, dayOfWeek)
-            tvDiagnosis.text = diagnoses[position].diagnosis
+            tvDiagnosis.text = diagnoses[position].name
         }
     }
 

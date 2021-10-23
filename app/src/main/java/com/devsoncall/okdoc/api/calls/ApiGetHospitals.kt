@@ -3,7 +3,6 @@ package com.devsoncall.okdoc.api.calls
 import com.devsoncall.okdoc.api.RetrofitClient
 import com.devsoncall.okdoc.models.DataListResponse
 import com.devsoncall.okdoc.models.Hospital
-import com.devsoncall.okdoc.models.Prescription
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -12,7 +11,7 @@ class ApiGetHospitals {
 
     private var mListener: DataInterface? = null
 
-    fun getHospitals(authToken: String = "", professionId: String = "") {
+    fun getHospitals(authToken: String = "", professionId: String?) {
         val call: Call<DataListResponse<Hospital>>? =
             RetrofitClient().getInstance()?.getApi()?.getHospitals(professionId, authToken)
 
