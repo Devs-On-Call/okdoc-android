@@ -1,6 +1,8 @@
 package com.devsoncall.okdoc.fragments
 
 import android.annotation.SuppressLint
+import android.content.ActivityNotFoundException
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
@@ -28,6 +30,14 @@ import org.json.JSONException
 import org.json.JSONObject
 import retrofit2.Response
 import java.lang.reflect.Type
+import android.net.Uri
+import android.util.Log
+
+
+
+
+
+
 
 
 class DiagnosisFragment : Fragment(R.layout.diagnosis_fragment) {
@@ -88,8 +98,7 @@ class DiagnosisFragment : Fragment(R.layout.diagnosis_fragment) {
         }
 
         imageButtonShareDiagnosis.setOnClickListener {
-            // TODO
-            // share diagnosis
+            view.findNavController().navigate(R.id.navigation_mail)
         }
     }
 

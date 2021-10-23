@@ -1,6 +1,7 @@
 package com.devsoncall.okdoc.fragments
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
@@ -92,6 +93,10 @@ class PrescriptionFragment : Fragment(R.layout.prescription_fragment) {
                 saveDiagnosisIdClickedInPrefs(selectedDiagnosisId)
 
             view.findNavController().navigate(R.id.navigation_diagnosis)
+        }
+
+        imageButtonShare.setOnClickListener {
+            view.findNavController().navigate(R.id.navigation_mail)
         }
     }
 

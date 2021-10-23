@@ -104,6 +104,10 @@
     <string name="something_went_wrong">Something went wrong :(\nPlease try again</string>
     <string name="oops" translatable="false">Oops!</string>
 
+    <!--  Share screen UI strings  -->
+    <string name="mail_to_hospital">Mail to Hospital</string>
+    <string name="or">or</string>
+
     <!-- Placeholder text -->
     <string name="date" lang="en" translatable="false">DD/MM/YYYY</string>
     <string name="prescription_header" lang="en" translatable="false">DD/MM/YY</string>
@@ -127,8 +131,7 @@
     <string name="specialty" lang="en" translatable="false">Specialty</string>
     <string name="hours" lang="en" translatable="false">HH:MM - HH:MM</string>
     <string name="time" translatable="false">9:00 am</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="mail_to_custom_address">Mail to custom address</string>
 
 
 </resources>
