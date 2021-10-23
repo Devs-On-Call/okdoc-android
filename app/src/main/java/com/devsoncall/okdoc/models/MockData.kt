@@ -6,10 +6,7 @@ class MockData {
 fun main(){
     val hospital1 = Hospital("1", "Grey Sloan", "Seattle Road 125", "1234567890", "greysloan@hospital.com")
     val hospital2 = Hospital("2", "Princeton-Plainsboro Hospital", "New Jersey Road 123", "1234567889", "princeton@hospital.com")
-    val hospital3 = Hospital("3", "General Hospital Agios Dimitrios", "Elenis Zografou 2", "2313322100", "agdim-gei@3ype.gr")
-    val hospital4 = Hospital("4", "Papanikolaou Hospital", "Exochi Area", "2313307000", "info.gpapanikolaou@n3.syzefxis.gov.gr")
-    val hospital5 = Hospital("5", "Unversity Hospital Alexandroupoli", "Dragana Area", "2551353000", "infopgna@pgna.gr")
-    val hospital6 = Hospital("6", "Hatzikosta Hospital Ioannina", "Leoforos Makrugianni 60", "2651366111", "manager@gni-hatzikosta.gr")
+    val hospital3 = Hospital("3", "General Hospital Agios Dimitrios", "Elenis Zografou 2", "1234567888", "saintjim@hospital.com")
 
 
 
@@ -24,17 +21,30 @@ fun main(){
     val profession9 = Profession("9", "Psychiatry")
 
 
-    val doctor1 = Doctor("1", profession1, "Meredith", "Grey", hospital1)
-    val doctor2 = Doctor("2", profession2, "Gregory", "House", hospital2)
-    val doctor2 = Doctor("2", profession2, "Gregory", "House", hospital2)
-    val doctor2 = Doctor("2", profession2, "Gregory", "House", hospital2)
-    val doctor2 = Doctor("2", profession2, "Gregory", "House", hospital2)
-    val doctor2 = Doctor("2", profession2, "Gregory", "House", hospital2)
-    val doctor2 = Doctor("2", profession2, "Gregory", "House", hospital2)
-    val doctor2 = Doctor("2", profession2, "Gregory", "House", hospital2)
-    val doctor2 = Doctor("2", profession2, "Gregory", "House", hospital2)
-    val doctor2 = Doctor("2", profession2, "Gregory", "House", hospital2)
-    val doctor2 = Doctor("2", profession2, "Gregory", "House", hospital2)
+    val doctor1 = Doctor("1", profession3, "Meredith", "Grey", hospital1)
+    val doctor2 = Doctor("2", profession4, "Derek", "Shepherd", hospital1)
+    val doctor3 = Doctor("2", profession3, "Miranda", "Bailey", hospital1)
+    val doctor4 = Doctor("2", profession5, "Arizona", "Robbins", hospital1)
+    val doctor5 = Doctor("2", profession7, "Richard", "Webber", hospital1)
+    val doctor6 = Doctor("2", profession6, "Jackson", "Avery", hospital1)
+    val doctor7 = Doctor("2", profession5, "Jo", "Wilson", hospital1)
+    val doctor8 = Doctor("2", profession8, "Christina", "Yang", hospital1)
+    val doctor9 = Doctor("2", profession8, "Alex", "Karev", hospital1)
+    val doctor10 = Doctor("2", profession9, "Owen", "Hunt", hospital1)
+    val doctor11 = Doctor("2", profession5, "Callie", "Torres", hospital1)
+
+    val doctor12 = Doctor("2", profession2, "Maggie", "Pierce", hospital3)
+    val doctor13 = Doctor("2", profession3, "Mark", "Sloan", hospital3)
+    val doctor14 = Doctor("2", profession9, "Andrew", "DeLuca", hospital3)
+    val doctor15 = Doctor("2", profession1, "Ben", "Warren", hospital3)
+    val doctor16 = Doctor("2", profession1, "Amelia", "Shepherd", hospital3)
+    val doctor17 = Doctor("2", profession4, "Izzie", "Stevens", hospital3)
+    val doctor18 = Doctor("2", profession8, "George", "Omalley", hospital3)
+    val doctor19 = Doctor("2", profession5, "Catherine", "Avery", hospital3)
+
+
+    val doctor20 = Doctor("2", profession5, "Gregory", "House", hospital2)
+
 
 
 
