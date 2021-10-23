@@ -148,7 +148,7 @@ class DiagnosisFragment : Fragment(R.layout.diagnosis_fragment) {
         val date = diagnosis.date.take(10)
         val dayOfWeek = getDayOfWeek(date).toString()
         buttonDiagnosisDate.text = formatDateString(date, dayOfWeek).replace(", ", ",\n")
-        diagnosisDetails.text = diagnosis.diagnosis
+        diagnosisDetails.text = diagnosis.name
         textViewDiagnosisDoctor.text = "Dr. ${diagnosis.doctor.name} ${diagnosis.doctor.lastName}"
         textViewDiagnosisDoctorProfession.text = diagnosis.doctor.profession.name
     }

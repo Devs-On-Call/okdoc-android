@@ -12,7 +12,6 @@ import com.devsoncall.okdoc.utils.formatDateString
 import com.devsoncall.okdoc.utils.getDayOfWeek
 import kotlinx.android.synthetic.main.item_diagnosis.view.*
 import kotlinx.android.synthetic.main.item_diagnosis.view.tvDate
-import kotlinx.android.synthetic.main.item_prescription.view.*
 
 class DiagnosesAdapter(
     private val diagnoses: List<Diagnosis>,
@@ -33,7 +32,7 @@ class DiagnosesAdapter(
             val date = diagnoses[position].date.take(10)
             val dayOfWeek = getDayOfWeek(date).toString()
             tvDate.text = formatDateString(date, dayOfWeek)
-            tvDiagnosis.text = diagnoses[position].diagnosis
+            tvDiagnosis.text = diagnoses[position].name
         }
     }
 
