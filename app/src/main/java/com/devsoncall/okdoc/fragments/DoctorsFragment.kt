@@ -80,8 +80,8 @@ class DoctorsFragment : Fragment(R.layout.doctors_fragment), DoctorsAdapter.OnIt
             override fun responseData(getDoctorsResponse: Response<DataListResponse<Doctor>>) {
                 if (getDoctorsResponse.code() == 200) {
                     if (getDoctorsResponse.body()?.data != null) {
-                        val hospitals = getDoctorsResponse.body()?.data!!
-                        setAdapter(hospitals)
+                        val doctors = getDoctorsResponse.body()?.data!!
+                        setAdapter(doctors)
                     }
                 } else if (getDoctorsResponse.code() == 400) {
                     try {

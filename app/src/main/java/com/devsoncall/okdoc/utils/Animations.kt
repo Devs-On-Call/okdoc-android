@@ -47,3 +47,15 @@ fun animPushUpIn(view : View, context : Context) {
         AnimationUtils.loadAnimation(context, R.anim.push_up_in)
     view.startAnimation(fadeInAnimation)
 }
+
+fun animPushDownIn(view : View, context : Context) {
+    val fadeInAnimation: Animation =
+        AnimationUtils.loadAnimation(context, R.anim.push_down_in)
+    view.startAnimation(fadeInAnimation)
+}
+
+fun animPushUpOut(view : View, context : Context) {
+    val fadeInAnimation: Animation =
+        AnimationUtils.loadAnimation(context, R.anim.push_up_out)
+    view.startAnimation(fadeInAnimation)
+}

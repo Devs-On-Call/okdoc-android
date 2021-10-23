@@ -1,6 +1,5 @@
 package com.devsoncall.okdoc.activities
 
-import android.app.Activity
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Configuration
@@ -33,10 +32,10 @@ import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent.set
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
-import com.devsoncall.okdoc.utils.dpToPx
-
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import com.devsoncall.okdoc.utils.*
+import kotlinx.android.synthetic.main.credits_fragment.*
 import java.util.*
 
 
@@ -76,6 +75,10 @@ class LoginActivity : AppCompatActivity() {
                 // Soft Keyboard Active
                 if (it) {
                     imageViewDoctors.visibility = View.INVISIBLE
+                    animKeyIn(editTextAmka, this)
+                    animKeyIn(buttonGetStarted, this)
+                    animKeyIn(textViewWelcomeTo, this)
+                    animKeyIn(textViewOkDoc, this)
 
                     // adjust constraints
                     val constraintLayout = findViewById<ConstraintLayout>(R.id.activity_root)
@@ -100,11 +103,12 @@ class LoginActivity : AppCompatActivity() {
 
                 // Soft Keyboard Inactive
                 } else {
-                    // Fade in animation
-                    val fadeInAnimation: Animation =
-                        AnimationUtils.loadAnimation(this, R.anim.fade_in)
-                    imageViewDoctors.startAnimation(fadeInAnimation)
+                    animFadeIn(imageViewDoctors, this)
                     imageViewDoctors.visibility = View.VISIBLE
+                    animKeyIn(editTextAmka, this)
+                    animKeyIn(buttonGetStarted, this)
+                    animKeyIn(textViewWelcomeTo, this)
+                    animKeyIn(textViewOkDoc, this)
 
                     // adjust constraints
                     val constraintLayout = findViewById<ConstraintLayout>(R.id.activity_root)
