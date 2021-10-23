@@ -19,6 +19,7 @@ fun main(){
     val profession7 = Profession("7", "Pathology")
     val profession8 = Profession("8", "Pediatrics")
     val profession9 = Profession("9", "Psychiatry")
+    val profession10 = Profession("10", "Plastic Surgery")
 
 
     val doctor1 = Doctor("1", profession3, "Meredith", "Grey", hospital1)
@@ -26,7 +27,7 @@ fun main(){
     val doctor3 = Doctor("2", profession3, "Miranda", "Bailey", hospital1)
     val doctor4 = Doctor("2", profession5, "Arizona", "Robbins", hospital1)
     val doctor5 = Doctor("2", profession7, "Richard", "Webber", hospital1)
-    val doctor6 = Doctor("2", profession6, "Jackson", "Avery", hospital1)
+    val doctor6 = Doctor("2", profession10, "Jackson", "Avery", hospital1)
     val doctor7 = Doctor("2", profession5, "Jo", "Wilson", hospital1)
     val doctor8 = Doctor("2", profession8, "Christina", "Yang", hospital1)
     val doctor9 = Doctor("2", profession8, "Alex", "Karev", hospital1)
@@ -34,7 +35,7 @@ fun main(){
     val doctor11 = Doctor("2", profession5, "Callie", "Torres", hospital1)
 
     val doctor12 = Doctor("2", profession2, "Maggie", "Pierce", hospital3)
-    val doctor13 = Doctor("2", profession3, "Mark", "Sloan", hospital3)
+    val doctor13 = Doctor("2", profession10, "Mark", "Sloan", hospital3)
     val doctor14 = Doctor("2", profession9, "Andrew", "DeLuca", hospital3)
     val doctor15 = Doctor("2", profession1, "Ben", "Warren", hospital3)
     val doctor16 = Doctor("2", profession1, "Amelia", "Shepherd", hospital3)
@@ -43,7 +44,17 @@ fun main(){
     val doctor19 = Doctor("2", profession5, "Catherine", "Avery", hospital3)
 
 
-    val doctor20 = Doctor("2", profession5, "Gregory", "House", hospital2)
+    val doctor21 = Doctor("2", profession2, "Gregory", "House", hospital2)
+    val doctor22 = Doctor("2", profession9, "Eric", "Foreman", hospital2)
+    val doctor23 = Doctor("2", profession3, "James", "Wilson", hospital2)
+    val doctor24 = Doctor("2", profession4, "Robert", "Chase", hospital2)
+    val doctor25 = Doctor("2", profession9, "Lisa", "Cuddy", hospital2)
+    val doctor26 = Doctor("2", profession10, "Alison", "Cameron", hospital2)
+    val doctor27 = Doctor("2", profession8, "Chris", "Taub", hospital2)
+    val doctor28 = Doctor("2", profession7, "Lawrence", "Kutner", hospital2)
+    val doctor29 = Doctor("2", profession8, "Jessica", "Adams", hospital2)
+    val doctor30 = Doctor("2", profession8, "Stacy", "Warner", hospital2)
+
 
 
 
