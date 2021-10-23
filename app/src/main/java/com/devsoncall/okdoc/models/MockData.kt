@@ -68,6 +68,7 @@ fun main(){
     val prescription8 = Prescription("8", "21/04/2021", "50 mg - 1 times/day", "Saccharated iron oxide", "every day for 2 months", doctor5)
     val prescription9 = Prescription("9", "05/05/2021", "10 ml - 2 times/day", "Cyproterone Acetate", "5 days", doctor7)
     val prescription10 = Prescription("10","21/05/2021", "5 ml - 4 times/day", "Isosorbide mononitrate", "every day for lifetime", doctor12)
+
 //    val prescription11 = Prescription("11", "02/06/2021", "25 mg - 3 times/day", "hydroxychloroquine", "3 days", doctor15)
 //    val prescription12 = Prescription("12", "12/06/2021", "1000 mg - 2 times/day", "hydroxychloroquine", "every day for lifetime", doctor17)
 //    val prescription13 = Prescription("13", "19/06/2021", "200 mg - 2 times/day", "hydroxychloroquine", "14 days", doctor21)
