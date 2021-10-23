@@ -31,6 +31,10 @@
     <string name="english">Αγγλικά</string>
     <string name="greek">Ελληνικά</string>
     <string name="reason_field_message">Λόγος (Προαιρετικό)</string>
+    <string name="mail_to_hospital">Email σε νοσοκομείο</string>
+    <string name="or">ή</string>
+    <string name="mail_to_custom_address">Email σε διαφορετική διεύθυνση</string>
+
 
 
 </resources>

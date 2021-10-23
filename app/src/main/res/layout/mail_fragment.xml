@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_background_group"
+    tools:context=".fragments.MailFragment">
+
+
+    <Button
+        android:id="@+id/btMailToHospital"
+        android:layout_width="295dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="22dp"
+        android:background="@drawable/mandarin_border_12dp"
+        android:clickable="false"
+        android:drawableEnd="@drawable/ic_mail"
+        android:paddingStart="25dp"
+        android:paddingEnd="30dp"
+        android:text="@string/mail_to_hospital"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="@color/rich_black_80"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btMailBack"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btMailBack"
+        android:layout_width="43dp"
+        android:layout_height="81dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="55dp"
+        android:background="@drawable/mandarin_border_12dp"
+        android:drawableStart="@drawable/ic_back_arrow"
+        android:paddingHorizontal="13dp"
+        app:layout_constraintEnd_toStartOf="@+id/btMailToHospital"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvHospitalMails"
+        android:layout_width="358dp"
+        android:layout_height="380dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/light_gray_border"
+        app:layout_constraintBottom_toTopOf="@+id/tvOr"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btMailToHospital" />
+
+    <TextView
+        android:id="@+id/tvOr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/or"
+        android:textAllCaps="false"
+        android:textColor="@color/rich_black_80"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btCustomMail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvHospitalMails" />
+
+    <Button
+        android:id="@+id/btCustomMail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/mandarin_border_12dp"
+        android:paddingHorizontal="20dp"
+        android:text="@string/mail_to_custom_address"
+        android:textAllCaps="false"
+        android:textColor="@color/rich_black_80"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvOr" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

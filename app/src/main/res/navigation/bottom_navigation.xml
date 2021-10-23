@@ -161,5 +161,11 @@
         android:label="error_fragment"
         tools:layout="@layout/error_fragment" />
 
+    <fragment
+        android:id="@+id/navigation_mail"
+        android:name="com.devsoncall.okdoc.fragments.MailFragment"
+        android:label="mail_fragment"
+        tools:layout="@layout/mail_fragment" />
+
 
 </navigation>
