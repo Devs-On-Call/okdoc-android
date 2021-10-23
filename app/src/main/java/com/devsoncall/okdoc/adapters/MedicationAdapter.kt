@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.devsoncall.okdoc.R
 import com.devsoncall.okdoc.models.Prescription
+import com.devsoncall.okdoc.utils.formatPrescriptionDateString
+import com.devsoncall.okdoc.utils.getDayOfWeek
 import kotlinx.android.synthetic.main.medication_item.view.*
 
 class MedicationAdapter(
@@ -21,9 +23,14 @@ class MedicationAdapter(
 
     override fun onBindViewHolder(holder: MedicationViewHolder, position: Int) {
         holder.itemView.apply {
+
+            val date = medicationList[position].date.take(10)
+            val dayOfWeek = getDayOfWeek(date).toString()
+            val duration = medicationList[position].duration.toInt()
+
             textViewMedicineTitle.text = medicationList[position].drug
             textViewDosage.text = medicationList[position].dosage
-            textViewDuration.text = medicationList[position].duration
+            textViewDuration.text = formatPrescriptionDateString(date, dayOfWeek, duration)
         }
     }
 

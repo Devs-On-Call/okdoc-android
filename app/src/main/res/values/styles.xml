@@ -16,7 +16,7 @@
 
     <style name="splash_screen" parent="Theme.AppCompat.NoActionBar">
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
-<!--        <item name="android:windowBackground">@drawable/splash_image</item>-->
+        <item name="android:windowBackground">@drawable/splash_image</item>
         <item name="colorPrimary">@color/mandarin</item>
         <item name="colorPrimaryVariant">@color/vermilion</item>
         <item name="colorPrimaryDark">@color/mandarin</item>

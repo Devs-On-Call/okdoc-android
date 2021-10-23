@@ -58,6 +58,7 @@
         android:id="@+id/textViewDuration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
         android:paddingHorizontal="14dp"
         android:text="@string/duration"
         android:textAlignment="center"
