@@ -147,7 +147,7 @@ class MailFragment : Fragment(R.layout.mail_fragment), MailsAdapter.OnItemClickL
             R.string.diagnosis_template,
             diagnosis.name,
             diagnosis.date,
-            diagnosis.details,
+            diagnosis.details.replace("\\n", System.getProperty("line.separator")),
             "Dr. ${diagnosis.doctor.name} ${diagnosis.doctor.lastName}"
         )
         sendEmail(email, subject, body)
