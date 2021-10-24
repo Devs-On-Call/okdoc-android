@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
@@ -96,7 +97,8 @@ class PrescriptionFragment : Fragment(R.layout.prescription_fragment) {
         }
 
         imageButtonShare.setOnClickListener {
-            view.findNavController().navigate(R.id.navigation_mail)
+            val bundle = bundleOf("type" to getString(R.string.prescription))
+            view.findNavController().navigate(R.id.navigation_mail, bundle)
         }
     }
 
@@ -156,8 +158,8 @@ class PrescriptionFragment : Fragment(R.layout.prescription_fragment) {
         val date = prescription.date.take(10)
         val dayOfWeek = getDayOfWeek(date).toString()
         buttonPastDiagnoses.text = formatDateString(date, dayOfWeek).replace(", ", ",\n")
-        textViewTitle.text = prescription.diagnosis.diagnosis
-        textViewDoctor.text = "${prescription.doctor.name} ${prescription.doctor.lastName}"
+        textViewTitle.text = prescription.diagnosis.name
+        textViewDoctor.text = "Dr. ${prescription.doctor.name} ${prescription.doctor.lastName}"
         fullNameDescription.text = prescription.doctor.profession.name
     }
 

@@ -32,8 +32,6 @@ import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent.set
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
 import com.devsoncall.okdoc.utils.*
 import kotlinx.android.synthetic.main.credits_fragment.*
 import java.util.*

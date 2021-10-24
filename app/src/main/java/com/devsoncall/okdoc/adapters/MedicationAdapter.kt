@@ -23,14 +23,9 @@ class MedicationAdapter(
 
     override fun onBindViewHolder(holder: MedicationViewHolder, position: Int) {
         holder.itemView.apply {
-
-            val date = medicationList[position].date.take(10)
-            val dayOfWeek = getDayOfWeek(date).toString()
-            val duration = medicationList[position].duration.toInt()
-
             textViewMedicineTitle.text = medicationList[position].drug
             textViewDosage.text = medicationList[position].dosage
-            textViewDuration.text = formatPrescriptionDateString(date, dayOfWeek, duration)
+            textViewDuration.text = medicationList[position].duration
         }
     }
 
