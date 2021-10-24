@@ -168,7 +168,7 @@
         tools:layout="@layout/mail_fragment" >
         <argument
             android:name="type"
-            app:argType="String"
+            app:argType="string"
             android:defaultValue="0" />
     </fragment>
 

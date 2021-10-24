@@ -15,6 +15,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.devsoncall.okdoc.R
 import com.devsoncall.okdoc.activities.MainMenuActivity
 import com.devsoncall.okdoc.adapters.MailsAdapter
@@ -180,6 +181,7 @@ class MailFragment : Fragment(R.layout.mail_fragment), MailsAdapter.OnItemClickL
                 if (getHospitalsResponse.code() == 200) {
                     if (getHospitalsResponse.body()?.data != null) {
                         val hospitals = getHospitalsResponse.body()?.data!!
+                        println(hospitals)
                         setAdapter(hospitals)
                     }
                 } else if (getHospitalsResponse.code() == 400) {
@@ -207,5 +209,6 @@ class MailFragment : Fragment(R.layout.mail_fragment), MailsAdapter.OnItemClickL
     private fun setAdapter(hospitals: List<Hospital>){
         adapter = MailsAdapter(hospitals, this)
         rvHospitalMails.adapter = adapter
+        rvHospitalMails.layoutManager = LinearLayoutManager(this.context)
     }
 }

@@ -159,7 +159,7 @@ class PrescriptionFragment : Fragment(R.layout.prescription_fragment) {
         val dayOfWeek = getDayOfWeek(date).toString()
         buttonPastDiagnoses.text = formatDateString(date, dayOfWeek).replace(", ", ",\n")
         textViewTitle.text = prescription.diagnosis.name
-        textViewDoctor.text = "${prescription.doctor.name} ${prescription.doctor.lastName}"
+        textViewDoctor.text = "Dr. ${prescription.doctor.name} ${prescription.doctor.lastName}"
         fullNameDescription.text = prescription.doctor.profession.name
     }
 
