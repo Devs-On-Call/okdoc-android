@@ -61,6 +61,7 @@ class LoginActivity : AppCompatActivity() {
         clearPrefs()
 
         findViewById<Button>(R.id.buttonGetStarted).setOnClickListener{
+            animButtonPress(it, this)
             if(ApiUtils().isOnline(this@LoginActivity))
                 login()
             else

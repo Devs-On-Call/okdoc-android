@@ -12,9 +12,9 @@ import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import com.devsoncall.okdoc.R
 import com.devsoncall.okdoc.activities.MainMenuActivity
+import com.devsoncall.okdoc.utils.animButtonPress
 import com.devsoncall.okdoc.utils.animFadeIn
 import com.devsoncall.okdoc.utils.animKeyIn
-import com.devsoncall.okdoc.utils.animPushUpIn
 import kotlinx.android.synthetic.main.languages_fragment.*
 
 class LanguagesFragment : Fragment(R.layout.languages_fragment) {
@@ -39,16 +39,19 @@ class LanguagesFragment : Fragment(R.layout.languages_fragment) {
 
         val buttonEnglish: Button = view.findViewById(R.id.buttonEnglish)
         buttonEnglish.setOnClickListener {
+            activity?.applicationContext?.let { animButtonPress(buttonEnglish, it) }
             changeLanguage("en")
         }
 
         val buttonGreek: Button = view.findViewById(R.id.buttonGreek)
         buttonGreek.setOnClickListener {
+            activity?.applicationContext?.let { animButtonPress(buttonGreek, it) }
             changeLanguage("el")
         }
 
         val backButton: Button = view.findViewById(R.id.btBack)
         backButton.setOnClickListener {
+            activity?.applicationContext?.let { animButtonPress(backButton, it) }
             view.findNavController().navigate(R.id.navigation_settings)
         }
     }

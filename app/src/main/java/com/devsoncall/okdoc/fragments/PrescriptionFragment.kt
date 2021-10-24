@@ -1,7 +1,6 @@
 package com.devsoncall.okdoc.fragments
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
@@ -22,6 +21,7 @@ import com.devsoncall.okdoc.api.ApiUtils
 import com.devsoncall.okdoc.api.calls.ApiGetPrescriptions
 import com.devsoncall.okdoc.models.DataListResponse
 import com.devsoncall.okdoc.models.Prescription
+import com.devsoncall.okdoc.utils.animButtonPress
 import com.devsoncall.okdoc.utils.animFadeIn
 import com.devsoncall.okdoc.utils.formatDateString
 import com.devsoncall.okdoc.utils.getDayOfWeek
@@ -34,7 +34,7 @@ import retrofit2.Response
 import java.lang.reflect.Type
 
 
-class PrescriptionFragment : Fragment(R.layout.prescription_fragment) {
+class PrescriptionFragment : Fragment(R.layout.prescription_fragment), MedicationAdapter.OnItemClickListener {
 
     private var sharedPreferences: SharedPreferences? = null
     private var adapter: MedicationAdapter? = null
@@ -85,10 +85,12 @@ class PrescriptionFragment : Fragment(R.layout.prescription_fragment) {
         }
 
         buttonBack.setOnClickListener { view ->
+            activity?.applicationContext?.let { animButtonPress(buttonBack, it) }
             view.findNavController().navigate(R.id.navigation_prescription_list)
         }
 
         buttonDiagnosis.setOnClickListener {
+            activity?.applicationContext?.let { animButtonPress(buttonDiagnosis, it) }
             val selectedDiagnosisId = selectedPrescription?.diagnosis?._id
             if (selectedDiagnosisId != null)
                 saveDiagnosisIdClickedInPrefs(selectedDiagnosisId)
@@ -97,9 +99,14 @@ class PrescriptionFragment : Fragment(R.layout.prescription_fragment) {
         }
 
         imageButtonShare.setOnClickListener {
+            activity?.applicationContext?.let { animButtonPress(imageButtonShare, it) }
             val bundle = bundleOf("type" to getString(R.string.prescription))
             view.findNavController().navigate(R.id.navigation_mail, bundle)
         }
+    }
+
+    override fun onItemClick(prescription: Prescription, view: View) {
+        activity?.applicationContext?.let { animButtonPress(view, it) }
     }
 
     private fun getPrescriptions(authToken: String = "", patientId: String = "", prescriptionIdClicked: String) {
@@ -164,7 +171,7 @@ class PrescriptionFragment : Fragment(R.layout.prescription_fragment) {
     }
 
     private fun setAdapter(medication: MutableList<Prescription>){
-        adapter = MedicationAdapter(medication)
+        adapter = MedicationAdapter(medication, this)
         recyclerViewMedicationsList.adapter = adapter
     }
 }

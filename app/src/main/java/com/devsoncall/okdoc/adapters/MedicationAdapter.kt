@@ -6,15 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.devsoncall.okdoc.R
 import com.devsoncall.okdoc.models.Prescription
-import com.devsoncall.okdoc.utils.formatPrescriptionDateString
-import com.devsoncall.okdoc.utils.getDayOfWeek
 import kotlinx.android.synthetic.main.medication_item.view.*
 
 class MedicationAdapter(
-    var medicationList: MutableList<Prescription>
+    var medicationList: MutableList<Prescription>,
+    private val listener: OnItemClickListener
 ) : RecyclerView.Adapter<MedicationAdapter.MedicationViewHolder>() {
-
-    inner class MedicationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MedicationViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.medication_item, parent, false)
@@ -29,7 +26,27 @@ class MedicationAdapter(
         }
     }
 
+    inner class MedicationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+        init {
+            itemView.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+            val position = bindingAdapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                if (v != null) {
+                    listener.onItemClick(medicationList[position], v)
+                }
+            }
+        }
+    }
+
     override fun getItemCount(): Int {
         return medicationList.size
+    }
+
+
+    interface OnItemClickListener {
+        fun onItemClick(prescription: Prescription, view: View)
     }
 }

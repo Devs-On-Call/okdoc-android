@@ -19,6 +19,7 @@ import com.devsoncall.okdoc.api.ApiUtils
 import com.devsoncall.okdoc.api.calls.ApiGetDoctorAppointments
 import com.devsoncall.okdoc.models.DataListResponse
 import com.devsoncall.okdoc.models.DoctorAppointment
+import com.devsoncall.okdoc.utils.animButtonPress
 import com.devsoncall.okdoc.utils.animFadeIn
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -85,6 +86,7 @@ class CalendarFragment : Fragment(R.layout.calendar_fragment) {
         }
 
         buttonConfirm.setOnClickListener {
+            activity?.applicationContext?.let { animButtonPress(buttonConfirm, it) }
             val date = clickedDayCalendar.get(Calendar.YEAR).toString() + "-" +
                     String.format("%02d", clickedDayCalendar.get(Calendar.MONTH) + 1) + "-" +
                     String.format("%02d", clickedDayCalendar.get(Calendar.DAY_OF_MONTH))

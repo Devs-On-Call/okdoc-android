@@ -21,10 +21,10 @@ import com.devsoncall.okdoc.api.ApiUtils
 import com.devsoncall.okdoc.api.calls.ApiGetProfessions
 import com.devsoncall.okdoc.models.DataListResponse
 import com.devsoncall.okdoc.models.Profession
+import com.devsoncall.okdoc.utils.animButtonPress
 import com.devsoncall.okdoc.utils.animKeyIn
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import kotlinx.android.synthetic.main.doctors_fragment.*
 import kotlinx.android.synthetic.main.professions_fragment.*
 import org.json.JSONException
 import org.json.JSONObject
@@ -72,11 +72,13 @@ class ProfessionsFragment : Fragment(R.layout.professions_fragment), Professions
         }
 
         view.findViewById<Button>(R.id.btBack).setOnClickListener { view ->
+            activity?.applicationContext?.let { animButtonPress(view, it) }
             view.findNavController().navigate(R.id.navigation_home)
         }
     }
 
     override fun onItemClick(profession: Profession, view: View) {
+        activity?.applicationContext?.let { animButtonPress(view, it) }
         saveProfessionClickedInPrefs(profession._id, profession.name)
         view.findNavController().navigate(R.id.navigation_hospital_list)
     }

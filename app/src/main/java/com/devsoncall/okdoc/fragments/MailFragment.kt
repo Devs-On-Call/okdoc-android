@@ -25,11 +25,13 @@ import com.devsoncall.okdoc.models.DataListResponse
 import com.devsoncall.okdoc.models.Diagnosis
 import com.devsoncall.okdoc.models.Hospital
 import com.devsoncall.okdoc.models.Prescription
+import com.devsoncall.okdoc.utils.animButtonPress
 import com.devsoncall.okdoc.utils.animFadeIn
 import com.devsoncall.okdoc.utils.animKeyIn
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.mail_fragment.*
+import kotlinx.android.synthetic.main.prescription_fragment.*
 import org.json.JSONException
 import org.json.JSONObject
 import retrofit2.Response
@@ -77,15 +79,20 @@ class MailFragment : Fragment(R.layout.mail_fragment), MailsAdapter.OnItemClickL
         }
 
         view.findViewById<Button>(R.id.btMailBack).setOnClickListener {
+            activity?.applicationContext?.let { animButtonPress(btMailBack, it) }
+
             view.findNavController().popBackStack()
         }
 
         view.findViewById<Button>(R.id.btCustomMail).setOnClickListener {
+            activity?.applicationContext?.let { animButtonPress(btCustomMail, it) }
+
             startShare("")
         }
     }
 
     override fun onItemClick(hospital: Hospital, view: View) {
+        activity?.applicationContext?.let { animButtonPress(view, it) }
         startShare(hospital.email)
     }
 

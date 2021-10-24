@@ -1,18 +1,15 @@
 package com.devsoncall.okdoc.activities
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import androidx.navigation.ui.setupWithNavController
 import com.devsoncall.okdoc.R
 import com.mohamedabulgasem.loadingoverlay.LoadingAnimation
 import com.mohamedabulgasem.loadingoverlay.LoadingOverlay
-import android.app.Activity
-import android.app.PendingIntent.getActivity
 import android.content.res.Configuration
 import android.content.res.Resources
 import androidx.preference.PreferenceManager
+import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import java.util.*
 
 
@@ -35,9 +32,40 @@ class MainMenuActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main_menu)
 
-        val navView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
-        val navController = findNavController(R.id.nav_host_fragment)
-        navView.setupWithNavController(navController)
+        val bottomNavigation: MeowBottomNavigation = findViewById(R.id.bottomNavigationView)
+
+        bottomNavigation.add(MeowBottomNavigation.Model(R.id.navigation_profile, R.drawable.ic_profile))
+        bottomNavigation.add(MeowBottomNavigation.Model(R.id.navigation_home, R.drawable.ic_home_image))
+        bottomNavigation.add(MeowBottomNavigation.Model(R.id.navigation_settings, R.drawable.ic_settings_image))
+
+        bottomNavigation.setOnClickMenuListener {
+            when (it.id) {
+                R.id.navigation_profile -> findNavController(R.id.nav_host_fragment).navigate(it.id)
+                R.id.navigation_home -> findNavController(R.id.nav_host_fragment).navigate(it.id)
+                R.id.navigation_settings -> findNavController(R.id.nav_host_fragment).navigate(it.id)
+            }
+        }
+
+        bottomNavigation.setOnReselectListener {
+            when (it.id) {
+                R.id.navigation_profile -> findNavController(R.id.nav_host_fragment).navigate(it.id)
+                R.id.navigation_home -> findNavController(R.id.nav_host_fragment).navigate(it.id)
+                R.id.navigation_settings -> findNavController(R.id.nav_host_fragment).navigate(it.id)
+            }
+        }
+
+        bottomNavigation.setOnShowListener {
+
+
+        }
+
+        bottomNavigation.show(R.id.navigation_home, true)
+        findNavController(R.id.nav_host_fragment).navigate(R.id.navigation_home)
+
+        // OLD BOTTOM NAV
+//        val navView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
+//        val navController = findNavController(R.id.nav_host_fragment)
+//        navView.setupWithNavController(navController)
     }
 
     fun setLocale(languageCode: String) {

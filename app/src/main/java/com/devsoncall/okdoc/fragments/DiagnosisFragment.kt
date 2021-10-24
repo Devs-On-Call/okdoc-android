@@ -29,6 +29,7 @@ import org.json.JSONException
 import org.json.JSONObject
 import retrofit2.Response
 import java.lang.reflect.Type
+import com.devsoncall.okdoc.utils.animButtonPress
 
 
 class DiagnosisFragment : Fragment(R.layout.diagnosis_fragment) {
@@ -77,10 +78,12 @@ class DiagnosisFragment : Fragment(R.layout.diagnosis_fragment) {
         }
 
         buttonBack.setOnClickListener { view ->
+            activity?.applicationContext?.let { animButtonPress(buttonBack, it) }
             view.findNavController().navigate(R.id.navigation_diagnoses_list)
         }
 
         buttonPrescription.setOnClickListener {
+            activity?.applicationContext?.let { animButtonPress(buttonPrescription, it) }
             val selectedPrescriptionId = selectedDiagnosis?.prescription
             if (selectedPrescriptionId != null)
                 savePrescriptionIdClickedInPrefs(selectedPrescriptionId)
@@ -89,6 +92,7 @@ class DiagnosisFragment : Fragment(R.layout.diagnosis_fragment) {
         }
 
         imageButtonShareDiagnosis.setOnClickListener {
+            activity?.applicationContext?.let { animButtonPress(imageButtonShareDiagnosis, it) }
             val bundle = bundleOf("type" to getString(R.string.diagnosis))
             view.findNavController().navigate(R.id.navigation_mail, bundle)
         }
