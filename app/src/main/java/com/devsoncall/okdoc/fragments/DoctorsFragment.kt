@@ -21,6 +21,7 @@ import com.devsoncall.okdoc.api.ApiUtils
 import com.devsoncall.okdoc.api.calls.ApiGetDoctors
 import com.devsoncall.okdoc.models.DataListResponse
 import com.devsoncall.okdoc.models.Doctor
+import com.devsoncall.okdoc.utils.animButtonPress
 import com.devsoncall.okdoc.utils.animKeyIn
 import kotlinx.android.synthetic.main.doctors_fragment.*
 import org.json.JSONException
@@ -61,11 +62,13 @@ class DoctorsFragment : Fragment(R.layout.doctors_fragment), DoctorsAdapter.OnIt
                 Toast.makeText(this.context, "Check your internet connection", Toast.LENGTH_SHORT).show()
 
         view.findViewById<Button>(R.id.btBack).setOnClickListener { view ->
+            activity?.applicationContext?.let { animButtonPress(view, it) }
             view.findNavController().navigate(R.id.navigation_hospital_list)
         }
     }
 
     override fun onItemClick(doctor: Doctor, view: View) {
+        activity?.applicationContext?.let { animButtonPress(view, it) }
         val pastDoctorId = sharedPreferences?.getString(getString(R.string.doctor_id_clicked), "")
         if (pastDoctorId!= "" && pastDoctorId != doctor._id)
             clearDoctorAppointmentsFromSharedPrefs()

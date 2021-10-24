@@ -22,6 +22,7 @@ import com.devsoncall.okdoc.api.ApiUtils
 import com.devsoncall.okdoc.api.calls.ApiGetPrescriptions
 import com.devsoncall.okdoc.models.DataListResponse
 import com.devsoncall.okdoc.models.Prescription
+import com.devsoncall.okdoc.utils.animButtonPress
 import com.devsoncall.okdoc.utils.animKeyIn
 import com.google.gson.reflect.TypeToken
 
@@ -83,11 +84,13 @@ class PrescriptionListFragment : Fragment(R.layout.prescriptions_list_fragment),
         }
 
         view.findViewById<Button>(R.id.btBack).setOnClickListener { view ->
+            activity?.applicationContext?.let { animButtonPress(view, it) }
             view.findNavController().navigate(R.id.navigation_home)
         }
     }
 
     override fun onItemClick(prescription: Prescription, view: View) {
+        activity?.applicationContext?.let { animButtonPress(view, it) }
         savePrescriptionIdClickedInPrefs(prescription._id)
         view.findNavController().navigate(R.id.navigation_prescription)
     }

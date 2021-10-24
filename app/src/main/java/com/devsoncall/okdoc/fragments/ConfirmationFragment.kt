@@ -18,9 +18,11 @@ import com.devsoncall.okdoc.activities.MainMenuActivity
 import com.devsoncall.okdoc.api.ApiUtils
 import com.devsoncall.okdoc.api.calls.ApiCreateAppointment
 import com.devsoncall.okdoc.models.BasicResponse
+import com.devsoncall.okdoc.utils.animButtonPress
 import com.devsoncall.okdoc.utils.animFadeIn
 import com.devsoncall.okdoc.utils.animPushRightIn
 import com.devsoncall.okdoc.utils.formatDateString
+import kotlinx.android.synthetic.main.calendar_fragment.*
 import kotlinx.android.synthetic.main.confirmation_fragment.*
 import kotlinx.android.synthetic.main.confirmation_fragment.buttonBack
 import org.json.JSONException
@@ -76,14 +78,17 @@ class ConfirmationFragment : Fragment(R.layout.confirmation_fragment) {
         textViewTime.text = time
 
         buttonBack.setOnClickListener {
+            activity?.applicationContext?.let { animButtonPress(buttonBack, it) }
             view.findNavController().navigate(R.id.navigation_hours)
         }
 
         buttonCancel.setOnClickListener {
+            activity?.applicationContext?.let { animButtonPress(buttonCancel, it) }
             view.findNavController().navigate(R.id.navigation_home)
         }
 
         buttonConfirmAppointment.setOnClickListener {
+            activity?.applicationContext?.let { animButtonPress(buttonConfirmAppointment, it) }
             val authToken = sharedPreferences?.getString(getString(R.string.auth_token), "")
             val patientId = sharedPreferences?.getString(getString(R.string.patient_id), "")
             val doctor = sharedPreferences?.getString(getString(R.string.doctor_id_clicked), null)

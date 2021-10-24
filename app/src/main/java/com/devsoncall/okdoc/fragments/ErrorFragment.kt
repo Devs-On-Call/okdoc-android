@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import com.devsoncall.okdoc.R
+import com.devsoncall.okdoc.utils.animButtonPress
 import com.devsoncall.okdoc.utils.animFadeIn
 import com.devsoncall.okdoc.utils.animKeyIn
 import kotlinx.android.synthetic.main.confirmed_fragment.*
@@ -31,10 +32,12 @@ class ErrorFragment : Fragment(R.layout.error_fragment) {
         activity?.applicationContext?.let { animFadeIn(imageViewError, it) }
 
         buttonBack.setOnClickListener { view ->
+            activity?.applicationContext?.let { animButtonPress(buttonBack, it) }
             view.findNavController().navigate(R.id.navigation_home)
         }
 
         buttonErrorOk.setOnClickListener { view ->
+            activity?.applicationContext?.let { animButtonPress(buttonErrorOk, it) }
             view.findNavController().navigate(R.id.navigation_home)
         }
     }

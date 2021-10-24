@@ -15,9 +15,9 @@ import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import com.devsoncall.okdoc.R
 import com.devsoncall.okdoc.activities.LoginActivity
+import com.devsoncall.okdoc.utils.animButtonPress
 import com.devsoncall.okdoc.utils.animFadeIn
 import com.devsoncall.okdoc.utils.animKeyIn
-import com.devsoncall.okdoc.utils.animPushUpIn
 import kotlinx.android.synthetic.main.settings_fragment.*
 
 
@@ -43,16 +43,19 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
 
         val logoutButton: Button = view.findViewById(R.id.logoutButton)
         logoutButton.setOnClickListener {
+            activity?.applicationContext?.let { animButtonPress(logoutButton, it) }
             logout()
         }
 
         val creditsButton: Button = view.findViewById(R.id.creditsButton)
         creditsButton.setOnClickListener {
+            activity?.applicationContext?.let { animButtonPress(creditsButton, it) }
             view.findNavController().navigate(R.id.navigation_credits)
         }
 
         val languagesButton:Button = view.findViewById(R.id.languagesButton)
         languagesButton.setOnClickListener{
+            activity?.applicationContext?.let { animButtonPress(languagesButton, it) }
             view.findNavController().navigate(R.id.navigation_languages)
         }
 

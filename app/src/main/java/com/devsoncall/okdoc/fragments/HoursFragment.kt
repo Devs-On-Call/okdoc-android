@@ -16,11 +16,10 @@ import com.devsoncall.okdoc.R
 import com.devsoncall.okdoc.activities.MainMenuActivity
 import com.devsoncall.okdoc.adapters.HoursAdapter
 import com.devsoncall.okdoc.models.DoctorAppointment
-import com.devsoncall.okdoc.utils.animFadeIn
+import com.devsoncall.okdoc.utils.animButtonPress
 import com.devsoncall.okdoc.utils.animKeyIn
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import kotlinx.android.synthetic.main.calendar_fragment.*
 import kotlinx.android.synthetic.main.hours_fragment.*
 import java.lang.reflect.Type
 
@@ -64,11 +63,13 @@ class HoursFragment : Fragment(R.layout.hours_fragment), HoursAdapter.OnItemClic
         }
 
         view.findViewById<Button>(R.id.btBack).setOnClickListener { view ->
+            activity?.applicationContext?.let { animButtonPress(view, it) }
             view.findNavController().navigate(R.id.navigation_calendar)
         }
     }
 
     override fun onItemClick(hour: String, view: View) {
+        activity?.applicationContext?.let { animButtonPress(view, it) }
         saveHourClickedInPrefs(hour)
         view.findNavController().navigate(R.id.navigation_confirmation)
     }

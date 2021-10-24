@@ -23,6 +23,7 @@ import com.devsoncall.okdoc.api.calls.ApiGetDiagnoses
 import com.devsoncall.okdoc.models.DataListResponse
 import com.devsoncall.okdoc.models.Diagnosis
 import com.devsoncall.okdoc.utils.*
+import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.diagnoses_list_fragment.*
@@ -84,11 +85,13 @@ class DiagnosesListFragment : Fragment(R.layout.diagnoses_list_fragment), Diagno
         }
 
         view.findViewById<Button>(R.id.btBack).setOnClickListener { view ->
+            activity?.applicationContext?.let { animButtonPress(view, it) }
             view.findNavController().navigate(R.id.navigation_home)
         }
     }
 
     override fun onItemClick(diagnosis: Diagnosis, view: View) {
+        activity?.applicationContext?.let { animButtonPress(view, it) }
         saveDiagnosisIdClickedInPrefs(diagnosis._id)
         view.findNavController().navigate(R.id.navigation_diagnosis)
     }

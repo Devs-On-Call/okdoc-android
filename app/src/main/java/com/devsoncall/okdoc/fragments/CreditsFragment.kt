@@ -11,6 +11,7 @@ import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.devsoncall.okdoc.R
+import com.devsoncall.okdoc.utils.animButtonPress
 import com.devsoncall.okdoc.utils.animFadeIn
 import com.devsoncall.okdoc.utils.animPushUpIn
 import kotlinx.android.synthetic.main.credits_fragment.*
@@ -36,6 +37,7 @@ class CreditsFragment : Fragment(R.layout.credits_fragment) {
 
         val backButton: Button = view.findViewById(R.id.btBack)
         backButton.setOnClickListener {
+            activity?.applicationContext?.let { animButtonPress(backButton, it) }
             view.findNavController().navigate(R.id.navigation_settings)
         }
     }

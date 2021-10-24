@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_gradient">
@@ -18,21 +19,51 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/bottom_navigation"/>
+        app:navGraph="@navigation/bottom_navigation" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+    <!--  OLD BOTTOM NAV  -->
+    <!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+    <!--        android:id="@+id/bottomNavigationView"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="60dp"-->
+    <!--        android:background="@color/mandarin"-->
+    <!--        app:itemIconSize="80dp"-->
+    <!--        app:itemIconTint="@color/rich_black_90"-->
+    <!--        app:itemTextColor="@color/rich_black_90"-->
+    <!--        app:labelVisibilityMode="unlabeled"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.5"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:menu="@menu/bottom_nav_menu" />-->
+
+    <View
+        android:id="@+id/viewBottomNavBackground"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:background="@color/maximum_blue_80"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nav_host_fragment" />
+
+    <com.etebarian.meowbottomnavigation.MeowBottomNavigation
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/mandarin"
-        app:labelVisibilityMode="unlabeled"
-        app:itemIconTint="@color/rich_black_90"
-        app:itemTextColor="@color/rich_black_90"
-        app:itemIconSize="80dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
+        app:mbn_backgroundBottomColor="@color/mandarin"
+        app:mbn_circleColor="@color/light_gray"
+        app:mbn_countBackgroundColor="@color/mandarin"
+        app:mbn_defaultIconColor="@color/rich_black_90"
+        app:mbn_selectedIconColor="@color/rich_black_90"
+        app:menu="@menu/bottom_nav_menu">
+
+
+    </com.etebarian.meowbottomnavigation.MeowBottomNavigation>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

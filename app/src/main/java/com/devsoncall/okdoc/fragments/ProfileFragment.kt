@@ -10,8 +10,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
 import com.devsoncall.okdoc.R
+import com.devsoncall.okdoc.utils.animButtonPress
 import com.devsoncall.okdoc.utils.animKeyIn
-import com.devsoncall.okdoc.utils.animPushUpIn
 import com.devsoncall.okdoc.utils.setAvatar
 import kotlinx.android.synthetic.main.profile_fragment.*
 
@@ -51,5 +51,21 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
         amka.text = sharedPreferences.getString(getString(R.string.patient_amka), "")
         bloodType.text = sharedPreferences.getString(getString(R.string.patient_blood_type), "")
         familyDoctor.text = sharedPreferences.getString(getString(R.string.patient_doctor), "")
+
+        fullNameLayout.setOnClickListener {
+            activity?.applicationContext?.let { animButtonPress(fullNameLayout, it) }
+        }
+
+        amkaLayout.setOnClickListener {
+            activity?.applicationContext?.let { animButtonPress(amkaLayout, it) }
+        }
+
+        bloodTypeLayout.setOnClickListener {
+            activity?.applicationContext?.let { animButtonPress(bloodTypeLayout, it) }
+        }
+
+        familyDoctorLayout.setOnClickListener {
+            activity?.applicationContext?.let { animButtonPress(familyDoctorLayout, it) }
+        }
     }
 }

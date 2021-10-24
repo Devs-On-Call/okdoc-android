@@ -22,11 +22,13 @@ import com.devsoncall.okdoc.api.ApiUtils
 import com.devsoncall.okdoc.api.calls.ApiGetPatientAppointments
 import com.devsoncall.okdoc.models.PatientAppointment
 import com.devsoncall.okdoc.models.DataListResponse
+import com.devsoncall.okdoc.utils.animButtonPress
 import com.devsoncall.okdoc.utils.animKeyIn
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.appointments_fragment.*
 import kotlinx.android.synthetic.main.diagnoses_list_fragment.*
+import kotlinx.android.synthetic.main.error_fragment.*
 import org.json.JSONException
 import org.json.JSONObject
 import retrofit2.Response
@@ -83,11 +85,13 @@ class AppointmentsFragment : Fragment(R.layout.appointments_fragment), Appointme
         }
 
         view.findViewById<Button>(R.id.btBack).setOnClickListener { view ->
+            activity?.applicationContext?.let { animButtonPress(view, it) }
             view.findNavController().navigate(R.id.navigation_home)
         }
     }
 
     override fun onItemClick(position: Int, view: View) {
+        activity?.applicationContext?.let { animButtonPress(view, it) }
 //        Toast.makeText(this.context, "Item $position clicked", Toast.LENGTH_SHORT).show()
     }
 

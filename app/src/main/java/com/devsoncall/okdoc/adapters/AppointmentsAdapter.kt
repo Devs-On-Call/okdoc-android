@@ -38,12 +38,14 @@ class AppointmentsAdapter(
             val hospitalLocation = appointments[position].hospital.address
             val date = appointments[position].date.take(10)
             val dayOfWeek = getDayOfWeek(date).toString()
+            val time = appointments[position].date.subSequence(11, 16)
 
             textViewDoctorName.text = "Dr. $doctorName $doctorLastName"
             textViewDoctorSpecialty.text = doctorSpecialty
             textViewHospitalName.text = "@ $hospitalName"
             textViewHospitalLocation.text = hospitalLocation
             textViewDate.text = formatDateString(date, dayOfWeek)
+            textViewTime.text = time
         }
     }
 

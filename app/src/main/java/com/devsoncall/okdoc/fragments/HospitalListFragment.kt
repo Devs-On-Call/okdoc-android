@@ -21,6 +21,7 @@ import com.devsoncall.okdoc.api.ApiUtils
 import com.devsoncall.okdoc.api.calls.ApiGetHospitals
 import com.devsoncall.okdoc.models.DataListResponse
 import com.devsoncall.okdoc.models.Hospital
+import com.devsoncall.okdoc.utils.animButtonPress
 import com.devsoncall.okdoc.utils.animKeyIn
 import kotlinx.android.synthetic.main.hospital_list_fragment.*
 import org.json.JSONException
@@ -59,11 +60,13 @@ class HospitalListFragment : Fragment(R.layout.hospital_list_fragment), Hospital
                 Toast.makeText(this.context, "Check your internet connection", Toast.LENGTH_SHORT).show()
 
         view.findViewById<Button>(R.id.btBack).setOnClickListener { view ->
+            activity?.applicationContext?.let { animButtonPress(view, it) }
             view.findNavController().navigate(R.id.navigation_professions)
         }
     }
 
     override fun onItemClick(hospital: Hospital, view: View) {
+        activity?.applicationContext?.let { animButtonPress(view, it) }
         view.findNavController().navigate(R.id.navigation_doctors)
         saveHospitalIdClickedInPrefs(hospital._id, hospital.name, hospital.address)
 

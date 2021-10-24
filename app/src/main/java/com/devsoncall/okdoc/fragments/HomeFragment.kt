@@ -12,12 +12,9 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import com.devsoncall.okdoc.R
-import com.devsoncall.okdoc.utils.animKeyIn
-import com.devsoncall.okdoc.utils.animPushUpIn
-import com.devsoncall.okdoc.utils.setAvatar
+import com.devsoncall.okdoc.utils.*
 import kotlinx.android.synthetic.main.home_fragment.*
 
 
@@ -54,22 +51,26 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
 
         val buttonPrescriptions = view.findViewById<Button>(R.id.buttonPrescriptions)
         buttonPrescriptions.setOnClickListener { view ->
+            activity?.applicationContext?.let { animButtonPress(view, it) }
             view.findNavController().navigate(R.id.action_navigation_home_to_prescription_list)
         }
 
         val buttonDiagnoses = view.findViewById<Button>(R.id.buttonPastDiagnoses)
         buttonDiagnoses.setOnClickListener { view ->
+            activity?.applicationContext?.let { animButtonPress(view, it) }
             view.findNavController().navigate(R.id.action_navigation_home_to_diagnoses_list)
         }
 
         val buttonAppointments = view.findViewById<Button>(R.id.buttonViewAppointments)
         buttonAppointments.setOnClickListener { view ->
+            activity?.applicationContext?.let { animButtonPress(view, it) }
             view.findNavController().navigate(R.id.action_navigation_home_to_appointments)
 
         }
 
         val buttonScheduleAppointment = view.findViewById<Button>(R.id.buttonScheduleAppointment)
         buttonScheduleAppointment.setOnClickListener { view ->
+            activity?.applicationContext?.let { animButtonPress(view, it) }
             view.findNavController().navigate(R.id.action_navigation_home_to_professions)
 
         }
