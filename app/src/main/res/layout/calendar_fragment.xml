@@ -94,7 +94,7 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/mandarin_border_12dp"
         android:enabled="false"
-        android:text="@string/confirm"
+        android:text="@string/next"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
         android:textSize="17dp"

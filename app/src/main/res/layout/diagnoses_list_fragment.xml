@@ -24,7 +24,7 @@
         android:textAlignment="viewStart"
         android:textAllCaps="false"
         android:textColor="@color/rich_black_80"
-        android:textSize="20dp"
+        android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btBack"

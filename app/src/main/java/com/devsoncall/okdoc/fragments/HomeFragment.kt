@@ -44,7 +44,7 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
 
         val patientName = sharedPreferences?.getString(getString(R.string.patient_name), "")
         val hiField: TextView = view.findViewById<EditText>(R.id.textViewHi)
-        hiField.text = getString(R.string.default_home_greeting) + " " + patientName + "!"
+        hiField.text = getString(R.string.default_home_greeting) + ", " + "\n     " +patientName + "!"
 
         val amka = sharedPreferences?.getString(getString(R.string.patient_amka), "")
         setAvatar(amka, imageViewAvatar)
