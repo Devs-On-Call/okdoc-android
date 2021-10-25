@@ -6,13 +6,31 @@
     <string name="profile_full_name">Ονοματεπώνυμο</string>
     <string name="profile_blood_type">Ομάδα Αίματος</string>
     <string name="profile_family_doctor">Οικογενειακός Γιατρός</string>
-    <string name="default_home_greeting">👋🏻 Γειά σου,</string>
+    <string name="default_home_greeting">👋🏻 Γειά σου</string>
     <string name="past_diagnoses_button">Διαγνώσεις</string>
     <string name="prescriptions_button">Συνταγές</string>
     <string name="view_appointments_button">Δες τα ραντεβού</string>
     <string name="schedule_appointment_button">Κλείσε ραντεβού</string>
     <string name="doctor_specialty">Ειδικότητα</string>
     <string name="diagnosis">Διάγνωση</string>
+    <string name="past_diagnoses">Διαγνώσεις</string>
+    <string name="diagnosis_details">Λεπτομέρειες Διάγνωσης</string>
+    <string name="assigned_medication">Φαρμακευτική Αγωγή</string>
+    <string name="settings_credits" lang="en">Συντελεστές</string>
+    <string name="developed_by">Αναπτύχθηκε από τους</string>
+    <string name="team_members">
+        <![CDATA[
+        <u>Front-End &amp; Design</u><br></br>
+        Μαρίνα Κηπουρού<br></br>
+        Χριστόδουλος Αντωνίου<br></br>
+        Ευστράτιος Μπεκτασιάδης<br></br>
+        <br></br><u>Back-End</u><br></br>
+        Έλενα Κωνσταντινίδη<br></br>
+        Μητροφάνος Ντατίδης<br></br>
+        <br></br><u>Full Stack &amp; DevOps</u><br></br>
+        Δημήτριος Σκρέτας Καζάκης<br></br>
+        ]]>
+    </string>
     <string name="prescription">Συνταγή</string>
     <string name="settings_languages">Γλώσσες</string>
     <string name="settings_logout">Αποσύνδεση</string>
@@ -20,11 +38,11 @@
     <string name="hospitals">Διάλεξε Νοσοκομείο</string>
     <string name="doctors">Διάλεξε Γιατρό</string>
     <string name="select_date">Διάλεξε Ημέρα</string>
-    <string name="confirm">Επόμενο</string>
+    <string name="next">Επόμενο</string>
     <string name="select_time">Διάλεξε Ώρα</string>
     <string name="confirmation">Επιβεβαίωση</string>
-    <string name="confirmation_text">Πρόκειται να επιβεβαιώσετε το παρακάτω ραντεβού:</string>
     <string name="cancel">Άκυρο</string>
+    <string name="confirm">Επιβεβαίωση</string>
     <string name="confirmed">Επιτυχία</string>
     <string name="appointment_scheduled">Το ραντεβού έκλεισε\nμε επιτυχία</string>
     <string name="something_went_wrong">Κάτι πήγε στραβά :(\nΠαρακαλώ προσπαθήστε ξανά</string>
@@ -34,6 +52,7 @@
     <string name="mail_to_hospital">Email σε νοσοκομείο</string>
     <string name="or">ή</string>
     <string name="mail_to_custom_address">Email σε διαφορετική διεύθυνση</string>
+
 
 
 

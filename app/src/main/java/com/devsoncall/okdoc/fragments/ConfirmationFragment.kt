@@ -18,10 +18,7 @@ import com.devsoncall.okdoc.activities.MainMenuActivity
 import com.devsoncall.okdoc.api.ApiUtils
 import com.devsoncall.okdoc.api.calls.ApiCreateAppointment
 import com.devsoncall.okdoc.models.BasicResponse
-import com.devsoncall.okdoc.utils.animButtonPress
-import com.devsoncall.okdoc.utils.animFadeIn
-import com.devsoncall.okdoc.utils.animPushRightIn
-import com.devsoncall.okdoc.utils.formatDateString
+import com.devsoncall.okdoc.utils.*
 import kotlinx.android.synthetic.main.calendar_fragment.*
 import kotlinx.android.synthetic.main.confirmation_fragment.*
 import kotlinx.android.synthetic.main.confirmation_fragment.buttonBack
@@ -48,8 +45,7 @@ class ConfirmationFragment : Fragment(R.layout.confirmation_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        activity?.applicationContext?.let { animPushRightIn(viewConfirmationBackground, it) }
-        activity?.applicationContext?.let { animFadeIn(textViewHint, it) }
+        activity?.applicationContext?.let { animKeyIn(viewConfirmationBackground, it) }
         activity?.applicationContext?.let { animFadeIn(textViewDoctorName, it) }
         activity?.applicationContext?.let { animFadeIn(textViewDoctorSpecialty, it) }
         activity?.applicationContext?.let { animFadeIn(textViewHospitalName, it) }
@@ -58,6 +54,7 @@ class ConfirmationFragment : Fragment(R.layout.confirmation_fragment) {
         activity?.applicationContext?.let { animFadeIn(textViewTime, it) }
         activity?.applicationContext?.let { animFadeIn(viewBorders, it) }
         activity?.applicationContext?.let { animFadeIn(editTextReason, it) }
+
 
 
         val doctorName = sharedPreferences?.getString(getString(R.string.doctor_name), null)

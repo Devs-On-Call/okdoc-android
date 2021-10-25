@@ -156,5 +156,6 @@ class DiagnosisFragment : Fragment(R.layout.diagnosis_fragment) {
         diagnosisDetails.text = diagnosis.details.replace("\\n", System.getProperty("line.separator"))
         textViewDiagnosisDoctor.text = "Dr. ${diagnosis.doctor.name} ${diagnosis.doctor.lastName}"
         textViewDiagnosisDoctorProfession.text = diagnosis.doctor.profession.name
+        textViewDiagnosisTitle.text = diagnosis.name
     }
 }

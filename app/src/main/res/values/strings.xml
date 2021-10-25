@@ -46,16 +46,21 @@
     <string name="doctor_specialty" lang="en">Specialty</string>
     <string name="doctor_name" lang="en" translatable="false">Doctor Name</string>
     <string name="diagnosis" lang="en">Diagnosis</string>
+    <string name="diagnosis_details">Diagnosis Details</string>
     <string name="prescription">Prescription</string>
+    <string name="assigned_medication" lang="en">Assigned Medication</string>
+
+    <!--  Past Diagnoses screen UI strings  -->
+    <string name="past_diagnoses" lang="en">Past Diagnoses</string>
 
     <!--  Settings screen UI strings  -->
     <string name="settings_languages" lang="en">Languages</string>
-    <string name="settings_credits" lang="en" translatable="false">Credits</string>
+    <string name="settings_credits" lang="en">Credits</string>
     <string name="settings_logout" lang="en">Logout</string>
 
     <!--  Credits UI strings  -->
-    <string name="developed_by" translatable="false">Developed by</string>
-    <string name="team_members" translatable="false">
+    <string name="developed_by">Developed by</string>
+    <string name="team_members">
         <![CDATA[
         <u>Front-End &amp; Design</u><br></br>
         Marina Kipourou<br></br>
@@ -101,16 +106,16 @@
 
     <!--  Calendar screen UI strings  -->
     <string name="select_date">Select Date</string>
-    <string name="confirm">Confirm</string>
+    <string name="next">Next</string>
 
     <!--  Hours screen UI strings  -->
     <string name="select_time">Select Time</string>
 
     <!--  Confirmation screen UI string  -->
-    <string name="confirmation">Confrimation</string>
-    <string name="confirmation_text">You are about to schedule an appointment:</string>
+    <string name="confirmation">Confirmation</string>
     <string name="reason_field_message" lang="en">Reason (Optional)</string>
     <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
 
     <!--  Confirmed screen UI strings-->
     <string name="confirmed">Confirmed</string>
@@ -131,7 +136,6 @@
     <string name="prescription_title" lang="en" translatable="false">Prescription Title</string>
     <string name="doctor" lang="en" translatable="false">Doctor Name - Specialty</string>
     <string name="diagnosis_text" translatable="false">Diagnosis\ndetails\ntext\nshould\nbe\nhere</string>
-    <string name="assigned_medication" lang="en" translatable="false">Assigned Medication</string>
     <string name="medicine_title" lang="en" translatable="false">Medicine Title</string>
     <string name="dosage" lang="en" translatable="false">Num per day</string>
     <string name="duration" lang="en" translatable="false">Day DD/MM until Day DD/MM</string>
@@ -142,9 +146,7 @@
     <string name="patient_doctor" lang="en" translatable="false">patient_doctor</string>
     <string name="hospital_name" lang="en" translatable="false">Hospital Name</string>
     <string name="hospital_location" lang="en" translatable="false">Location</string>
-    <string name="past_diagnoses" lang="en" translatable="false">Past Diagnoses</string>
     <string name="diagnoses_text" lang="en" translatable="false">Diagnosis</string>
-    <string name="diagnosis_details" translatable="false">Diagnosis Details</string>
     <string name="specialty" lang="en" translatable="false">Specialty</string>
     <string name="hours" lang="en" translatable="false">HH:MM - HH:MM</string>
     <string name="time" translatable="false">9:00 am</string>
