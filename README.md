@@ -4,16 +4,16 @@
 
 # Ok Doc!
 
-Insert youtube video here!
-
 Healthcare Android app that helps you view your medical history and create appointments.
+
+Ok Doc! - [Demo Presentation](https://youtu.be/cmERkzFrh9M)
 
 Back-End REST API [here!](https://github.com/Devs-On-Call/okdoc-backend) 
 
 ## Features
 
 Users can:
-- View past diagnoses that have been made for them.
+- View their medical history (diagnoses).
 - View their prescriptions.
 - View their personal health data such as AMKA, blood type, or the family doctor appointed to them.
 - Share diagnoses/prescriptions with public hospitals (using email).
@@ -28,7 +28,7 @@ Made with ♥ by Devs On Call
 
 - Marina Kipourou
 - Christodoulos Antoniou
-- Efstratios Bekstasiadis
+- Efstratios Bektasiadis
 
 ***Back-End***
 
